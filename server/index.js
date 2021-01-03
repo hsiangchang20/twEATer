@@ -1,15 +1,20 @@
+import {GraphQLServer, PubSub} from 'graphql-yoga'
+import Query from './resolvers/Query'
+import Mutation from './resolvers/Mutation'
+import Subscription from './resolvers/Subscription'
+
 require('dotenv-defaults').config()
 
-const http = require('http')
-const express = require('express')
+//const http = require('http')
+//const express = require('express')
 const mongoose = require('mongoose')
-const WebSocket = require('ws')
+//const WebSocket = require('ws')
 
 const Message = require('./models/message')
 
-const app = express()
-const server = http.createServer(app)
-const wss = new WebSocket.Server({ server })
+//const app = express()
+//const server = http.createServer(app)
+//const wss = new WebSocket.Server({ server })
 
 if (!process.env.MONGO_URL) {
   console.error('Missing MONGO_URL!!!')
@@ -21,15 +26,33 @@ mongoose.connect(process.env.MONGO_URL, {
   useUnifiedTopology: true
 })
 
-const db = mongoose.connection
+const mongodb = mongoose.connection
 
-db.on('error', (error) => {
+const pubsub = new PubSub
+
+mongodb.on('error', (error) => {
   console.error(error)
 })
 
-db.once('open', () => {
+mongodb.once('open', () => {
   console.log('MongoDB connected!')
 
+  const server = new GraphQLServer({
+    typeDefs: "./server/schema.graphql",
+    resolvers: {
+      Query,
+      Mutation,
+      Subscription
+    },
+    context: {
+      pubsub
+    }
+  })
+
+  server.start({ port: process.env.PORT | 4000 }, () => {
+    console.log(`The server is up on port ${process.env.PORT | 4000}!`)
+  })
+  /*
   wss.on('connection', ws => {
     const sendData = (data) => {
       ws.send(JSON.stringify(data))
@@ -85,10 +108,5 @@ db.once('open', () => {
       }
     }
   })
-
-  const PORT = process.env.port || 4000
-
-  server.listen(PORT, () => {
-    console.log(`Listening on http://localhost:${PORT}`)
-  })
+  */
 })

@@ -1,0 +1,11 @@
+//import Message from '../models/message'
+
+const Subscription = {
+    message:{
+        subscribe(parent, args, { pubsub }, info){
+            return pubsub.asyncIterator('message')
+        }
+    }
+}
+
+export {Subscription as default}
