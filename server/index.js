@@ -2,6 +2,7 @@ import {GraphQLServer, PubSub} from 'graphql-yoga'
 import Query from './resolvers/Query'
 import Mutation from './resolvers/Mutation'
 import Subscription from './resolvers/Subscription'
+import User from './resolvers/User'
 
 require('dotenv-defaults').config()
 
@@ -10,7 +11,7 @@ require('dotenv-defaults').config()
 const mongoose = require('mongoose')
 //const WebSocket = require('ws')
 
-const Message = require('./models/message')
+// const Message = require('./models/message')
 
 //const app = express()
 //const server = http.createServer(app)
@@ -42,7 +43,8 @@ mongodb.once('open', () => {
     resolvers: {
       Query,
       Mutation,
-      Subscription
+      Subscription,
+      User
     },
     context: {
       pubsub

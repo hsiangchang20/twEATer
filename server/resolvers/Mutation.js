@@ -1,9 +1,10 @@
 const Post = require("../models/Post")
 const User = require("../models/User")
+const Message = require("../models/message")
 const uuidv4  = require('uuid/v4');
 
 const Mutation = {
-    createUser(parent, args, {db}, info){
+    createUser(parent, args, {pubsub}, info){
         console.log(args.data);
 
         async function create(data){
@@ -70,6 +71,13 @@ const Mutation = {
 
         return Delete(args.id);
     },
+    sendMessage(parent, args, {pubsub}, info){
+        const message = {
+            ...args.data
+        };
+        Message.insertMany(message);
+        return message;
+    }
 }
 
 module.exports = Mutation;

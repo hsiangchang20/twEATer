@@ -1,3 +1,5 @@
+const { query } = require("express");
+const Message = require("../models/message");
 const Post = require("../models/Post")
 const User = require("../models/User")
 
@@ -44,6 +46,14 @@ const Query = {
             }   
         }
         return GetUserData(args.data);
+    },
+
+    message(parent, args, {db}, info){
+        async function GetMessage(n){
+            let data = await Message.find({$or:[{'sender': n}, {'receiver': n}]});
+            return data;
+        }
+        return GetMessage(args.name);
     }
 }
  

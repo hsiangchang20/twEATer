@@ -3,6 +3,7 @@ type Query {
   posts(query: String): [Post!]!
   login(data: loginInput!): User!
   comments: [Comment!]!
+  message(name: String!): [Message!]!
   me: User!
   post: Post!
 }
@@ -17,11 +18,18 @@ type Mutation {
   createComment(data: CreateCommentInput!): Comment!
   deleteComment(id: ID!): Comment!
   updateComment(id: ID!, data: UpdateCommentInput!): Comment!
+  sendMessage(data: CreateMessageInput!): Message! 
 }
 
 type Subscription {
   comment(postId: ID!): CommentSubscriptionPayload!
-  post: PostSubscriptionPayload!
+  message: PostSubscriptionPayload!
+}
+
+input CreateMessageInput {
+  sender: String!
+  body: String!
+  receiver: String!
 }
 
 input loginInput {
@@ -87,6 +95,12 @@ type Comment {
   text: String!
   author: User!
   post: Post!
+}
+
+type Message {
+  sender: String!
+  receiver: String!
+  body: String!
 }
 
 enum MutationType {
