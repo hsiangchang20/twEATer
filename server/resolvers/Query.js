@@ -1,16 +1,50 @@
-import Message from "../models/message"
+const Post = require("../models/Post")
+const User = require("../models/User")
 
 const Query = {
-  async messages(parent, args, { db }, info){
-    db = await Message.find()
-    console.log(db)
-    if (!args.query){
-      return db
-    }
-    return db.filter(message => {
-      return (message.sender.toLowerCase().includes(args.query.toLowerCase()) || message.receiver.toLowerCase().includes(args.query.toLowerCase()))
-    })
-  }
-}
+    users(parent, args, {db}, info){
+        async function GetUser(){
+            let data = await User.find()
+            return data;
+        }
 
-export { Query as default }
+        async function GetUserbyName(n){
+            let data = await User.find({name: { "$regex": n, "$options": "i" }})
+            return data;
+        }
+
+        if (!args.query) return GetUser();
+        else return GetUserbyName(args.query);
+    },
+
+    posts(parent, args, {db}, info){
+        async function GetPost(){
+            let data = await Post.find()
+            return data;
+        }
+
+        async function GetPostbyBody(n){
+            let data = await Post.find({body: { "$regex": n, "$options": "i" }})
+            return data;
+        }
+
+        if (!args.query) return GetPost();
+        else return GetPostbyBody(args.query);
+    },
+    
+    login(parent, args, {db}, info){
+        async function GetUserData(data){
+            let user = await User.find({email: data.email, password: data.password})
+            
+            if(user.length===0){
+                throw new Error('wrong email or password')
+            }
+            else{
+                return user[0];
+            }   
+        }
+        return GetUserData(args.data);
+    }
+}
+ 
+module.exports = Query

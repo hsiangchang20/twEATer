@@ -3,11 +3,7 @@ const Schema = mongoose.Schema
 
 // Creating a schema, sort of like working with an ORM
 const MessageSchema = new Schema({
-	sender: {
-		type: String,
-		required: [true, 'Name field is required.']
-	},
-	receiver:{
+	name: {
 		type: String,
 		required: [true, 'Name field is required.']
 	},
@@ -21,4 +17,4 @@ const MessageSchema = new Schema({
 const Message = mongoose.model('message', MessageSchema)
 
 // Exporting table for querying and mutating
-module.exports = Message
+module.exports = Message 

@@ -1,33 +1,92 @@
 type Query {
-  messages(query: String): [Message!]!
+  users(query: String): [User!]!
+  posts(query: String): [Post!]!
+  login(data: loginInput!): User!
+  comments: [Comment!]!
+  me: User!
+  post: Post!
 }
 
 type Mutation {
-  createMessage(data: CreateMessageInput!): Message!
-  deleteMessage(data: DeleteMessageInput): Message!
+  createUser(data: CreateUserInput!): User!
+  deleteUser(email: String!): User!
+  updateUser(id: ID!, data: UpdateUserInput!): User!
+  createPost(data: CreatePostInput!): Post!
+  deletePost(id: ID!): Post!
+  updatePost(id: ID!, data: UpdatePostInput!): Post!
+  createComment(data: CreateCommentInput!): Comment!
+  deleteComment(id: ID!): Comment!
+  updateComment(id: ID!, data: UpdateCommentInput!): Comment!
 }
 
 type Subscription {
-  message: MessageSubscriptionPayload!
+  comment(postId: ID!): CommentSubscriptionPayload!
+  post: PostSubscriptionPayload!
 }
 
-input CreateMessageInput {
-  sender: String!
-  receiver: String!
+input loginInput {
+  email: String!
+  password: String!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  fruit: Int!
+  password: String!
+}
+
+input UpdateUserInput {
+  name: String
+  email: String
+  age: Int
+}
+
+input CreatePostInput {
   body: String!
+  authorID: ID!
+  thumb: Int!
 }
 
-input DeleteMessageInput {
-  sender: String!
-  receiver: String!
+input UpdatePostInput {
+  title: String
+  body: String
+  published: Boolean
+}
+
+input CreateCommentInput {
+  text: String!
+  author: ID!
+  post: ID!
+}
+
+input UpdateCommentInput {
+  text: String
+}
+
+type User {
+  _id: ID!
+  name: String!
+  email: String!
+  password: String!
+  fruit: Int!
+  posts: [Post!]!
+}
+
+type Post {
+  _id: ID!
   body: String!
+  authorID: ID!
+  thumb: Int!
+  time: String!
+  comments: [Comment!]!
 }
 
-type Message {
+type Comment {
   id: ID!
-  sender: String!
-  receiver: String!
-  body: String!
+  text: String!
+  author: User!
+  post: Post!
 }
 
 enum MutationType {
@@ -36,7 +95,12 @@ enum MutationType {
   DELETED
 }
 
-type MessageSubscriptionPayload {
+type PostSubscriptionPayload {
   mutation: MutationType!
-  data: Message!
+  data: Post!
+}
+
+type CommentSubscriptionPayload {
+  mutation: MutationType!
+  data: Comment!
 }

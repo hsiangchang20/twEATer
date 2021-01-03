@@ -1,51 +1,75 @@
-import uuidv4 from 'uuid/v4'
-import Message from '../models/message'
+const Post = require("../models/Post")
+const User = require("../models/User")
+const uuidv4  = require('uuid/v4');
 
 const Mutation = {
-    async createMessage(parent, args, { db, pubsub }, info){
-        const message = {
-            id: uuidv4,
-            ...args.data
-        }
-        await Message.insertMany([message])
+    createUser(parent, args, {db}, info){
+        console.log(args.data);
 
-        pubsub.publish('message', {
-            message: {
-                mutation: 'CREATED',
-                data:message
+        async function create(data){
+            let Created = await User.find({email: data.email});
+            
+            const user = {
+                _id: uuidv4(),
+                ...args.data
             }
-        })
+            if(Created.length!==0){
+                console.log(Created);
+                throw new Error('email taken');
+            }
+            else{
+                User.insertMany(user);
+                return user;
+            }
+        }
 
-        return message
+        return create(args.data);
     },
-    async deleteMessage(parent, args, { db, pubsub }, info){
-        if (!args.data){
-            await Message.deleteMany({})
-
-            pubsub.publish('message', {
-                message: {
-                    mutation: 'DELETED',
-                    data:{sender: "", receiver: "", body: ""}
-                }
-            })
-
-            return {sender: "", receiver: "", body: ""}
+    deleteUser(parent, args, {db}, info){
+        async function checkEmail(emailAddress){
+            let target = await User.find({email: emailAddress})
+            console.log(target);
+            return target;
         }
-
-        const deleted = (await Message.deleteMany({name: args.data.name, body: args.data.body})).deletedCount
-        if (deleted === 0){
-            throw new Error('Message not found')
-        }
-        
-        pubsub.publish('message', {
-            message: {
-                mutation: 'DELETED',
-                data:args
+        async function Delete(Email){
+            let toDelete = await checkEmail(Email);
+            
+            if(toDelete.length===0){
+                throw new Error('email not taken');
             }
-        })
+            else{
+                await User.deleteMany({email: Email});
+                return toDelete[0];
+            }
+        }
 
-        return args
-    }
+        return Delete(args.email);
+    },
+    createPost(parent, args, {db}, info){
+        const post = {
+            _id: uuidv4(),
+            ...args.data
+        };
+        console.log(post)
+        Post.insertMany(post)
+
+        return post;
+    },
+    deletePost(parent, args, {db}, info){
+        async function Delete(id){
+            let toDelete = await Post.find({_id: id});
+            
+            if(toDelete.length===0){
+                throw new Error('post not found');
+            }
+            else{
+                await Post.deleteMany({_id: id});
+                return toDelete[0];
+            }
+        }
+
+        return Delete(args.id);
+    },
 }
 
-export { Mutation as default }
+module.exports = Mutation;
