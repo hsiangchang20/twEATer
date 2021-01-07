@@ -6,6 +6,8 @@ import Searches from "./Searches/Searches";
 import PostsRender from "./Posts/PostsRender";
 import Restaurant from "./Restaurants/Restaurant";
 
+import LoginPage from "./Login/Login"
+
 export default function MainPage() {
 
     const [login, setLogin] = useState(false);
@@ -38,11 +40,7 @@ export default function MainPage() {
                 </Switch>
             </div>
             ) : (
-                <div>
-                    <button onClick={() => setLogin(true)}>
-                        <NavLink to="/post">Login</NavLink>
-                    </button >
-                </div>
+                <LoginPage onClick={() => setLogin(true)} />
             )
     );
 }
