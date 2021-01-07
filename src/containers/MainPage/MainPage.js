@@ -6,7 +6,7 @@ import Searches from "./Searches/Searches";
 import PostsRender from "./Posts/PostsRender";
 import Restaurant from "./Restaurants/Restaurant";
 
-import LoginPage from "./Login/Login"
+import LoginPage from "./Login/loginPage"
 
 export default function MainPage() {
 
