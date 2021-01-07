@@ -8,9 +8,7 @@ class App extends Component {
 		return (
 			// <BrowserRouter basename="/my-app">
 			<BrowserRouter>
-				<div className="App">
-					<MainPage />
-				</div>
+				<MainPage />
 			</BrowserRouter>
 		)
 	}
