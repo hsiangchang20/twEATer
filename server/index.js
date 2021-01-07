@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 const mongodb = mongoose.connection
 
-const pubsub = new PubSub
+const pubsub = new PubSub()
 
 mongodb.on('error', (error) => {
   console.error(error)
