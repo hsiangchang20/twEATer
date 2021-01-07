@@ -4,7 +4,7 @@ import { NavLink, Switch, Route, Redirect } from "react-router-dom";
 import Posts from "./Posts/Posts";
 import Searches from "./Searches/Searches";
 import PostsRender from "./Posts/PostsRender";
-import Restaurant from "./Restaurants/Restaurant"
+import Restaurant from "./Restaurants/Restaurant";
 
 export default function MainPage() {
 
