@@ -1,12 +1,12 @@
 import React from "react";
 import loginLogo from "./images/logo.png"
+import { NavLink } from "react-router-dom";
 
 function loginPage(props) {
     return(
         <div>
-            <head>
                 <title>Login V1</title>
-                <meta charset="UTF-8" />
+                <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" type="image/png" href={loginLogo}/>
                 <link rel="stylesheet" type="text/css" href="./Login/vendor/bootstrap/css/bootstrap.min.css" />
@@ -15,13 +15,11 @@ function loginPage(props) {
                 <link rel="stylesheet" type="text/css" href="./Login/vendor/css-hamburgers/hamburgers.min.css" />
                 <link rel="stylesheet" type="text/css" href="./Login/vendor/select2/select2.min.css" />
                 <link rel="stylesheet" type="text/css" href="./Login/css/util.css" />
-            </head>
-            <body>
                 <div class="limiter">
                     <div class="container-login100">
                         <div class="wrap-login100">
                             <div class="login100-pic js-tilt" data-tilt>
-                                <img src={LoginLogo} alt="IMG" />
+                                <img src={loginLogo} alt="IMG" />
                             </div>                    
                             <form class="login100-form validate-form">
                                 <span class="login100-form-title">
@@ -45,8 +43,8 @@ function loginPage(props) {
                                 </div>
                                 
                                 <div class="container-login100-form-btn">
-                                    <button class="login100-form-btn" onclick={props.onClick}>
-                                        Login
+                                    <button class="login100-form-btn" onClick={props.onClick}>
+                                        <NavLink to="/post">Login</NavLink>
                                     </button>
                                 </div>
             
@@ -54,13 +52,13 @@ function loginPage(props) {
                                     <span class="txt1">
                                         Forgot
                                     </span>
-                                    <a class="txt2" href="#" onclick="forget()">
+                                    <a class="txt2" href="#" onClick="forget()">
                                         Username / Password?
                                     </a>
                                 </div>
                                 <div class="text-center p-t-12">
                                     <span class="txt2" style={{visibility: "hidden",}} id="forget">
-                                        你是<a href="#" onclick="showPassword()">忘記</a>了，還是<a href="#" onclick="NoneOfMyBusiness()">害怕想起來</a>？
+                                        你是<a href="#" onClick="showPassword()">忘記</a>了，還是<a href="#" onClick="NoneOfMyBusiness()">害怕想起來</a>？
                                     </span>
                                 </div>
                                 <div class="text-center p-t-12">
@@ -86,7 +84,6 @@ function loginPage(props) {
                 <script src="./Login/vendor/select2/select2.min.js"></script>
                 <script src="./Login/vendor/tilt/tilt.jquery.min.js"></script>
                 <script src="./Login/js/main.js"></script>
-            </body>
         </div>
     );
 };
