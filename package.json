@@ -17,10 +17,12 @@
     "react-apollo": "^3.1.5",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
+    "react-script-tag": "^1.1.2",
     "react-scripts": "4.0.0",
     "react-scroll": "^1.8.1",
     "rebass": "^4.0.7",
     "socket.io-client": "^3.0.3",
+    "utils": "^0.3.1",
     "web-vitals": "^0.2.4",
     "websocket": "^1.0.32"
   },

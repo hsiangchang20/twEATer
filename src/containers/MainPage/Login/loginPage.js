@@ -8,8 +8,10 @@ import './fonts/font-awesome-4.7.0/css/font-awesome.min.css'
 import './vendor/animate/animate.css'
 import './vendor/css-hamburgers/hamburgers.min.css'
 import './vendor/select2/select2.min.css'
+import ScriptTag from 'react-script-tag'
+import appendScript from './scriptporter/appender'
 
-function loginPage(props) {
+function LoginPage(props) {
     return(
         <div>
             <title>Login V1</title>
@@ -50,7 +52,7 @@ function loginPage(props) {
         
                             <div className="text-center p-t-12">
                                 <span className="txt1">
-                                    Forgot
+                                    Forgot{" "}
                                 </span>
                                 <a className="txt2" href="#" onClick="forget()">
                                     Username / Password?
@@ -77,15 +79,15 @@ function loginPage(props) {
                         </form>
                     </div>
                 </div>
-            </div>     
-            <script src="./Login/vendor/jquery/jquery-3.2.1.min.js"></script>
-            <script src="./Login/vendor/bootstrap/js/popper.js"></script>
-            <script src="./Login/vendor/bootstrap/js/bootstrap.min.js"></script>
-            <script src="./Login/vendor/select2/select2.min.js"></script>
-            <script src="./Login/vendor/tilt/tilt.jquery.min.js"></script>
-            <script src="./Login/js/main.js"></script>
+            </div>
+            <ScriptTag src="./vendor/jquery/jquery-3.2.1.min.js"></ScriptTag>
+            <ScriptTag src="./vendor/bootstrap/js/popper.js"></ScriptTag>
+            <ScriptTag src="./vendor/bootstrap/js/bootstrap.min.js"></ScriptTag>
+            <ScriptTag src="./vendor/select2/select2.min.js"></ScriptTag>
+            <ScriptTag src="./vendor/tilt/tilt.jquery.min.js"></ScriptTag>
+            <ScriptTag src="./js/main.js"></ScriptTag>
         </div>
     );
 };
 
-export default loginPage
+export default LoginPage
