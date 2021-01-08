@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import ScriptTag from 'react-script-tag'
 import loginLogo from "./images/logo.png"
+import poppingImg from "./images/popping.gif"
 import { NavLink } from "react-router-dom";
 import './css/main.css'
 import './css/util.css'
@@ -9,7 +11,15 @@ import './vendor/animate/animate.css'
 import './vendor/css-hamburgers/hamburgers.min.css'
 import './vendor/select2/select2.min.css'
 
-function loginPage(props) {
+function LoginPage(props) {
+    const [forgetPasswordPressed, setForgetPasswordPressed] = useState('none');
+    const [forgetPressed, setForgetPressed] = useState('none');
+    const [afraidPressed, setAfraidPressed] = useState('none')
+    const [poppingPressed, setPoppingPressed] = useState('none');
+    const [poppingDoublePressed, setPoppingDoublePressed] = useState('none');
+   
+    
+
     return(
         <div>
             <title>Login V1</title>
@@ -34,7 +44,7 @@ function loginPage(props) {
                                 </span>
                             </div>
         
-                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                            <div class="wrap-input100 validate-input" dataValidation = "Password is required">
                                 <input class="input100" type="password" name="pass" placeholder="Password" />
                                 <span class="focus-input100"></span>
                                 <span class="symbol-input100">
@@ -42,31 +52,42 @@ function loginPage(props) {
                                 </span>
                             </div>
                             
-                            <div class="container-login100-form-btn">
-                                <button class="login100-form-btn" onClick={props.onClick}>
-                                    <NavLink to="/post">Login</NavLink>
+                            <div className="container-login100-form-btn">
+                                <button className="login100-form-btn" onClick={props.onClick}>
+                                    <NavLink to="/post" style={{fontFamily: 'Montserrat-Bold', color: "white", fontSize: "12pt"}}>Login</NavLink>
                                 </button>
                             </div>
         
-                            <div class="text-center p-t-12">
-                                <span class="txt1">
-                                    Forgot
+                            <div className="text-center p-t-12">
+                                <span className="txt1">
+                                    Forgot{' '}
                                 </span>
-                                <a class="txt2" href="#" onClick="forget()">
+                                <a className="txt2" href="#" onClick={() => setForgetPasswordPressed('')}>
                                     Username / Password?
                                 </a>
                             </div>
-                            <div class="text-center p-t-12">
-                                <span class="txt2" style={{visibility: "hidden",}} id="forget">
-                                    你是<a href="#" onClick="showPassword()">忘記</a>了，還是<a href="#" onClick="NoneOfMyBusiness()">害怕想起來</a>？
+                            <div className="text-center p-t-12">
+                                <span className="txt2" style={{visibility: forgetPasswordPressed,}} id="forget">
+                                    你是<a href="#" onClick={() => {setForgetPressed(''); setAfraidPressed('none'); setPoppingPressed('none'); setPoppingDoublePressed('none')}}>忘記</a>了，還是<a href="#" onClick={() => {setAfraidPressed('');setForgetPressed('none')}}>害怕想起來</a>？
                                 </span>
                             </div>
-                            <div class="text-center p-t-12">
-                                <span class="txt3" style={{visibility: "hidden"}} id="forgetThen">
+                            <div className="text-center p-t-12">
+                            <span class="txt3" style={{display: forgetPressed}}>
+                                Poor You.
+                            </span>
+                            </div>
+                            <div className="text-center p-t-12">
+                                <span class="txt3" style={{display: afraidPressed}}>
+                                    啊你是在<a href='#' onClick={() => {setPoppingPressed(''); setAfraidPressed('none')}} style={{fontSize: '16pt'}}>怕屁</a>喔？
+                                </span>
+                            </div>
+                            <div className="text-center p-t-12" style={{display: poppingPressed}}>
+                                <span class="txt3">
+                                    啊你是在<a href='#' onClick={() => setPoppingDoublePressed('')} style={{fontSize: '16pt'}}>popping</a>喔？
                                 </span>
                             </div>
                             <div class="popping-img">
-                                <img src="images/popping.gif" alt="IMG" id="poppingImg" style={{visibility: "hidden"}} />
+                                <img src={poppingImg} alt="IMG" id="poppingImg" style={{display: poppingDoublePressed}} />
                             </div>
                             <div class="text-center p-t-20">
                                 <a class="txt2" href="#">
@@ -78,14 +99,19 @@ function loginPage(props) {
                     </div>
                 </div>
             </div>     
-            <script src="./Login/vendor/jquery/jquery-3.2.1.min.js"></script>
-            <script src="./Login/vendor/bootstrap/js/popper.js"></script>
-            <script src="./Login/vendor/bootstrap/js/bootstrap.min.js"></script>
-            <script src="./Login/vendor/select2/select2.min.js"></script>
-            <script src="./Login/vendor/tilt/tilt.jquery.min.js"></script>
-            <script src="./Login/js/main.js"></script>
+            <ScriptTag src="./vendor/jquery/jquery-3.2.1.min.js"></ScriptTag>
+            <ScriptTag src="./vendor/bootstrap/js/popper.js"></ScriptTag>
+            <ScriptTag src="./vendor/bootstrap/js/bootstrap.min.js"></ScriptTag>
+            <ScriptTag src="./vendor/select2/select2.min.js"></ScriptTag>
+            <ScriptTag src="./vendor/tilt/tilt.jquery.min.js"></ScriptTag>
+            {/* <script >
+		        $('.js-tilt').tilt({
+			        scale: 1.1
+		        })
+	        </script> */}
+            <ScriptTag src="./js/main.js"></ScriptTag>
         </div>
     );
 };
 
-export default loginPage
+export default LoginPage
