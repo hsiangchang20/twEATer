@@ -66,9 +66,6 @@ function poppingImageAppear() {
         }
     }
 
-    function forget() {
-
-    }
 
     function showValidate(input) {
         var thisAlert = $(input).parent();
