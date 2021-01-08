@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { NavLink, Switch, Route, Redirect } from "react-router-dom";
 
 import Posts from "./Posts/Posts";
