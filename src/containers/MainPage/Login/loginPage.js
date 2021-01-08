@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import loginLogo from "./images/logo.png"
 import { NavLink } from "react-router-dom";
 import './css/main.css'
@@ -8,10 +8,18 @@ import './fonts/font-awesome-4.7.0/css/font-awesome.min.css'
 import './vendor/animate/animate.css'
 import './vendor/css-hamburgers/hamburgers.min.css'
 import './vendor/select2/select2.min.css'
-import ScriptTag from 'react-script-tag'
-import appendScript from './scriptporter/appender'
+//import AppendScript from './scriptporter/appender'
 
 function LoginPage(props) {
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "./vendor/tilt/tilt.jquery.min.js";
+        //script.async = true;
+        document.body.appendChild(script);
+        console.log(document.body.childNodes)
+        console.log(document.body.childNodes[11])
+    }, []);
+        
     return(
         <div>
             <title>Login V1</title>
@@ -80,12 +88,6 @@ function LoginPage(props) {
                     </div>
                 </div>
             </div>
-            <ScriptTag src="./vendor/jquery/jquery-3.2.1.min.js"></ScriptTag>
-            <ScriptTag src="./vendor/bootstrap/js/popper.js"></ScriptTag>
-            <ScriptTag src="./vendor/bootstrap/js/bootstrap.min.js"></ScriptTag>
-            <ScriptTag src="./vendor/select2/select2.min.js"></ScriptTag>
-            <ScriptTag src="./vendor/tilt/tilt.jquery.min.js"></ScriptTag>
-            <ScriptTag src="./js/main.js"></ScriptTag>
         </div>
     );
 };

@@ -1,3 +1,4 @@
+console.log("dao")
 var ifforget = document.getElementById("forget")
 var forgetThen = document.getElementById("forgetThen")
 var poppingImg = document.getElementById("poppingImg")
