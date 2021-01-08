@@ -10,8 +10,6 @@ import './fonts/font-awesome-4.7.0/css/font-awesome.min.css'
 import './vendor/animate/animate.css'
 import './vendor/css-hamburgers/hamburgers.min.css'
 import './vendor/select2/select2.min.css'
-import ScriptTag from 'react-script-tag'
-import appendScript from './scriptporter/appender'
 
 function LoginPage(props) {
     const [forgetPasswordPressed, setForgetPasswordPressed] = useState('none');
