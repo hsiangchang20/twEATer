@@ -267,7 +267,7 @@
   }
 
   .posts-picture {
-    width: 320px;
+    width: 360px;
     height: 320px;
   }
 
@@ -312,6 +312,13 @@
   .posts-readmore{
     width: 720px;
     text-align: right;
+  }
+
+  .posts-picture img{
+    padding-top: 15px;
+    padding-right: 10px;
+    width: 100%;
+    height: 100%;
   }
 
   /*------------------------------------------------------------------
