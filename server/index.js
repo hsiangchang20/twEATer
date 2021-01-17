@@ -4,6 +4,7 @@ import Mutation from './resolvers/Mutation'
 import Subscription from './resolvers/Subscription'
 import User from './resolvers/User'
 import Post from './resolvers/Post'
+import Restaurant from './resolvers/Restaurant'
 
 require('dotenv-defaults').config()
 
@@ -46,7 +47,8 @@ mongodb.once('open', () => {
       Mutation,
       Subscription,
       User,
-      Post
+      Post,
+      Restaurant,
     },
     context: {
       pubsub

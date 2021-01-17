@@ -1,7 +1,7 @@
-const { query } = require("express");
 const Message = require("../models/message");
 const Post = require("../models/Post")
 const User = require("../models/User")
+const restaurant = require('../models/restaurant')
 
 const Query = {
     users(parent, args, {db}, info){
@@ -50,7 +50,7 @@ const Query = {
             else{
                 return user[0];
             }   
-        }
+        } 
         return GetUserData(args.data);
     },
 
@@ -58,8 +58,17 @@ const Query = {
         async function GetMessage(n){
             let data = await Message.find({$or:[{'sender': n}, {'receiver': n}]});
             return data;
-        }
+        } 
         return GetMessage(args.name);
+    },  
+ 
+    restaurant(parent, args, {db}, info){
+        async function GetRestaurantData(name){
+            let data = await restaurant.find({name: name});
+            console.log(data);
+            return data;
+        }
+        return GetRestaurantData(args.name)
     }
 }
  
