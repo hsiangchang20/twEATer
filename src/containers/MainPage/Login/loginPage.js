@@ -10,6 +10,8 @@ import './fonts/font-awesome-4.7.0/css/font-awesome.min.css'
 import './vendor/animate/animate.css'
 import './vendor/css-hamburgers/hamburgers.min.css'
 import './vendor/select2/select2.min.css'
+import {LOGIN_QUERY} from '../../../graphql'
+import { useLazyQuery } from "@apollo/client";
 
 function LoginPage(props) {
     const [forgetPasswordPressed, setForgetPasswordPressed] = useState('none');
@@ -17,8 +19,17 @@ function LoginPage(props) {
     const [afraidPressed, setAfraidPressed] = useState('none')
     const [poppingPressed, setPoppingPressed] = useState('none');
     const [poppingDoublePressed, setPoppingDoublePressed] = useState('none');
-   
-    
+    const [email, setEmail] = useState('');
+    const [password, setPW] = useState('');
+    const [Login, {loading, data}] = useLazyQuery(LOGIN_QUERY);
+    useEffect( ()=> {
+        console.log(data);
+        props.onClick(data);
+    }, [data])
+
+    useEffect( ()=> {
+        console.log(email, password);
+    }, [email, password])
     /*
     return(
         <div>
@@ -51,7 +62,13 @@ function LoginPage(props) {
                 </span>
 
                 <div className="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <input className="input100" type="text" name="email" placeholder="Email" />
+                    <input  className="input100" 
+                            type="text" 
+                            name="email" 
+                            placeholder="Email" 
+                            value={email} 
+                            onChange={(e)=>{ setEmail(e.target.value)} }
+                    />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
                         <i className="fa fa-envelope" aria-hidden="true"></i>
@@ -59,7 +76,13 @@ function LoginPage(props) {
                 </div>
 
                 <div class="wrap-input100 validate-input" dataValidation = "Password is required">
-                    <input class="input100" type="password" name="pass" placeholder="Password" />
+                    <input  className="input100" 
+                            type="password" 
+                            name="pass" 
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e)=>{setPW(e.target.value)}}
+                    />
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-lock" aria-hidden="true"></i>
@@ -67,7 +90,10 @@ function LoginPage(props) {
                 </div>
                 
                 <div className="container-login100-form-btn">
-                    <button className="login100-form-btn" onClick={props.onClick}>
+                    <button className="login100-form-btn" onClick={(e)=>{
+                        e.preventDefault();
+                        Login({ variables: { email: email, password: password } });
+                    }}>
                         <NavLink to="/post" style={{fontFamily: 'Montserrat-Bold', color: "white", fontSize: "12pt"}}>Login</NavLink>
                     </button>
                 </div>

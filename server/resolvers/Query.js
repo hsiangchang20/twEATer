@@ -35,6 +35,7 @@ const Query = {
     },
     
     login(parent, args, {db}, info){
+        console.log(args.data);
         async function GetUserData(data){
             let user = await User.find({email: data.email, password: data.password})
             
