@@ -3,6 +3,7 @@ import Query from './resolvers/Query'
 import Mutation from './resolvers/Mutation'
 import Subscription from './resolvers/Subscription'
 import User from './resolvers/User'
+import Post from './resolvers/Post'
 
 require('dotenv-defaults').config()
 
@@ -44,7 +45,8 @@ mongodb.once('open', () => {
       Query,
       Mutation,
       Subscription,
-      User
+      User,
+      Post
     },
     context: {
       pubsub

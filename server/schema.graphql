@@ -54,6 +54,8 @@ input CreatePostInput {
   body: String!
   authorID: ID!
   thumb: Int!
+  restaurant: String!
+  photo: String!
 }
 
 input UpdatePostInput {
@@ -88,6 +90,9 @@ type Post {
   thumb: Int!
   time: String!
   comments: [Comment!]!
+  restaurant: String!
+  photo: String!
+  users: [User!]
 }
 
 type Comment {

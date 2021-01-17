@@ -1,4 +1,5 @@
-export { MESSAGES_QUERY } from './queries'
+export { MESSAGES_QUERY } from './message_queries'
 export { CREATE_MESSAGE_MUTATION } from './mutations'
 export { MESSAGES_SUBSCRIPTION } from './subscriptions'
 export { LOGIN_QUERY } from './login'
+export { POST_QUERY } from './post_query'

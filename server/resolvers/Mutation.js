@@ -19,7 +19,7 @@ const Mutation = {
                 throw new Error('email taken');
             }
             else{
-                User.insertMany(user);
+                User.insertMany(user); 
                 return user;
             }
         }

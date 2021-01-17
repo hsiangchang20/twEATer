@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import '../mainpage.css';
 import avocado_pic from "../../../components/Images/avocado.png";
 
+import {POST_QUERY} from '../../../graphql'
+import { useQuery } from "@apollo/client";
+
 export default function Posts() {
     const postIDs = ["1", "2", "3", "4", "5", "6", "7"];
+    console.log('dao');
+    const { loading, error, data} = useQuery(POST_QUERY)
+    
+    useEffect( ()=> {
+        console.log(data);
+    }, [data])
+
     const posts_list = postIDs.map((i, index) => (
         <div className="wrap-post100">
             <div className="posts-overview">

@@ -12,6 +12,9 @@ export const LOGIN_QUERY = gql`
       }
     ){
       name
+      _id
+      fruit
+      
     }
   }
 `
