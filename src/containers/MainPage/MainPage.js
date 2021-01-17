@@ -22,29 +22,46 @@ export default function MainPage() {
                 <div className="container-background100">
                     {login ?
                         (<div>
-                            <button className="main-button">
-                                <NavLink to="/post" className="main-button-text">Post</NavLink>
-                            </button>
-                            <button className="main-button">
-                                <NavLink to="/search" className="main-button-text">Search</NavLink>
-                            </button>
-                            <button className="main-button">
-                                <NavLink to="/roulette" className="main-button-text">Roulette</NavLink>
-                            </button>
-                            <button className="main-button">
-                                <NavLink to="/add" className="main-button-text">Add</NavLink>
-                            </button>
-                            <button className="main-button">
-                                <NavLink to="/user" className="main-button-text">User</NavLink>
-                            </button>
-                            <hr />
-                            <Switch>
-                                <Route exact path="/post" component={Posts} />
-                                <Route path="/post/:id?" component={PostsRender} />
-                                <Route exact path="/search" component={Searches} />
-                                <Route path="/restaurant/:id?" component={Restaurant} />
-                                <Redirect from="/home" to="/" />
-                            </Switch>
+                            <div id='menu-wrapper'>
+                                <div id='menu'>
+                                    <ul>
+                                        <li>
+                                            <button className="main-button">
+                                                <NavLink to="/post" className="main-button-text">Post</NavLink>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button className="main-button">
+                                                <NavLink to="/search" className="main-button-text">Search</NavLink>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button className="main-button">
+                                                <NavLink to="/roulette" className="main-button-text">Roulette</NavLink>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button className="main-button">
+                                                <NavLink to="/add" className="main-button-text">Add</NavLink>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button className="main-button">
+                                                <NavLink to="/user" className="main-button-text">User</NavLink>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id='wrapper'>
+                                <Switch>
+                                    <Route exact path="/post" component={Posts} />
+                                    <Route path="/post/:id?" component={PostsRender} />
+                                    <Route exact path="/search" component={Searches} />
+                                    <Route path="/restaurant/:id?" component={Restaurant} />
+                                    <Redirect from="/home" to="/" />
+                                </Switch>
+                            </div>
                         </div>
                         ) : (
                             <LoginPage onClick={(data) => {

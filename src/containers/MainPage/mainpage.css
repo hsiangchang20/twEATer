@@ -130,7 +130,66 @@
       border: none !important;
   }
   
-  
+  /*//////////////////////////
+  MENU
+  //////////////////////////*/
+  #menu-wrapper {
+      overflow: hidden;
+      height: 90px;
+  }
+
+  #menu {
+      width: auto;
+      height: 55px;
+      margin: 0px auto;
+      padding: 0px;
+  }
+
+  menu ul {
+      margin: 0;
+      padding: 0px 0px 0px 0px;
+      list-style: none;
+      line-height: normal;
+      text-align: center;
+  }
+
+  #menu li {
+    display: inline-block;
+    border-right: 1px solid #6F8651;
+  }
+
+  #menu button {
+      display: block;
+      letter-spacing: 1px;
+      line-height: 0px;
+      padding: 0 20px;
+      text-decoration: none;
+      text-align: center;
+      font-size: 30px;
+      font-weight: normal;
+      color: #FFFFFF;
+      border: none;
+  }
+  /*/////////////
+  Post Page
+  /////////////*/
+  #wrapper {
+    overflow: hidden;
+    padding-bottom: 40px;
+  }
+
+  #page {
+      overflow: hidden;
+      width: 1000px;
+      margin: 70px 50px 30px 50px;
+  }
+
+  #content {
+      float: left;
+      width: auto;
+  }
+
+
   /*//////////////////////////////////////////////////////////////////
   [ Utility ]*/
   .txt1 {
@@ -173,7 +232,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
     padding: 15px;
     background: #afee4a;
     background: -webkit-linear-gradient(-135deg, #e4fa23, #40f708);
@@ -184,7 +242,8 @@
 
 
   .wrap-post100 {
-    width: 960px;
+    width: auto;
+    height: 360px;
     background: #fff;
     border-radius: 50px;
     overflow: hidden;
@@ -198,11 +257,62 @@
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 77px 130px 77px 95px;
+    padding: 10px 10px 10px 10px;
   }
-  
 
-  
+  /*decoration for Posts.js*/
+  .posts-overview {
+    width: 720px;
+    height: 200px;
+  }
+
+  .posts-picture {
+    width: 200px;
+    height: 200px;
+  }
+
+  .posts-userdata {
+    width: 720px;
+  }
+
+  .posts-userdata img{
+    width: 7%;
+    height: 7%;
+    float: left;
+  }
+
+  .posts-userdata div{
+    width: 650px;
+    height: 60px;
+    float: center;
+    text-align: left;
+    vertical-align: middle;
+    padding: 10px;
+  }
+
+  .posts-likeOrResponse{
+    width: 720px;
+    height: 90px;
+  }
+
+  .posts-likeOrResponse div{
+    width: 150px;
+    padding: 30px;
+  }
+
+  .posts-like{
+    float: left;
+  }
+
+  .posts-response{
+    float: left;
+  }
+
+  .posts-readmore{
+    width: 720px;
+    text-align: right;
+  }
+
   /*------------------------------------------------------------------
   [ Button ]*/
   .main-button{
@@ -214,8 +324,8 @@
   .main-button-text{
     font-family: Poppins-Regular;
     font-size: 30px;
-    font-weight: 750;
-    color: rgb(55, 134, 207);
+    font-weight: normal;
+    color: #FFFFFF;
   }
 
   .container-login100-form-btn{
