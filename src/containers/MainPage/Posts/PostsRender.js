@@ -54,7 +54,7 @@ export default function PostRender(props) {
                     likes : {post.thumb}
                 </div>
                 <div className="post-comment-number">
-                    comments : {post.comments.length}
+                    comments : {/*post.comments.length*/"???"}
                 </div>
             </div>
             <div className="post-comments">

@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import '../mainpage.css';
 import avocado_pic from "../../../components/Images/avocado.png";
 
-import {POST_QUERY} from '../../../graphql'
-import { useQuery, useLazyQuery } from "@apollo/client";
+import {POST_QUERY, LIKE_MUTATION} from '../../../graphql'
+import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 
 export default function Posts() {
     //console.log('dao');
     const { loading, error, data} = useQuery(POST_QUERY);
     const [posts, setPosts] = useState([]);
+    const [like] = useMutation(LIKE_MUTATION);
     
     useEffect( ()=> {
         //console.log(data);
@@ -18,6 +19,14 @@ export default function Posts() {
         }
         //console.log(data);
     }, [data])
+
+    const Like = useCallback((id) => {
+        return like({
+            variables: {
+                PostID: id
+            }
+        })
+    }, [like])
 
     const nothing = (
         <div></div>
@@ -44,9 +53,11 @@ export default function Posts() {
                         </NavLink>
                 </li> 
                 <div className='posts-likeOrResponse'>
-                    <div className="posts-like">
-                        Like
-                    </div>
+                    <button onClick={()=>Like(post._id)}>
+                        <div className="posts-like">
+                            Like
+                        </div>
+                    </button>
                     <div className="posts-response">
                         Response
                     </div>
