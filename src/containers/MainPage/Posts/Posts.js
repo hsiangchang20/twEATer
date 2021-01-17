@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import '../mainpage.css';
 import avocado_pic from "../../../components/Images/avocado.png";
@@ -8,31 +8,40 @@ import { useQuery } from "@apollo/client";
 
 export default function Posts() {
     const postIDs = ["1", "2", "3", "4", "5", "6", "7"];
-    console.log('dao');
-    const { loading, error, data} = useQuery(POST_QUERY)
+    //console.log('dao');
+    const { loading, error, data} = useQuery(POST_QUERY);
+    const [posts, setPosts] = useState([]);
     
     useEffect( ()=> {
-        console.log(data);
+        //console.log(data);
+        if (data !== undefined){
+            setPosts(data.posts);
+            console.log(data.posts);
+        }
+        //console.log(data);
     }, [data])
+    const nothing = (
+        <div></div>
+    )
 
-    const posts_list = postIDs.map((i, index) => (
+    const posts_list = posts.map((post, index) => (
         <div className="wrap-post100">
             <div className="posts-overview">
                 <div className="posts-userdata">
                     <img src={avocado_pic} alt="IMG" className="user-fruit"/> 
                     <div>
-                        <h5>Thomas</h5>
+                        <h4>{post.users[0].name}</h4>
                     </div>
                 </div>
                 <div className="posts-restaurant">
-                    <h4>合益佳雞肉飯</h4>
+                    <h4>{post.restaurant}</h4>
                 </div>
                 <div className="posts-body">
-                    <h5>燙青菜超多啦</h5>
+                    <h5>{post.body}</h5>
                 </div>
                 <li className="posts-readmore" key={index}>
-                    <NavLink to={"/post/" + i} className="posts-readmore">
-                        Read More {i}
+                    <NavLink to={"/post/" + "1"} className="posts-readmore">
+                        Read More
                     </NavLink>
                 </li> 
                 <div className='posts-likeOrResponse'>
@@ -45,7 +54,7 @@ export default function Posts() {
                 </div>
             </div>
             <div className='posts-picture'>
-                Food Picture
+                <img src="https://i.imgur.com/qmVhrwq.png" alt="IMG"/>
             </div>
         </div>        
     ));
@@ -54,7 +63,7 @@ export default function Posts() {
             <h3>
                 Posts
             </h3>
-            {posts_list}
+            {loading ? nothing : posts_list}
         </div>
     )
 }
