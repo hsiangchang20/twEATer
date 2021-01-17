@@ -30,8 +30,13 @@ const Query = {
             return data;
         }
 
+        async function GetPostbyRestaurant(n){
+            let data = await Post.find({restaurant: { "$regex": n, "$options": "i" }})
+            return data;
+        }
+
         if (!args.query) return GetPost();
-        else return GetPostbyBody(args.query);
+        else return GetPostbyRestaurant(args.query);
     },
     
     login(parent, args, {db}, info){
