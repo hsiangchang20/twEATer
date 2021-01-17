@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import ScriptTag from 'react-script-tag'
 import loginLogo from "./images/logo.png"
 import poppingImg from "./images/popping.gif"
 import { NavLink } from "react-router-dom";
@@ -58,7 +57,7 @@ function LoginPage(props) {
                     </span>
                 </div>
 
-                <div class="wrap-input100 validate-input" dataValidation = "Password is required">
+                <div class="wrap-input100 validate-input" data-validation = "Password is required">
                     <input class="input100" type="password" name="pass" placeholder="Password" />
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
@@ -81,7 +80,7 @@ function LoginPage(props) {
                     </a>
                 </div>
                 <div className="text-center p-t-12">
-                    <span className="txt2" style={{visibility: forgetPasswordPressed,}} id="forget">
+                    <span className="txt2" style={{display: forgetPasswordPressed,}} id="forget">
                         你是<a href="#" onClick={() => {setForgetPressed(''); setAfraidPressed('none'); setPoppingPressed('none'); setPoppingDoublePressed('none')}}>忘記</a>了，還是<a href="#" onClick={() => {setAfraidPressed('');setForgetPressed('none')}}>害怕想起來</a>？
                     </span>
                 </div>
