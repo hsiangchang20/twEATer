@@ -11,7 +11,7 @@ export default function Posts() {
                 <div className="posts-userdata">
                     <img src={avocado_pic} alt="IMG" className="user-fruit"/> 
                     <div>
-                        <h5>Thomas</h5>
+                        <h4>Thomas</h4>
                     </div>
                 </div>
                 <div className="posts-restaurant">
