@@ -7,7 +7,6 @@ import {POST_QUERY} from '../../../graphql'
 import { useQuery } from "@apollo/client";
 
 export default function Posts() {
-    const postIDs = ["1", "2", "3", "4", "5", "6", "7"];
     //console.log('dao');
     const { loading, error, data} = useQuery(POST_QUERY);
     const [posts, setPosts] = useState([]);
@@ -16,7 +15,6 @@ export default function Posts() {
         //console.log(data);
         if (data !== undefined){
             setPosts(data.posts);
-            console.log(data.posts);
         }
         //console.log(data);
     }, [data])
@@ -24,8 +22,8 @@ export default function Posts() {
         <div></div>
     )
 
-    const posts_list = posts.map((post, index) => (
-        <div className="wrap-post100">
+    const posts_list = posts.map(post => (
+        <div className="wrap-post100" key={post.time}>
             <div className="posts-overview">
                 <div className="posts-userdata">
                     <img src={avocado_pic} alt="IMG" className="user-fruit"/> 
@@ -39,8 +37,8 @@ export default function Posts() {
                 <div className="posts-body">
                     <h5>{post.body}</h5>
                 </div>
-                <li className="posts-readmore" key={index}>
-                    <NavLink to={"/post/" + "1"} className="posts-readmore">
+                <li className="posts-readmore">
+                    <NavLink to={"/post/" + post.time} className="posts-readmore">
                         Read More
                     </NavLink>
                 </li> 
@@ -54,7 +52,7 @@ export default function Posts() {
                 </div>
             </div>
             <div className='posts-picture'>
-                <img src="https://i.imgur.com/qmVhrwq.png" alt="IMG"/>
+                <img src={post.photo} alt="IMG"/>
             </div>
         </div>        
     ));
