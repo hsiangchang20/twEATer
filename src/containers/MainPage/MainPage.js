@@ -64,7 +64,10 @@ export default function MainPage() {
                             </div>
                         </div>
                         ) : (
-                            <LoginPage onClick={() => setLogin(true)} />
+                            <LoginPage onClick={(data) => {
+                                if (data !== undefined) setLogin(true);
+                                else console.log(data);
+                            }} />
                         )}
                 </div>
             </div>     
