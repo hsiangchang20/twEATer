@@ -1,7 +1,7 @@
-const { query } = require("express");
 const Message = require("../models/message");
 const Post = require("../models/Post")
 const User = require("../models/User")
+const restaurant = require('../models/restaurant')
 
 const Query = {
     users(parent, args, {db}, info){
@@ -22,16 +22,18 @@ const Query = {
     posts(parent, args, {db}, info){
         async function GetPost(){
             let data = await Post.find()
+            console.log(data);
             return data;
         }
 
-        async function GetPostbyBody(n){
-            let data = await Post.find({body: { "$regex": n, "$options": "i" }})
+        async function GetPostbyID(n){
+            console.log(n);
+            let data = await Post.find({_id: n})
             return data;
         }
 
         if (!args.query) return GetPost();
-        else return GetPostbyBody(args.query);
+        else return GetPostbyID(args.query);
     },
     
     login(parent, args, {db}, info){
@@ -45,7 +47,7 @@ const Query = {
             else{
                 return user[0];
             }   
-        }
+        } 
         return GetUserData(args.data);
     },
 
@@ -53,8 +55,17 @@ const Query = {
         async function GetMessage(n){
             let data = await Message.find({$or:[{'sender': n}, {'receiver': n}]});
             return data;
-        }
+        } 
         return GetMessage(args.name);
+    },  
+ 
+    restaurant(parent, args, {db}, info){
+        async function GetRestaurantData(name){
+            let data = await restaurant.find({name: name});
+            console.log(data);
+            return data;
+        }
+        return GetRestaurantData(args.name)
     }
 }
  

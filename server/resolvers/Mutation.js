@@ -1,6 +1,8 @@
 const Post = require("../models/Post")
 const User = require("../models/User")
 const Message = require("../models/message")
+const restaurant = require('../models/restaurant')
+const Comment = require('../models/comment')
 const uuidv4  = require('uuid/v4');
 
 const Mutation = {
@@ -19,7 +21,7 @@ const Mutation = {
                 throw new Error('email taken');
             }
             else{
-                User.insertMany(user);
+                User.insertMany(user); 
                 return user;
             }
         }
@@ -77,6 +79,48 @@ const Mutation = {
         };
         Message.insertMany(message);
         return message;
+    },
+    createRestaurant(parent, args, {pubsub}, info){
+        console.log(args.data);
+
+        async function create(data){
+            let Created = await restaurant.find({name: data.name});
+            
+            const rest = {
+                ...args.data
+            }
+            if(Created.length!==0){
+                console.log(Created);
+                throw new Error('restaurant taken');
+            }
+            else{
+                restaurant.insertMany(rest); 
+                return rest;
+            }
+        }
+
+        return create(args.data);
+    },
+    Like(parent, args, {pubsub}, info){
+        async function like(id){
+            let data = await Post.find({_id: id});
+            data[0].thumb += 1;
+            await Post.updateMany({_id: id},  {thumb: data[0].thumb});
+            return data;
+        }
+        return like(args.PostID);
+    },
+    createComment(parent, args, {pubsub}, info){
+        async function create(data){            
+            const comment = {
+                _id: uuidv4(),
+                ...args.data
+            }
+            Comment.insertMany(comment); 
+            return comment;
+        }
+
+        return create(args.data);
     }
 }
 
