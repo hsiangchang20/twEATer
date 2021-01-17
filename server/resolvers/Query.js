@@ -22,21 +22,18 @@ const Query = {
     posts(parent, args, {db}, info){
         async function GetPost(){
             let data = await Post.find()
+            console.log(data);
             return data;
         }
 
-        async function GetPostbyBody(n){
-            let data = await Post.find({body: { "$regex": n, "$options": "i" }})
-            return data;
-        }
-
-        async function GetPostbyRestaurant(n){
-            let data = await Post.find({restaurant: { "$regex": n, "$options": "i" }})
+        async function GetPostbyID(n){
+            console.log(n);
+            let data = await Post.find({_id: n})
             return data;
         }
 
         if (!args.query) return GetPost();
-        else return GetPostbyRestaurant(args.query);
+        else return GetPostbyID(args.query);
     },
     
     login(parent, args, {db}, info){

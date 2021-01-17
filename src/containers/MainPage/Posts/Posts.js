@@ -4,7 +4,7 @@ import '../mainpage.css';
 import avocado_pic from "../../../components/Images/avocado.png";
 
 import {POST_QUERY} from '../../../graphql'
-import { useQuery } from "@apollo/client";
+import { useQuery, useLazyQuery } from "@apollo/client";
 
 export default function Posts() {
     const postIDs = ["1", "2", "3", "4", "5", "6", "7"];
@@ -20,6 +20,7 @@ export default function Posts() {
         }
         //console.log(data);
     }, [data])
+
     const nothing = (
         <div></div>
     )
@@ -40,9 +41,9 @@ export default function Posts() {
                     <h5>{post.body}</h5>
                 </div>
                 <li className="posts-readmore" key={index}>
-                    <NavLink to={"/post/" + "1"} className="posts-readmore">
-                        Read More
-                    </NavLink>
+                        <NavLink to={"/post/" + post._id} className="posts-readmore">
+                            Read More
+                        </NavLink>
                 </li> 
                 <div className='posts-likeOrResponse'>
                     <div className="posts-like">
