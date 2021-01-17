@@ -4,7 +4,7 @@ import '../mainpage.css';
 import avocado_pic from "../../../components/Images/avocado.png";
 
 import {POST_QUERY} from '../../../graphql'
-import { useQuery } from "@apollo/client";
+import { useQuery, useLazyQuery } from "@apollo/client";
 
 export default function Posts() {
     //console.log('dao');
@@ -18,6 +18,7 @@ export default function Posts() {
         }
         //console.log(data);
     }, [data])
+
     const nothing = (
         <div></div>
     )
@@ -38,9 +39,9 @@ export default function Posts() {
                     <h5>{post.body}</h5>
                 </div>
                 <li className="posts-readmore">
-                    <NavLink to={"/post/" + post.time} className="posts-readmore">
-                        Read More
-                    </NavLink>
+                        <NavLink to={"/post/" + post._id} className="posts-readmore">
+                            Read More
+                        </NavLink>
                 </li> 
                 <div className='posts-likeOrResponse'>
                     <div className="posts-like">

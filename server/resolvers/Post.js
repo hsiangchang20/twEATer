@@ -1,4 +1,5 @@
 const User = require("../models/User")
+const Comment = require("../models/comment")
 
 const Post = {
     users(parent, args, {db}, info) {
@@ -9,7 +10,18 @@ const Post = {
         }
 
         return searchPost(parent.authorID); 
+    },
+
+    comments(parent, args, {db}, info) {
+        async function searchPost(PostID){
+            let comment = await Comment.find({PostID: PostID});
+            console.log(comment);
+            return comment;
+        }
+
+        return searchPost(parent._id); 
     }
+
 }
 
 module.exports = Post
