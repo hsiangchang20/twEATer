@@ -37,6 +37,7 @@
   body, html {
       height: 100%;
       font-family: Poppins-Regular, sans-serif;
+      overflow: auto;
   }
   
   /*---------------------------------------------*/
@@ -174,12 +175,12 @@
   Post Page
   /////////////*/
   #wrapper {
-    overflow: hidden;
+    overflow: auto;
     padding-bottom: 40px;
   }
 
   #page {
-      overflow: hidden;
+      overflow: scroll;
       width: 1000px;
       margin: 70px 50px 30px 50px;
   }
@@ -223,7 +224,7 @@
   }
   
   .container-background100 {
-    width: 100%;  
+    width: 100%;
     min-height: 100vh;
     display: -webkit-box;
     display: -webkit-flex;
@@ -246,7 +247,7 @@
     height: 360px;
     background: #fff;
     border-radius: 50px;
-    overflow: hidden;
+    overflow: auto;
   
     display: -webkit-box;
     display: -webkit-flex;
