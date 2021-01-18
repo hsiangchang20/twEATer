@@ -1,14 +1,14 @@
 import { gql } from 'apollo-boost'
 
-export const CREATE_MESSAGE_MUTATION = gql`
-  mutation createMessage(
-    $authorID: String!
+export const CREATE_POST_MUTATION = gql`
+  mutation createPost(
+    $authorID: ID!
     $body: String!
     $photo: String!
     $restaurant: String!
     $thumb: Int!
   ) {
-    createMessage(
+    createPost(
       data: {
         authorID: $authorID
         body: $body
@@ -18,7 +18,6 @@ export const CREATE_MESSAGE_MUTATION = gql`
       }
     ) {
         body
-        time
         restaurant
         photo
         authorID
