@@ -10,6 +10,8 @@ import Restaurant from "./Restaurants/Restaurant";
 
 import LoginPage from "./Login/loginPage"
 
+import Add from "./Add/Add"
+
 export default function MainPage() {
 
     const [login, setLogin] = useState(false);
@@ -59,6 +61,7 @@ export default function MainPage() {
                                     <Route path="/post/:id?" component={PostsRender} />
                                     <Route exact path="/search" component={Searches} />
                                     <Route path="/restaurant/:id?" component={Restaurant} />
+                                    <Route exact path="/add" component={Add} />
                                     <Redirect from="/home" to="/" />
                                 </Switch>
                             </div>
