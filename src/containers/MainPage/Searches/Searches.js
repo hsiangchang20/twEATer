@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import './css/main.css'
+import './css/searches.css'
 import searchLogo from './image/search.PNG'
 import {RESTAURANT_QUERY} from '../../../graphql'
 import { useLazyQuery } from "@apollo/client";

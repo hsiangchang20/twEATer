@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {useState} from "react";
 import { NavLink, Switch, Route, Redirect } from "react-router-dom";
 //import ScriptTag from 'react-script-tag'
 import './mainpage.css'
@@ -7,7 +7,7 @@ import Posts from "./Posts/Posts";
 import Searches from "./Searches/Searches";
 import PostsRender from "./Posts/PostsRender";
 import Restaurant from "./Restaurants/Restaurant";
-
+import Roulette from "./Roulette/Roulette"
 import LoginPage from "./Login/loginPage"
 
 import Add from "./Add/Add"
@@ -60,6 +60,7 @@ export default function MainPage() {
                                     <Route exact path="/post" component={Posts} />
                                     <Route path="/post/:id?" component={PostsRender} />
                                     <Route exact path="/search" component={Searches} />
+                                    <Route exact path="/roulette" component={Roulette} />
                                     <Route path="/restaurant/:id?" component={Restaurant} />
                                     <Route exact path="/add" component={Add} />
                                     <Redirect from="/home" to="/" />
