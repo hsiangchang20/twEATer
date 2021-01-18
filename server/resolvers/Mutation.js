@@ -48,13 +48,17 @@ const Mutation = {
 
         return Delete(args.email);
     },
-    createPost(parent, args, {db}, info){
+    createPost(parent, args, {db, pubsub}, info){
         const post = {
             _id: uuidv4(),
             ...args.data
         };
         console.log(post)
         Post.insertMany(post)
+
+        pubsub.publish(`post`, {
+            post: { mutation: 'CREATED', data: post }
+        })
 
         return post;
     },
@@ -106,8 +110,13 @@ const Mutation = {
             let data = await Post.find({_id: id});
             data[0].thumb += 1;
             await Post.updateMany({_id: id},  {thumb: data[0].thumb});
+            console.log(data);
+            await pubsub.publish(`post`, {
+                post: { mutation: 'CREATED', data: data[0] }
+            })
             return data;
         }
+
         return like(args.PostID);
     },
     createComment(parent, args, {pubsub}, info){

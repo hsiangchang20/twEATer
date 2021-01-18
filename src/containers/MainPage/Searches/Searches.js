@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import './css/main.css'
 import searchLogo from './image/search.PNG'
+import {RESTAURANT_QUERY} from '../../../graphql'
+import { useLazyQuery } from "@apollo/client";
 
 export default function Searches() {
     const RestaurantIDs = ["1", "2", "3", "4", "5", "6", "7"];
@@ -12,6 +14,13 @@ export default function Searches() {
             </NavLink>
         </li>
     ));
+
+    const [Search, {loading, data}] = useLazyQuery(RESTAURANT_QUERY);
+    const [Restaurant, SetRestaurant] = useState('')
+    useEffect(()=>{
+        console.log(data)
+    }, [loading, data])
+
     return (
         <div className="s007">
             <form>
@@ -21,7 +30,12 @@ export default function Searches() {
                             <div className="icon-wrap">
                                 <img src={searchLogo} />
                             </div>
-                            <input className='search-input' type="text" placeholder="Search..." />
+                            <input  className='search-input' 
+                                    type="text" 
+                                    placeholder="Search..." 
+                                    value={Restaurant} 
+                                    onChange={(e)=>{ SetRestaurant(e.target.value)} }
+                            />
                             <span className="focus-input100"></span>
                         </div>
                     </div>
@@ -95,7 +109,10 @@ export default function Searches() {
                         </div>
                         <div className="row third">
                             <div className="input-field">
-                                <button className="btn-search">Search</button>
+                                <button className="btn-search" onClick={(e)=>{
+                                    e.preventDefault();
+                                    Search({ variables: { name: Restaurant } });
+                                }}>Search</button>
                                 <button className="btn-delete" id="delete">Delete</button>
                             </div>
                         </div>

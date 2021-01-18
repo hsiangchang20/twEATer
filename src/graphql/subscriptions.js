@@ -1,13 +1,12 @@
 import { gql } from 'apollo-boost'
 
-export const MESSAGES_SUBSCRIPTION = gql`
+export const POST_SUBSCRIPTION = gql`
   subscription {
-    message {
+    post {
       mutation
-      data {
-        sender
-        receiver
-        body
+      data{
+        _id
+        thumb
       }
     }
   }

@@ -8,7 +8,7 @@ export const ONE_POST_QUERY = gql`
       query : $query
     ){
         authorID
-		_id
+		    _id
         body
         time
         restaurant
