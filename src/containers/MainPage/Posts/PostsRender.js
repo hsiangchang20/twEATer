@@ -13,16 +13,17 @@ export default function PostRender(props) {
 
     const { loading, error, data, subscribeToMore} = useQuery(ONE_POST_QUERY, {variables: {query: id}});
     const [post, setPost] = useState([]);
+    const [post_time, setPost_time] = useState("");
     const {data: posts, loading2} = useSubscription(POST_SUBSCRIPTION);
 
     useEffect(()=>{
         if (data !== undefined){
             setPost(data.posts[0])
-            console.log(data.posts[0])
-            console.log(data.posts[0].comments)
+            var time = new Date()
+            time.setTime(data.posts[0].time)
+            setPost_time(time)
         }
         console.log(data);
-        console.log(loading);
     }, [loading, data])
 
     useEffect(()=>{
@@ -46,20 +47,17 @@ export default function PostRender(props) {
         });
     }, [subscribeToMore]);
 
-    const comments = [0,1].map(comment => (
-        <div className="post" key = {comment}>
-            <div className="post-userdata">
+    const comments = (post.comments === undefined) ? " " : post.comments.map(comment => (
+        <div className="comment" key = {comment}>
+            <div className="comment-userdata">
                 <img src={avocado_pic} alt="IMG" className="userfruit"/>
                 <div>
-                    <h3>Thomas</h3>
+                    <h3>{comment.Author}</h3><span className="date">October 10, 2011</span>
                 </div>
             </div>
-            <p className="meta"><span className="date">October 10, 2011</span><span class="posted">Posted by <a href="#">Someone</a></span></p>
-            <div style={{clear: "both"}}>&nbsp;</div>
-            <div className="entry">
-                <p>This is <strong>Highway  </strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.  This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so you’re pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :)</p>
-                <p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.</p>
-                <p className="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="b0x w">Comments</a></p>
+            <div className="body">
+                <p className="word">{comment.body}</p>
+                <p className="like">Like</p>
             </div>
         </div>
     ));
@@ -74,28 +72,28 @@ export default function PostRender(props) {
                 <div className="post-userdata">
                     <img src={avocado_pic} alt="IMG" className="userfruit"/>
                     <div>
-                        <h3>{/*post.users[0].name*/"???"}</h3>
+                        <h3>{ (post.users !== undefined) ? " " + post.users[0].name : " "}</h3>
                     </div>
                 </div>
                 <div className="post-restaurant">
-                    <h4>{post.restaurant}</h4>
+                    <p>{'< ' + post.restaurant + ' >'}</p>
                 </div>
                 <div className="post-time">
-                    <h5>{Date(post.time).slice(0, 24)}</h5>
+                    <h5>{post_time.toString().slice(0, 24)}</h5>
                 </div>
             </div>
             <div className="post-picture">
                 <img src={post.photo} alt="IMG"/>
             </div>
             <div className="post-body">
-                {post.body}
+                <p>{post.body}</p>
             </div>
             <div className="post-response">
                 <div className="post-like-number">
-                    likes : {post.thumb}
+                    <p>likes : {post.thumb} &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 </div>
                 <div className="post-comment-number">
-                    comments : {/*post.comments.length*/"???"}
+                    <p>comments : { (post.comments !== undefined) ? post.comments.length : " "}</p>
                 </div>
             </div>
             <div className="post-comments">
@@ -103,6 +101,5 @@ export default function PostRender(props) {
             </div>
         </div>
     )
-    
     return ( !id || loading || error) ? nothing : postview;
 }

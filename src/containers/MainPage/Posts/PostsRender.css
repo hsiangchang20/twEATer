@@ -1,110 +1,178 @@
 /*decoration for PostsRender.js (for a single post)*/
-.wrap-post1 {
-width: auto;
-height: auto;
-background: #fff;
-border-radius: 50px;
-overflow: hidden;
+body, html {
+	height: 100%;
+	font-family: Poppins-Regular, sans-serif;
+	overflow: auto;
+}
 
-display: -webkit-box;
-display: -webkit-flex;
-display: -moz-box;
-display: -ms-flexbox;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-margin-top: 20px;
-margin-bottom: 20px;
-padding: 10px 10px 10px 10px;
+.wrap-post1 {
+	width: 1148px;
+	height: auto;
+	background: #fff;
+	border-radius: 50px;
+	overflow: hidden;
+
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 10px 10px 10px 10px;
 }
 
 .post-basic-data {
-width: 1500px;
-height: auto;
+	width: 1000px;
+	height: auto;
+	margin: 30px auto;
 }
 
 .post-picture {
-width: 1500px;
-height:auto;
+	width: 1000px;
+	height:auto;
+	margin: 0 auto;
 }
 
 .post-body {
-width: 1500px;
-height:auto;
+	width: 1000px;
+	height:auto;
+	margin: 0 auto;
 }
 
 .post-response {
-width: 1500px;
-height:auto;
+	width: 1000px;
+	height:auto;
+	margin: 0 auto;
 }
 
 .post-comments {
-width: 1500px;
-height:auto;
+	width: 1000px;
+	height:auto;
+	margin: 0 auto 20px;
 }
 
 .post-userdata {
-width: auto;
-height: 100px;
+	width: auto;
+	height: 100px;
 }
 
 .post-userdata img {
-width: auto;
-height: 100px;
-float: left;
+	width: auto;
+	height: 100px;
+	float: left;
 }
 
 .post-userdata div {
-width: auto;
-height: 100px;
-float: center;
-text-align: left;
-vertical-align: middle;
-padding-top: 35px;
+	width: auto;
+	height: 100px;
+	float: center;
+	text-align: left;
+	vertical-align: middle;
+	padding-top: 35px;
+}
+
+.post-userdata h3 {
+	font-weight: 600;
+	font-size: 40px;
+}
+
+.post-restaurant p {
+	font-size: 40px;
+	font-weight: 900;
+	letter-spacing: 3px;
+    color: #2F3640;
+    text-shadow: 3px 3px #FEDC6B;
+}
+
+.post-time {
+	margin-bottom: 0;
+}
+
+.post-body {
+	margin-top: 30px;
+}
+
+.post-body p {
+	font-size: 30px;
+	font-weight: 550;
+}
+
+.post-response {
+	margin: 0 auto;
+}
+
+.post-response .post-like-number{
+	float: left;
+}
+
+.post-response .post-comment-number{
+	float: center;
+}
+
+.post-response p {
+	font-size: 20px;
 }
 
 
 /*description for comments*/
-.post {
-    background-color: rgb(233, 227, 227);
+.comment {
+	background-color: rgb(233, 227, 227);
 }
 
-.post .title {
-	height: 41px;
-	padding: 7px 0px 10px 30px;
-	letter-spacing: -3px;
+.comment-userdata {
+	width: auto;
+	height: 100px;
 }
 
-.post .title a {
-	color: #333333;
-	border: none;
+.comment-userdata img {
+	width: auto;
+	height: 100px;
+	float: left;
 }
 
-.post .meta {
+.comment-userdata div {
+	width: auto;
+	height: 100px;
+	float: center;
+	text-align: left;
+	vertical-align: middle;
+	padding-top: 35px;
+}
+
+.comment-userdata div h3 {
+	font-weight: 600;
+}
+
+.comment-userdata .date {
 	margin-bottom: 30px;
 	padding: 0px 30px 0px 30px;
 	text-align: left;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 13px;
+	font-size: 15px;
 	font-weight: bold;
 	font-style: italic;
-}
-
-.post .meta .date {
-	float: left;
-}
-
-.post .meta .posted {
 	float: right;
 }
 
-.post .meta a {
-}
 
-.post .entry {
+
+.comment .body {
 	padding: 0px 30px 20px 30px;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #B3B3B3;
 	text-align: justify;
 }
-  
+
+.comment .body .word {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.comment .body .like {
+	font-size: 15px;
+	font-weight: bold;
+	color: rgb(48, 173, 173);
+}
