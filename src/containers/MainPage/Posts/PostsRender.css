@@ -1,0 +1,110 @@
+/*decoration for PostsRender.js (for a single post)*/
+.wrap-post1 {
+width: auto;
+height: auto;
+background: #fff;
+border-radius: 50px;
+overflow: hidden;
+
+display: -webkit-box;
+display: -webkit-flex;
+display: -moz-box;
+display: -ms-flexbox;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin-top: 20px;
+margin-bottom: 20px;
+padding: 10px 10px 10px 10px;
+}
+
+.post-basic-data {
+width: 1500px;
+height: auto;
+}
+
+.post-picture {
+width: 1500px;
+height:auto;
+}
+
+.post-body {
+width: 1500px;
+height:auto;
+}
+
+.post-response {
+width: 1500px;
+height:auto;
+}
+
+.post-comments {
+width: 1500px;
+height:auto;
+}
+
+.post-userdata {
+width: auto;
+height: 100px;
+}
+
+.post-userdata img {
+width: auto;
+height: 100px;
+float: left;
+}
+
+.post-userdata div {
+width: auto;
+height: 100px;
+float: center;
+text-align: left;
+vertical-align: middle;
+padding-top: 35px;
+}
+
+
+/*description for comments*/
+.post {
+    background-color: rgb(233, 227, 227);
+}
+
+.post .title {
+	height: 41px;
+	padding: 7px 0px 10px 30px;
+	letter-spacing: -3px;
+}
+
+.post .title a {
+	color: #333333;
+	border: none;
+}
+
+.post .meta {
+	margin-bottom: 30px;
+	padding: 0px 30px 0px 30px;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.post .meta .date {
+	float: left;
+}
+
+.post .meta .posted {
+	float: right;
+}
+
+.post .meta a {
+}
+
+.post .entry {
+	padding: 0px 30px 20px 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #B3B3B3;
+	text-align: justify;
+}
+  

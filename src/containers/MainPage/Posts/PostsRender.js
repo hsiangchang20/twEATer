@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Post from "../../../components/Post/Post";
-import '../mainpage.css';
+//import Post from "../../../components/Post/Post";
+//import '../mainpage.css';
+import './PostsRender.css'
 import avocado_pic from "../../../components/Images/avocado.png";
 
 import {ONE_POST_QUERY} from '../../../graphql'
@@ -22,6 +23,24 @@ export default function PostRender(props) {
         console.log(data);
         console.log(loading);
     })
+
+    const comments = [0,1].map(comment => (
+        <div className="post" key = {comment}>
+            <div className="post-userdata">
+                <img src={avocado_pic} alt="IMG" className="userfruit"/>
+                <div>
+                    <h3>Thomas</h3>
+                </div>
+            </div>
+            <p className="meta"><span className="date">October 10, 2011</span><span class="posted">Posted by <a href="#">Someone</a></span></p>
+            <div style={{clear: "both"}}>&nbsp;</div>
+            <div className="entry">
+                <p>This is <strong>Highway  </strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.  This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so you’re pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :)</p>
+                <p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.</p>
+                <p className="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="b0x w">Comments</a></p>
+            </div>
+        </div>
+    ));
 
     const nothing = (
         <div></div>
@@ -58,35 +77,10 @@ export default function PostRender(props) {
                 </div>
             </div>
             <div className="post-comments">
-                good
+                {comments}
             </div>
         </div>
     )
     
     return ( !id || loading || error) ? nothing : postview;
-    
-    /*
-    return id && postIDs.includes(id) ? (
-        <Post id={id} />
-    ) : (
-            <div>
-                <h3>Error: Post #{id} IS DELETED</h3>
-            </div>
-        )  
-    */  
 }
-/*
-export default class PostRender extends Component {
-    render() {
-        const postIDs = ["1", "2", "3", "4", "5", "6", "7"];
-        const { id } = this.props.match.params;
-        return id && postIDs.includes(id) ? (
-            <Post id={id} />
-        ) : (
-                <div>
-                    <h3>Error: Post #{id} NOT FOUND</h3>
-                </div>
-            )
-    }
-}
-*/
