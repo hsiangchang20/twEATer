@@ -7,7 +7,7 @@ import Posts from "./Posts/Posts";
 import Searches from "./Searches/Searches";
 import PostsRender from "./Posts/PostsRender";
 import Restaurant from "./Restaurants/Restaurant";
-
+import Roulette from "./Roulette/Roulette"
 import LoginPage from "./Login/loginPage"
 
 export default function MainPage() {
@@ -58,6 +58,7 @@ export default function MainPage() {
                                     <Route exact path="/post" component={Posts} />
                                     <Route path="/post/:id?" component={PostsRender} />
                                     <Route exact path="/search" component={Searches} />
+                                    <Route exact path="/roulette" component={Roulette} />
                                     <Route path="/restaurant/:id?" component={Restaurant} />
                                     <Redirect from="/home" to="/" />
                                 </Switch>

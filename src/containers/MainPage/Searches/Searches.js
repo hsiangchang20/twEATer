@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import './css/main.css'
+import './css/searches.css'
 import searchLogo from './image/search.PNG'
 
 export default function Searches() {
