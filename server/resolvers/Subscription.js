@@ -5,7 +5,12 @@ const Subscription = {
         subscribe(parent, args, { pubsub }, info){
             return pubsub.asyncIterator('message')
         }
-    }
+    },
+    post:{
+        subscribe(parent, args, { pubsub }, info){
+            return pubsub.asyncIterator(`post`)
+        }
+    } 
 }
 
 export {Subscription as default}

@@ -3,15 +3,16 @@ import Post from "../../../components/Post/Post";
 import '../mainpage.css';
 import avocado_pic from "../../../components/Images/avocado.png";
 
-import {ONE_POST_QUERY} from '../../../graphql'
-import { useQuery, useLazyQuery } from "@apollo/client";
+import {ONE_POST_QUERY, POST_SUBSCRIPTION} from '../../../graphql'
+import { useQuery, useLazyQuery, useSubscription } from "@apollo/client";
 
 export default function PostRender(props) {
     const postIDs = ["1", "2", "3", "4", "5", "6", "7"];
     const { id } = props.match.params;
 
-    const { loading, error, data} = useQuery(ONE_POST_QUERY, {variables: {query: id}});
+    const { loading, error, data, subscribeToMore} = useQuery(ONE_POST_QUERY, {variables: {query: id}});
     const [post, setPost] = useState([]);
+    const {data: posts, loading2} = useSubscription(POST_SUBSCRIPTION);
 
     useEffect(()=>{
         if (data !== undefined){
@@ -21,7 +22,28 @@ export default function PostRender(props) {
         }
         console.log(data);
         console.log(loading);
-    })
+    }, [loading, data])
+
+    useEffect(()=>{
+        if(posts!==undefined)
+            console.log(posts.post.data.thumb)
+    }, posts);
+
+    useEffect(()=>{
+        subscribeToMore({
+            document: POST_SUBSCRIPTION,
+            updateQuery: (prev,{ subscriptionData }) => {
+                if (!subscriptionData.data) {
+                    console.log('dao');
+                    return prev
+                }
+                else {
+                    console.log(subscriptionData)
+                    return subscriptionData
+                }
+            }
+        });
+    }, [subscribeToMore]);
 
     const nothing = (
         <div></div>

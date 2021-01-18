@@ -27,7 +27,8 @@ type Mutation {
 
 type Subscription {
   comment(postId: ID!): CommentSubscriptionPayload!
-  message: PostSubscriptionPayload!
+  message: MessageSubscriptionPayload!
+  post: PostSubscriptionPayload!
 }
 
 input createRestaurantInput {
@@ -142,12 +143,17 @@ enum MutationType {
   DELETED
 }
 
-type PostSubscriptionPayload {
+type MessageSubscriptionPayload {
   mutation: MutationType!
-  data: Post!
+  data: Message!
 }
 
 type CommentSubscriptionPayload {
   mutation: MutationType!
   data: Comment!
+}
+
+type PostSubscriptionPayload {
+  mutation: MutationType!
+  data: Post!
 }
