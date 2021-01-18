@@ -56,7 +56,7 @@ const Mutation = {
         console.log(post)
         Post.insertMany(post)
 
-        pubsub.publish('post', {
+        pubsub.publish(`post`, {
             post: { mutation: 'CREATED', data: post }
         })
 
@@ -110,8 +110,13 @@ const Mutation = {
             let data = await Post.find({_id: id});
             data[0].thumb += 1;
             await Post.updateMany({_id: id},  {thumb: data[0].thumb});
+            console.log(data);
+            await pubsub.publish(`post`, {
+                post: { mutation: 'CREATED', data: data[0] }
+            })
             return data;
         }
+
         return like(args.PostID);
     },
     createComment(parent, args, {pubsub}, info){
