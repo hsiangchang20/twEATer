@@ -74,7 +74,7 @@ function LoginPage(props) {
                     </span>
                 </div>
 
-                <div class="wrap-input100 validate-input" dataValidation = "Password is required">
+                <div className="wrap-input100 validate-input" dataValidation = "Password is required">
                     <input  className="input100" 
                             type="password" 
                             name="pass" 
@@ -82,9 +82,9 @@ function LoginPage(props) {
                             value={password}
                             onChange={(e)=>{setPW(e.target.value)}}
                     />
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    <span className="focus-input100"></span>
+                    <span className="symbol-input100">
+                        <i className="fa fa-lock" aria-hidden="true"></i>
                     </span>
                 </div>
                 
@@ -111,21 +111,21 @@ function LoginPage(props) {
                     </span>
                 </div>
                 <div className="text-center p-t-12">
-                <span class="txt3" style={{display: forgetPressed}}>
+                <span className="txt3" style={{display: forgetPressed}}>
                     Poor You.
                 </span>
                 </div>
                 <div className="text-center p-t-12">
-                    <span class="txt3" style={{display: afraidPressed}}>
+                    <span className="txt3" style={{display: afraidPressed}}>
                         啊你是在<a href='#' onClick={() => {setPoppingPressed(''); setAfraidPressed('none')}} style={{fontSize: '16pt'}}>怕屁</a>喔？
                     </span>
                 </div>
                 <div className="text-center p-t-12" style={{display: poppingPressed}}>
-                    <span class="txt3">
+                    <span className="txt3">
                         啊你是在<a href='#' onClick={() => setPoppingDoublePressed('')} style={{fontSize: '16pt'}}>popping</a>喔？
                     </span>
                 </div>
-                <div class="popping-img">
+                <div className="popping-img">
                     <img src={poppingImg} alt="IMG" id="poppingImg" style={{display: poppingDoublePressed}} />
                 </div>
                 <div className="text-center p-t-20">

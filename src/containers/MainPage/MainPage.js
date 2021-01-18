@@ -1,6 +1,6 @@
 import React, { useState} from "react";
 import { NavLink, Switch, Route, Redirect } from "react-router-dom";
-import ScriptTag from 'react-script-tag'
+//import ScriptTag from 'react-script-tag'
 import './mainpage.css'
 
 import Posts from "./Posts/Posts";
@@ -70,16 +70,17 @@ export default function MainPage() {
                             }} />
                         )}
                 </div>
-            </div>     
-            <ScriptTag src="./vendor/jquery/jquery-3.2.1.min.js"></ScriptTag>
-            <ScriptTag src="./vendor/bootstrap/js/popper.js"></ScriptTag>
-            <ScriptTag src="./vendor/bootstrap/js/bootstrap.min.js"></ScriptTag>
-            <ScriptTag src="./vendor/select2/select2.min.js"></ScriptTag>
-            <ScriptTag src="./vendor/tilt/tilt.jquery.min.js"></ScriptTag>
-            
-            <ScriptTag src="./js/main.js"></ScriptTag>
+            </div>
         </div>
     )
+    /*
+    <ScriptTag src="./vendor/jquery/jquery-3.2.1.min.js"></ScriptTag>
+    <ScriptTag src="./vendor/bootstrap/js/popper.js"></ScriptTag>
+    <ScriptTag src="./vendor/bootstrap/js/bootstrap.min.js"></ScriptTag>
+    <ScriptTag src="./vendor/select2/select2.min.js"></ScriptTag>
+    <ScriptTag src="./vendor/tilt/tilt.jquery.min.js"></ScriptTag>
+    <ScriptTag src="./js/main.js"></ScriptTag>
+    */
     /*
     return (
         login ?

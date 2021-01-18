@@ -37,6 +37,7 @@
   body, html {
       height: 100%;
       font-family: Poppins-Regular, sans-serif;
+      overflow: auto;
   }
   
   /*---------------------------------------------*/
@@ -174,12 +175,12 @@
   Post Page
   /////////////*/
   #wrapper {
-    overflow: hidden;
+    overflow: auto;
     padding-bottom: 40px;
   }
 
   #page {
-      overflow: hidden;
+      overflow: scroll;
       width: 1000px;
       margin: 70px 50px 30px 50px;
   }
@@ -223,7 +224,7 @@
   }
   
   .container-background100 {
-    width: 100%;  
+    width: 100%;
     min-height: 100vh;
     display: -webkit-box;
     display: -webkit-flex;
@@ -246,7 +247,7 @@
     height: 360px;
     background: #fff;
     border-radius: 50px;
-    overflow: hidden;
+    overflow: auto;
   
     display: -webkit-box;
     display: -webkit-flex;
@@ -347,5 +348,69 @@
     justify-content: center;
     padding-top: 20px;
   }
+
+  /*decoration for PostsRender.js (for a single post)*/
+  .wrap-post1 {
+    width: auto;
+    height: auto;
+    background: #fff;
+    border-radius: 50px;
+    overflow: hidden;
   
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 10px 10px 10px;
+  }
+
+  .post-basic-data {
+    width: 720px;
+    height: auto;
+  }
+
+  .post-picture {
+    width: 720px;
+    height:auto;
+  }
+
+  .post-body {
+    width: 720px;
+    height:auto;
+  }
+
+  .post-response {
+    width: 720px;
+    height:auto;
+  }
+  
+  .post-comments {
+    width: 720px;
+    height:auto;
+  }
+
+  .post-userdata {
+    width: auto;
+    height: 100px;
+  }
+
+  .post-userdata img {
+    width: auto;
+    height: 100px;
+    float: left;
+  }
+
+  .post-userdata div {
+    width: auto;
+    height: 100px;
+    float: center;
+    text-align: left;
+    vertical-align: middle;
+    padding-top: 35px;
+  }
   
