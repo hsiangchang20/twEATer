@@ -1,14 +1,64 @@
+.roulette-wrapper {
+    width: 800px;
+    margin: 30px auto;
+    padding: 50px 120px;
+    background: #fff;
+    min-height: 800px;
+    border-radius: 25px;
+}
+
 .rotateImg img{
-    position: absolute;
-    display: block;
     width: 500px;
     height: 500px;
-    margin:0 0 0 0;
-    -webkit-animation:spin 1s linear infinite;
-    -moz-animation:spin 1s linear infinite;
-    animation:spin 1s linear infinite;
+    margin: 30px 30px;
   }
   @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
   @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
   @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+  .btn-wrapper {
+    vertical-align: middle;
+    padding: 0 auto;
+    
+  }
+
+  .btn-roulette {
+    height: 80px;
+    min-width: 500px;
+    background: #40f708;
+    white-space: nowrap;
+    border-radius: 25px;
+    font-size: 30px;
+    font-family: Poppins-Regular;
+    color: #000;
+    transition: all .2s ease-out, color .2s ease-out;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 30px;
+  }
+
+  .btn-roulette:hover {
+    background: #e71a1a;
+  }
   
+  .result-wrapper {  
+    border-bottom: solid 1px #383737;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .result {
+    font-family: Poppins-Regular;
+    font-size: 30px;
+    line-height: 1.7;
+    color: #666666;
+    margin: 0px;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+  }
+
+  .result:hover {
+    color: #57b846;
+  }
