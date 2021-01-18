@@ -1,6 +1,6 @@
 export { MESSAGES_QUERY } from './message_queries'
 export { CREATE_MESSAGE_MUTATION } from './mutations'
-export { MESSAGES_SUBSCRIPTION } from './subscriptions'
+export { POST_SUBSCRIPTION } from './subscriptions'
 export { LOGIN_QUERY } from './login'
 export { POST_QUERY } from './post_query'
 export { ONE_POST_QUERY } from './one_post_query'

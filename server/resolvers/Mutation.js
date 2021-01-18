@@ -48,13 +48,17 @@ const Mutation = {
 
         return Delete(args.email);
     },
-    createPost(parent, args, {db}, info){
+    createPost(parent, args, {db, pubsub}, info){
         const post = {
             _id: uuidv4(),
             ...args.data
         };
         console.log(post)
         Post.insertMany(post)
+
+        pubsub.publish('post', {
+            post: { mutation: 'CREATED', data: post }
+        })
 
         return post;
     },
