@@ -988,7 +988,7 @@ html {
     font-size: 14px;
   }
   
-  :hover .s007 form .inner-form .advance-search .choices__inner option{
+  .s007 form .inner-form .advance-search .choices__inner option{
       color: #57b846;
   }
 

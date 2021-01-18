@@ -157,13 +157,15 @@
   #menu li {
     display: inline-block;
     border-right: 1px solid #6F8651;
+    border-left: 1px solid #6F8651;
+    min-width: 200px;
   }
 
   #menu button {
       display: block;
       letter-spacing: 1px;
       line-height: 0px;
-      padding: 0 20px;
+      padding: 0;
       text-decoration: none;
       text-align: center;
       font-size: 30px;
@@ -325,7 +327,7 @@
   /*------------------------------------------------------------------
   [ Button ]*/
   .main-button{
-      margin: 20px 50px 20px 50px;
+      margin: 20px auto;
       flex-wrap: wrap;
       justify-content: center;
   }
@@ -349,68 +351,3 @@
     padding-top: 20px;
   }
 
-  /*decoration for PostsRender.js (for a single post)*/
-  .wrap-post1 {
-    width: auto;
-    height: auto;
-    background: #fff;
-    border-radius: 50px;
-    overflow: hidden;
-  
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 10px 10px 10px 10px;
-  }
-
-  .post-basic-data {
-    width: 720px;
-    height: auto;
-  }
-
-  .post-picture {
-    width: 720px;
-    height:auto;
-  }
-
-  .post-body {
-    width: 720px;
-    height:auto;
-  }
-
-  .post-response {
-    width: 720px;
-    height:auto;
-  }
-  
-  .post-comments {
-    width: 720px;
-    height:auto;
-  }
-
-  .post-userdata {
-    width: auto;
-    height: 100px;
-  }
-
-  .post-userdata img {
-    width: auto;
-    height: 100px;
-    float: left;
-  }
-
-  .post-userdata div {
-    width: auto;
-    height: 100px;
-    float: center;
-    text-align: left;
-    vertical-align: middle;
-    padding-top: 35px;
-  }
-  

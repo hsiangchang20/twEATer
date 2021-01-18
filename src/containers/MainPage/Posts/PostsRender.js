@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Post from "../../../components/Post/Post";
-import '../mainpage.css';
+//import Post from "../../../components/Post/Post";
+//import '../mainpage.css';
+import './PostsRender.css'
 import avocado_pic from "../../../components/Images/avocado.png";
 
 import {ONE_POST_QUERY, POST_SUBSCRIPTION} from '../../../graphql'
@@ -12,16 +13,17 @@ export default function PostRender(props) {
 
     const { loading, error, data, subscribeToMore} = useQuery(ONE_POST_QUERY, {variables: {query: id}});
     const [post, setPost] = useState([]);
+    const [post_time, setPost_time] = useState("");
     const {data: posts, loading2} = useSubscription(POST_SUBSCRIPTION);
 
     useEffect(()=>{
         if (data !== undefined){
             setPost(data.posts[0])
-            console.log(data.posts[0])
-            console.log(data.posts[0].comments)
+            var time = new Date()
+            time.setTime(data.posts[0].time)
+            setPost_time(time)
         }
         console.log(data);
-        console.log(loading);
     }, [loading, data])
 
     useEffect(()=>{
@@ -45,6 +47,21 @@ export default function PostRender(props) {
         });
     }, [subscribeToMore]);
 
+    const comments = (post.comments === undefined) ? " " : post.comments.map(comment => (
+        <div className="comment" key = {comment}>
+            <div className="comment-userdata">
+                <img src={avocado_pic} alt="IMG" className="userfruit"/>
+                <div>
+                    <h3>{comment.Author}</h3><span className="date">October 10, 2011</span>
+                </div>
+            </div>
+            <div className="body">
+                <p className="word">{comment.body}</p>
+                <p className="like">Like</p>
+            </div>
+        </div>
+    ));
+
     const nothing = (
         <div></div>
     )
@@ -55,60 +72,34 @@ export default function PostRender(props) {
                 <div className="post-userdata">
                     <img src={avocado_pic} alt="IMG" className="userfruit"/>
                     <div>
-                        <h3>{/*post.users[0].name*/"???"}</h3>
+                        <h3>{ (post.users !== undefined) ? " " + post.users[0].name : " "}</h3>
                     </div>
                 </div>
                 <div className="post-restaurant">
-                    <h4>{post.restaurant}</h4>
+                    <p>{'< ' + post.restaurant + ' >'}</p>
                 </div>
                 <div className="post-time">
-                    <h5>{Date(post.time).slice(0, 24)}</h5>
+                    <h5>{post_time.toString().slice(0, 24)}</h5>
                 </div>
             </div>
             <div className="post-picture">
                 <img src={post.photo} alt="IMG"/>
             </div>
             <div className="post-body">
-                {post.body}
+                <p>{post.body}</p>
             </div>
             <div className="post-response">
                 <div className="post-like-number">
-                    likes : {post.thumb}
+                    <p>likes : {post.thumb} &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 </div>
                 <div className="post-comment-number">
-                    comments : {/*post.comments.length*/"???"}
+                    <p>comments : { (post.comments !== undefined) ? post.comments.length : " "}</p>
                 </div>
             </div>
             <div className="post-comments">
-                good
+                {comments}
             </div>
         </div>
     )
-    
     return ( !id || loading || error) ? nothing : postview;
-    
-    /*
-    return id && postIDs.includes(id) ? (
-        <Post id={id} />
-    ) : (
-            <div>
-                <h3>Error: Post #{id} IS DELETED</h3>
-            </div>
-        )  
-    */  
 }
-/*
-export default class PostRender extends Component {
-    render() {
-        const postIDs = ["1", "2", "3", "4", "5", "6", "7"];
-        const { id } = this.props.match.params;
-        return id && postIDs.includes(id) ? (
-            <Post id={id} />
-        ) : (
-                <div>
-                    <h3>Error: Post #{id} NOT FOUND</h3>
-                </div>
-            )
-    }
-}
-*/
