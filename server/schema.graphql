@@ -22,6 +22,7 @@ type Mutation {
   sendMessage(data: CreateMessageInput!): Message! 
 
   createRestaurant(data: createRestaurantInput!): Restaurant!
+  deleteRestaurant(name: String!): Restaurant!
   Like(PostID: String!): [Post!]!
 }
 

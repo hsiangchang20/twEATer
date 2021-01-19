@@ -105,6 +105,21 @@ const Mutation = {
 
         return create(args.data);
     },
+    deleteRestaurant(parent, args, {pubsub}, info){
+        async function Delete(name){
+            let toDelete = await restaurant.find({name: name});
+            
+            if(toDelete.length===0){
+                throw new Error('restaurant not found');
+            }
+            else{
+                await restaurant.deleteMany({name: name});
+                return toDelete[0];
+            }
+        }
+
+        return Delete(args.name);
+    },
     Like(parent, args, {pubsub}, info){
         async function like(id){
             let data = await Post.find({_id: id});
