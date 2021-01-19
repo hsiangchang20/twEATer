@@ -1,6 +1,6 @@
 .wrap-post100 {
     width: auto;
-    height: 400px;
+    height: 450px;
     background: #fff;
     border-radius: 50px;
     overflow: auto;
@@ -26,7 +26,7 @@
 
   .posts-picture {
     width: 360px;
-    height: 320px;
+    height: 360px;
     line-height: 320px;
     text-align: center;
     overflow: hidden;
@@ -88,6 +88,17 @@
   .posts-body p {
     font-size: 30px;
     font-weight: 550;
+  }
+
+  .posts-time {
+    width: 100%;
+    text-align: right;
+  }
+
+  .posts-time p {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
   }
 
   .posts-likeOrResponse{
