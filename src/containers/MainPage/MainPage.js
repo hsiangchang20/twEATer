@@ -16,6 +16,7 @@ import Add from "./Add/Add"
 export default function MainPage() {
 
     const [login, setLogin] = useState(false);
+    const [userdata, setUserdata] = useState([]);
     return (
         <div>
             <title>Login V1</title>
@@ -50,7 +51,7 @@ export default function MainPage() {
                                         </li>
                                         <li>
                                             <button className="main-button">
-                                                <NavLink to="/profile" className="main-button-text">Profile</NavLink>
+                                                <NavLink to={"/profile/" + userdata._id} className="main-button-text">Profile</NavLink>
                                             </button>
                                         </li>
                                     </ul>
@@ -64,15 +65,18 @@ export default function MainPage() {
                                     <Route exact path="/roulette" component={Roulette} />
                                     <Route path="/restaurant/:id?" component={Restaurant} />
                                     <Route exact path="/add" component={Add} />
-                                    <Route exact path="/profile" component={Profile} />
+                                    <Route path="/profile/:id?" component={Profile}/>
                                     <Redirect from="/home" to="/" />
                                 </Switch>
                             </div>
                         </div>
                         ) : (
                             <LoginPage onClick={(data) => {
-                                if (data !== undefined) setLogin(true);
-                                else console.log(data);
+                                if (data !== undefined) {
+                                    setLogin(true);
+                                    setUserdata(data.login)
+                                }
+                                //else console.log(data);
                             }} />
                         )}
                 </div>
