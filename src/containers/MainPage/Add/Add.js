@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from "react";
-import { Form, FormGroup, Label, CustomInput, Button, Input } from "reactstrap";
+import { Form, FormGroup, Label, CustomInput, Button, Input, Row, Col } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import './css/style.css'
 import './css/mobile-style.css'
@@ -156,7 +156,7 @@ export default function Add(){
                 </FormGroup>
                 {state==='Post'? (<FormGroup>
                     <Label for="fileBrowser">File (Up to 10MB)</Label>
-                    <CustomInput
+                    <Input
                         type="file"
                         multiple="multiple"
                         id="fileBrowser"
@@ -200,6 +200,8 @@ export default function Add(){
                                 style={{ marginBottom: 10 }}
                         />
                     </FormGroup>
+                    <Row>
+                    <Col md={4}>
                     <FormGroup>
                         <Label>Type</Label>
                         <Input  type="select" placeholder="Type" onChange={selectType} style={{ marginBottom: 10 }}>
@@ -210,6 +212,8 @@ export default function Add(){
                             <option>Italian</option>
                         </Input>
                     </FormGroup>
+                    </Col>
+                    <Col md={4}>
                     <FormGroup>
                         <Label>Time</Label>
                         <Input  type="select" placeholder="Time" onChange={selectTime} style={{ marginBottom: 10 }}>
@@ -219,6 +223,8 @@ export default function Add(){
                             <option>Dinner</option>
                         </Input>
                     </FormGroup>
+                    </Col>
+                    <Col md={4}>
                     <FormGroup>
                         <Label>Cost</Label>
                         <Input  type="select" placeholder="Cost" onChange={selectCost} style={{ marginBottom: 10 }}>
@@ -229,6 +235,10 @@ export default function Add(){
                             <option>Over $300</option>
                         </Input>
                     </FormGroup>
+                    </Col>
+                    </Row>
+                    <Row>
+                    <Col md={4}>
                     <FormGroup>
                         <Label>Staple</Label>
                         <Input  type="select" placeholder="Staple" onChange={selectStaple} style={{ marginBottom: 10 }}>
@@ -238,6 +248,8 @@ export default function Add(){
                             <option>Others</option>
                         </Input>
                     </FormGroup>
+                    </Col>
+                    <Col md={4}>
                     <FormGroup>
                         <Label>Location</Label>
                         <Input  type="select" placeholder="Location" onChange={selectLocation} style={{ marginBottom: 10 }}>
@@ -247,6 +259,8 @@ export default function Add(){
                             <option>Republic of Sierra Leone</option>
                         </Input>
                     </FormGroup>
+                    </Col>
+                    <Col md={4}>
                     <FormGroup>
                         <Label>Star</Label>
                         <Input  type="select" placeholder="Star" onChange={selectStar} style={{ marginBottom: 10 }}>
@@ -256,6 +270,8 @@ export default function Add(){
                             <option>Under 3</option>
                         </Input>
                     </FormGroup>
+                    </Col>
+                    </Row>
                     <FormGroup>
                         <Label>Openhours</Label>
                         <Input  placeholder="Type" 
