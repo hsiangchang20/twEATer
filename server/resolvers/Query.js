@@ -10,13 +10,13 @@ const Query = {
             return data;
         }
 
-        async function GetUserbyName(n){
-            let data = await User.find({name: { "$regex": n, "$options": "i" }})
+        async function GetUserbyID(n){
+            let data = await User.find({_id: { "$regex": n, "$options": "i" }})
             return data;
         }
 
         if (!args.query) return GetUser();
-        else return GetUserbyName(args.query);
+        else return GetUserbyID(args.query);
     },
 
     posts(parent, args, {db}, info){
