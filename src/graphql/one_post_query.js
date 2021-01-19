@@ -20,6 +20,7 @@ export const ONE_POST_QUERY = gql`
         comments{
             Author
             body
+            time
         }
     }
   }
