@@ -10,11 +10,14 @@ export default function Restaurant(props) {
     const { loading, error, data} = useQuery(RESTAURANT_QUERY, {variables: {name: name}});
     const [rest, {loading2, data2}] = useLazyQuery(RESTAURANT_QUERY)
     const [restaurant, setRestaurant] = useState('dao')
+    const [photo, setPhoto] = useState('')
     useEffect(()=>{
         console.log(data)
         
-        if (data)
-            setRestaurant(data.restaurant[0])
+        if (data){
+            setRestaurant(data.restaurant[0]);
+            setPhoto(data.restaurant[0].posts[0].photo)
+        }
     })
 
     const restaurant_view = (restaurant === undefined) ? (<div className="name"><p>Restaurant does not exist</p></div>) : (
@@ -22,6 +25,7 @@ export default function Restaurant(props) {
             <div className="name">
                 <p>{'< ' + restaurant.name + ' >'}</p>
             </div>
+            <img src={photo}></img>
             <div className="info">
                 <p>Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; {restaurant.type}</p>
                 <p>Telephone&ensp;&nbsp;:&nbsp;&nbsp; {restaurant.tele}</p>
