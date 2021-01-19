@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import '../mainpage.css';
+import './posts.css';
 import avocado_pic from "../../../components/Images/avocado.png";
 
 import {POST_QUERY, LIKE_MUTATION} from '../../../graphql'
@@ -38,14 +38,14 @@ export default function Posts() {
                 <div className="posts-userdata">
                     <img src={avocado_pic} alt="IMG" className="user-fruit"/> 
                     <div>
-                        <h4>{post.users[0].name}</h4>
+                        <p>{post.users[0].name}</p>
                     </div>
                 </div>
                 <div className="posts-restaurant">
-                    <h4>{post.restaurant}</h4>
+                    <p>{"< " + post.restaurant + " >"}</p>
                 </div>
                 <div className="posts-body">
-                    <h5>{post.body}</h5>
+                    <p>{post.body}</p>
                 </div>
                 <li className="posts-readmore">
                     <NavLink to={"/post/" + post._id} className="posts-readmore">
@@ -70,9 +70,6 @@ export default function Posts() {
     ));
     return (
         <div>
-            <h3>
-                Posts
-            </h3>
             {loading ? nothing : posts_list}
         </div>
     )

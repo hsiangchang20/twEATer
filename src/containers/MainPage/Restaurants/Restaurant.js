@@ -19,8 +19,8 @@ export default function Restaurant(props) {
             setPhoto(data.restaurant[0].posts[0].photo)
         }
     })
-    
-    const restaurant_view = (
+
+    const restaurant_view = (restaurant === undefined) ? (<div className="name"><p>Restaurant does not exist</p></div>) : (
         <div className="wrap-restaurant">
             <div className="name">
                 <p>{'< ' + restaurant.name + ' >'}</p>
@@ -35,5 +35,5 @@ export default function Restaurant(props) {
         </div>
     )
 
-    return restaurant_view;
+    return (loading || error) ? (<></>) : restaurant_view;
 }
