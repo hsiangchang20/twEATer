@@ -36,6 +36,10 @@ body, html {
 	margin: 0 auto;
 }
 
+.post-picture img {
+	width: 100%;
+}
+
 .post-body {
 	width: 1000px;
 	height:auto;
