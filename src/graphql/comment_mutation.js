@@ -1,18 +1,18 @@
 import { gql } from 'apollo-boost'
 
-export const CREATE_POST_MUTATION = gql`
+export const CREATE_COMMENT_MUTATION = gql`
   mutation createComment(
     $body: String!
     $Author: String!
-    $authorID: String!
-    $PostID: Int!
+    $authorID: ID!
+    $PostID: ID!
   ) {
     createComment(
       data: {
         body: $body
         Author: $Author
         authorID: $authorID
-        POstID: $PostID
+        PostID: $PostID
       }
     ) {
         authorID

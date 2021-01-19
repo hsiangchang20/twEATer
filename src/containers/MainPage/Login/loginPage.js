@@ -94,7 +94,7 @@ function LoginPage(props) {
                         e.preventDefault();
                         Login({ variables: { email: email, password: password } });
                     }}>
-                        <NavLink to={"/post"} style={{fontFamily: 'Montserrat-Bold', color: "white", fontSize: "12pt"}}>Login</NavLink>
+                        <NavLink to="/intermediate" style={{fontFamily: 'Montserrat-Bold', color: "white", fontSize: "12pt"}}>Login</NavLink>
                     </button>
                 </div>
 

@@ -10,7 +10,12 @@ const Subscription = {
         subscribe(parent, args, { pubsub }, info){
             return pubsub.asyncIterator(`post`)
         }
-    } 
+    }, 
+    comment:{
+        subscribe(parent, {postId}, { pubsub }, info){
+            return pubsub.asyncIterator(`comment ${postId}`)
+        }
+    }
 }
 
 export {Subscription as default}
