@@ -33,6 +33,13 @@ export default function Posts(props) {
         })
     }, [like])
 
+    const Time = (t) => {
+        var time = new Date();
+        time.setTime(t);
+        //console.log(time);
+        return time
+    }
+
     const nothing = (
         <div></div>
     )
@@ -51,6 +58,9 @@ export default function Posts(props) {
                 </div>
                 <div className="posts-body">
                     <p>{(post.body.length <= 18) ? post.body : post.body.slice(0, 17) + "  .  .  ."}</p>
+                </div>
+                <div className="posts-time">
+                    <p>{Time(post.time).toString().slice(4, 24)}</p>
                 </div>
                 <div className='posts-likeOrResponse'>  
                     <div className="posts-like">
