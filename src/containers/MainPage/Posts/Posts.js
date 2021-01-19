@@ -48,9 +48,9 @@ export default function Posts() {
                     <h5>{post.body}</h5>
                 </div>
                 <li className="posts-readmore">
-                        <NavLink to={"/post/" + post._id} className="posts-readmore">
-                            Read More
-                        </NavLink>
+                    <NavLink to={"/post/" + post._id} className="posts-readmore">
+                        Read More
+                    </NavLink>
                 </li> 
                 <div className='posts-likeOrResponse'>
                     <button onClick={()=>Like(post._id)}>

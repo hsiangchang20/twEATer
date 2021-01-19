@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 //import Post from "../../../components/Post/Post";
 //import '../mainpage.css';
 import './PostsRender.css'
@@ -8,13 +9,13 @@ import {ONE_POST_QUERY, POST_SUBSCRIPTION} from '../../../graphql'
 import { useQuery, useLazyQuery, useSubscription } from "@apollo/client";
 
 export default function PostRender(props) {
-    const postIDs = ["1", "2", "3", "4", "5", "6", "7"];
     const { id } = props.match.params;
 
     const { loading, error, data, subscribeToMore} = useQuery(ONE_POST_QUERY, {variables: {query: id}});
     const [post, setPost] = useState([]);
     const [post_time, setPost_time] = useState("");
     const {data: posts, loading2} = useSubscription(POST_SUBSCRIPTION);
+
 
     useEffect(()=>{
         if (data !== undefined){
@@ -59,7 +60,7 @@ export default function PostRender(props) {
             <div className="comment-userdata">
                 <img src={avocado_pic} alt="IMG" className="userfruit"/>
                 <div>
-                    <h3>{comment.Author}</h3><span className="date">{comment.time}</span>
+                    <h3>{comment.Author}</h3><span className="date">{Time(comment.time).toString().slice(4, 24)}</span>
                 </div>
             </div>
             <div className="body">
@@ -100,7 +101,11 @@ export default function PostRender(props) {
                     <p>likes : {post.thumb} &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 </div>
                 <div className="post-comment-number">
-                    <p>comments : { (post.comments !== undefined) ? post.comments.length : " "}</p>
+                    <p>comments : { (post.comments !== undefined) ? post.comments.length : " "}
+                        <NavLink to={"/restaurant/" + post.restaurant} className="post-restaurant-info">
+                            查看餐廳資訊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </NavLink>
+                    </p>
                 </div>
             </div>
             <div className="post-comments">
@@ -108,5 +113,5 @@ export default function PostRender(props) {
             </div>
         </div>
     )
-    return ( !id || loading || error) ? nothing : postview;
+    return ( !id || loading || error || loading2) ? nothing : postview;
 }

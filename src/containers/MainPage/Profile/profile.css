@@ -147,7 +147,8 @@ html, body {
   }
   header hr {
     border-color: #3366CC;
-    width: 100px;
+    width: 120px;
+    margin: 20px auto 30px;
   }
   
   /* about section */

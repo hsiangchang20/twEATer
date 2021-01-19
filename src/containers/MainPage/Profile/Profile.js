@@ -3,8 +3,7 @@ import avocado_pic from "../../../components/Images/avocado.png";
 
 import "./profile.css"
 
-export default function Profile(props){
-	//console.log(props)
+export default function Profile(){
     return(
 		<header>
 			<div className="container">
