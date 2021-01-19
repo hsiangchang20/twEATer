@@ -92,6 +92,7 @@ export default function MainPage(props) {
                                     <Route path="/add/:userid?" component={Add} />
                                     <Route path="/profile/:id?/:userid?" component={Profile}/>
                                     <Redirect from="/intermediate" to={"/post/" + userdata._id} />
+                                    {login ? (<Redirect from="/" to={"/post/" + userdata._id} />) : (<></>)}
                                 </Switch>
                             </div>
                         </div>

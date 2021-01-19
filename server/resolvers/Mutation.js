@@ -135,16 +135,19 @@ const Mutation = {
         return like(args.PostID);
     },
     createComment(parent, args, {pubsub}, info){
-        async function create(data){            
-            const comment = {
-                _id: uuidv4(),
-                ...args.data
-            }
-            Comment.insertMany(comment); 
-            return comment;
+        const comment = {
+            _id: uuidv4(),
+            ...args.data
         }
+        Comment.insertMany(comment); 
+        pubsub.publish(`comment ${args.data.PostID}`, {
+            comment: {
+                mutation: 'CREATED',
+                data: comment
+            }
+        })
+        return comment;
 
-        return create(args.data);
     }
 }
 

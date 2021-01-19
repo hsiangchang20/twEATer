@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import './posts.css';
 import avocado_pic from "../../../components/Images/avocado.png";
 
+import fruits from "../fruits/fruits";
+
 import {POST_QUERY, LIKE_MUTATION} from '../../../graphql'
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 
@@ -12,6 +14,8 @@ export default function Posts(props) {
     const { loading, error, data} = useQuery(POST_QUERY);
     const [posts, setPosts] = useState([]);
     const [like] = useMutation(LIKE_MUTATION);
+
+    const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
     
     useEffect( ()=> {
         //console.log(data);
@@ -28,6 +32,13 @@ export default function Posts(props) {
             }
         })
     }, [like])
+
+    const Time = (t) => {
+        var time = new Date();
+        time.setTime(t);
+        //console.log(time);
+        return time
+    }
 
     const nothing = (
         <div></div>
@@ -47,6 +58,9 @@ export default function Posts(props) {
                 </div>
                 <div className="posts-body">
                     <p>{(post.body.length <= 18) ? post.body : post.body.slice(0, 17) + "  .  .  ."}</p>
+                </div>
+                <div className="posts-time">
+                    <p>{Time(post.time).toString().slice(4, 24)}</p>
                 </div>
                 <div className='posts-likeOrResponse'>  
                     <div className="posts-like">
