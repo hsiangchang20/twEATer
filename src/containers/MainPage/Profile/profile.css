@@ -138,6 +138,7 @@ html, body {
     padding-bottom: 140px;
   }
   header img {
+    width: 400px;
     display: inline-block !important;
 	  border-radius: 50%;
 	  border: 1px solid rgb(61, 224, 46);
