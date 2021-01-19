@@ -47,12 +47,19 @@ export default function PostRender(props) {
         });
     }, [subscribeToMore]);
 
+    const Time = (t) => {
+        var time = new Date();
+        time.setTime(t);
+        console.log(time);
+        return time
+    }
+
     const comments = (post.comments === undefined) ? " " : post.comments.map(comment => (
         <div className="comment" key = {comment}>
             <div className="comment-userdata">
                 <img src={avocado_pic} alt="IMG" className="userfruit"/>
                 <div>
-                    <h3>{comment.Author}</h3><span className="date">October 10, 2011</span>
+                    <h3>{comment.Author}</h3><span className="date">{comment.time}</span>
                 </div>
             </div>
             <div className="body">

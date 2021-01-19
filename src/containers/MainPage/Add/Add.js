@@ -12,6 +12,7 @@ export default function Add(){
     const [loading, setLoading] = useState(false);
     const [restaurant, setRestaurant] = useState('');
     const [body, setBody] = useState('');
+    const [state, setState] = useState('');
     const [addPost] = useMutation(CREATE_POST_MUTATION)
 
     const createPost = useCallback(()=>{
@@ -69,9 +70,20 @@ export default function Add(){
         await this.imageUploadToImgur(files, index + 1);
     };
 
+    const selected = (s) => {
+      setState(s);
+    }
+
     return (
       <div className="App">
         <Form>
+          <FormGroup>
+            <Label>You Want To Add?</Label>
+            <Input type="select" name="select" id="exampleSelectMulti" onChange={selected}>
+                <option>Restaurant</option>
+                <option>Post</option>
+            </Input>
+          </FormGroup>
           <FormGroup>
             <Label for="fileBrowser">File (Up to 10MB)</Label>
             <CustomInput
