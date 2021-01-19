@@ -16,5 +16,5 @@ export const USER_QUERY = gql`
         body
         }
     }
-  }
+  } 
 `
