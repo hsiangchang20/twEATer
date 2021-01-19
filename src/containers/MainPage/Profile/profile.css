@@ -95,7 +95,7 @@ html, body {
   }
 
   .edit {
-    width: auto;
+    width: 350px;
     height: auto;
     background: #fff;
     border-radius: 50px;
@@ -108,7 +108,7 @@ html, body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 60px 300px 20px;
+    margin: 60px auto 20px;
     padding: 10px 10px 10px 20px;
   }
 
@@ -117,10 +117,13 @@ html, body {
   }
 
   .edit button {
+    width: 100%;
     margin: 0px auto;
   }
 
   .edit p {
+    width: 100%;
+    min-width: 100%;
     margin: 0px auto;
     font-size: 20px;
   }
