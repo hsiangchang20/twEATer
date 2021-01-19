@@ -30,17 +30,17 @@ export default function Profile(props){
 						{editing ? (
 							<div>
 								<h1 className='tm-title bold shadow edit-input' >
-									New name&nbsp;:
+									New name&nbsp;:&nbsp;&nbsp;
 									<input
 										type="text" 
-										placeholder="  rename ..." 
+										placeholder="Allen" 
 									/>
 								</h1>
 								<h1 className='white bold shadow edit-input' >
-									New fruit&nbsp;&nbsp; : 
+									New fruit&nbsp;&nbsp; : &nbsp;
 									<input
 										type="text" 
-										placeholder="  ..." 
+										placeholder="Is Handsome" 
 									/>
 								</h1>
 							</div>) : (

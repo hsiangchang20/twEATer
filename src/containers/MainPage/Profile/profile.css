@@ -44,9 +44,17 @@ html, body {
   .tm-title {
       color: #66CCFF;
   }
+
+  .tm-title input {
+    color: black;
+  }
   
   .white {
     color: #fff;
+  }
+
+  .white input {
+    color: black;
   }
 
   input {
