@@ -19,6 +19,6 @@ export default function Profile(props){
 					<h1 className="white bold shadow">Creative Golem</h1>
 				</div>
 			</div>
-		</div>
+		</div>        
     );
 }

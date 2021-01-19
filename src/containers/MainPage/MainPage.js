@@ -16,10 +16,7 @@ import Add from "./Add/Add"
 export default function MainPage() {
 
     const [login, setLogin] = useState(false);
-    const [user, setUser] = useState('allen');
-    useEffect(()=>{
-        console.log(user);
-    })
+    const [userdata, setUserdata] = useState([]);
     return (
         <div>
             <title>Login V1</title>
@@ -54,7 +51,7 @@ export default function MainPage() {
                                         </li>
                                         <li>
                                             <button className="main-button">
-                                                <NavLink to={"/profile/" + user} className="main-button-text">Profile</NavLink>
+                                                <NavLink to={"/profile/" + userdata._id} className="main-button-text">Profile</NavLink>
                                             </button>
                                         </li>
                                     </ul>
@@ -68,7 +65,7 @@ export default function MainPage() {
                                     <Route exact path="/roulette" component={Roulette} />
                                     <Route path="/restaurant/:id?" component={Restaurant} />
                                     <Route exact path="/add" component={Add} />
-                                    <Route path="/profile/:id?" component={Profile} />
+                                    <Route path="/profile/:id?" component={Profile}/>
                                     <Redirect from="/home" to="/" />
                                 </Switch>
                             </div>
@@ -77,9 +74,9 @@ export default function MainPage() {
                             <LoginPage onClick={(data) => {
                                 if (data !== undefined) {
                                     setLogin(true);
-                                    setUser(data.login.name);
+                                    setUserdata(data.login)
                                 }
-                                else console.log(data);
+                                //else console.log(data);
                             }} />
                         )}
                 </div>
