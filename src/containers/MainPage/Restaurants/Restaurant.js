@@ -14,10 +14,10 @@ export default function Restaurant(props) {
         console.log(data)    
         if (data && (data.restaurant[0])){
             setRestaurant(data.restaurant[0]);
-            if(data.restaurant[0].posts[0]!==undefined){
+            if (data.restaurant[0].posts[0]){
                 setPhoto(data.restaurant[0].posts[0].photo)
-                console.log(data.restaurant[0].posts[0].photo)
             }
+            
         }
     })
 

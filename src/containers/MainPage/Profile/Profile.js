@@ -29,14 +29,20 @@ export default function Profile(props){
 						<hr/>
 						{editing ? (
 							<div>
-								<input className='tm-title bold shadow' 
-                                    type="text" 
-                                    placeholder="New name..." 
-                            	/>
-								<input className='white bold shadow' 
-                                    type="text" 
-                                    placeholder="New motto..." 
-                            	/>
+								<h1 className='tm-title bold shadow edit-input' >
+									New name&nbsp;:&nbsp;&nbsp;
+									<input
+										type="text" 
+										placeholder="Allen" 
+									/>
+								</h1>
+								<h1 className='white bold shadow edit-input' >
+									New fruit&nbsp;&nbsp; : &nbsp;
+									<input
+										type="text" 
+										placeholder="Is Handsome" 
+									/>
+								</h1>
 							</div>) : (
 								<>
 								<h1 className="tm-title bold shadow">

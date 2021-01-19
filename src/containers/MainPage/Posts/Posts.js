@@ -45,7 +45,7 @@ export default function Posts() {
                     <p>{"< " + post.restaurant + " >"}</p>
                 </div>
                 <div className="posts-body">
-                    <p>{(post.body.length <= 20) ? post.body : post.body.slice(0, 19) + "  .  .  ."}</p>
+                    <p>{(post.body.length <= 18) ? post.body : post.body.slice(0, 17) + "  .  .  ."}</p>
                 </div>
                 <div className='posts-likeOrResponse'>  
                     <div className="posts-like">

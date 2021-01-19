@@ -59,6 +59,11 @@
     -moz-transition: all 0.4s;
   }
 
-  .result:hover {
-    color: #57b846;
+  .result p {
+    font-size: 40px;
+	  font-weight: 900;
+	  letter-spacing: 3px;
+    color: #2F3640;
+    text-shadow: 3px 3px #FEDC6B;
+    margin: 0px auto;
   }

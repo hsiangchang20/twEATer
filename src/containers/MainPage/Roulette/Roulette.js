@@ -63,7 +63,8 @@ export default function Roulette() {
             <div className="result-wrapper">
                 <button className="result">
                     <NavLink to={"/restaurant/" + restaurant} className="posts-readmore">
-                        {restaurant}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {restaurant ? (<p>{"< " + restaurant + " >"}</p>) : <p></p>}
+                        
                     </NavLink>
                 </button>
             </div>
