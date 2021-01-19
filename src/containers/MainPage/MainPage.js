@@ -7,8 +7,9 @@ import Posts from "./Posts/Posts";
 import Searches from "./Searches/Searches";
 import PostsRender from "./Posts/PostsRender";
 import Restaurant from "./Restaurants/Restaurant";
-import Roulette from "./Roulette/Roulette"
-import LoginPage from "./Login/loginPage"
+import Roulette from "./Roulette/Roulette";
+import LoginPage from "./Login/loginPage";
+import Profile from "./Profile/Profile";
 
 import Add from "./Add/Add"
 
@@ -49,7 +50,7 @@ export default function MainPage() {
                                         </li>
                                         <li>
                                             <button className="main-button">
-                                                <NavLink to="/user" className="main-button-text">User</NavLink>
+                                                <NavLink to="/profile" className="main-button-text">Profile</NavLink>
                                             </button>
                                         </li>
                                     </ul>
@@ -63,6 +64,7 @@ export default function MainPage() {
                                     <Route exact path="/roulette" component={Roulette} />
                                     <Route path="/restaurant/:id?" component={Restaurant} />
                                     <Route exact path="/add" component={Add} />
+                                    <Route exact path="/profile" component={Profile} />
                                     <Redirect from="/home" to="/" />
                                 </Switch>
                             </div>
