@@ -67,7 +67,7 @@ export default function MainPage() {
                                     <Route path="/restaurant/:name?/:userid?" component={Restaurant} />
                                     <Route path="/add/:userid?" component={Add} />
                                     <Route path="/profile/:id?/:userid?" component={Profile}/>
-                                    <Redirect from="/home" to="/" />
+                                    <Redirect from="/intermediate" to={"/post/" + userdata._id} />
                                 </Switch>
                             </div>
                         </div>

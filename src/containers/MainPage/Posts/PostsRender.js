@@ -72,6 +72,21 @@ export default function PostRender(props) {
         </div>
     ));
 
+    const mycomment = (
+        <div className="comment">
+            <div className="comment-userdata">
+                <img src={avocado_pic} alt="IMG" className="userfruit"/>
+                <div>
+                    <h3>銀河眼光子龍</h3><span className="date">{"11:11:11"/*Time(comment.time).toString().slice(4, 24)*/}</span>
+                </div>
+            </div>
+            <div className="body">
+            <input type="text" placeholder="Allen" />
+                <p className="word">dao</p>
+            </div>
+        </div>
+    );
+
     const nothing = (
         <div></div>
     )
@@ -112,6 +127,7 @@ export default function PostRender(props) {
             </div>
             <div className="post-comments">
                 {comments}
+                {mycomment}
             </div>
         </div>
     )
