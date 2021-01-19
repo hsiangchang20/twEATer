@@ -6,7 +6,7 @@ body, html {
 }
 
 .wrap-post1 {
-	width: 1100px;
+	width: 1000px;
 	height: auto;
 	background: #fff;
 	border-radius: 50px;
@@ -25,13 +25,13 @@ body, html {
 }
 
 .post-basic-data {
-	width: 1000px;
+	width: 900px;
 	height: auto;
 	margin: 30px auto;
 }
 
 .post-picture {
-	width: 1000px;
+	width: 900px;
 	height:auto;
 	margin: 0 auto;
 }
@@ -41,19 +41,19 @@ body, html {
 }
 
 .post-body {
-	width: 1000px;
+	width: 900px;
 	height:auto;
 	margin: 30px auto 0px;
 }
 
 .post-response {
-	width: 1000px;
+	width: 900px;
 	height:auto;
 	margin: 0 auto;
 }
 
 .post-comments {
-	width: 1000px;
+	width: 900px;
 	height:auto;
 	margin: 0 auto 20px;
 }
@@ -182,4 +182,68 @@ body, html {
 	font-size: 15px;
 	font-weight: bold;
 	color: rgb(48, 173, 173);
+}
+
+
+.mycomment {
+	background-color: rgb(233, 227, 227);
+}
+
+.mycomment-userdata {
+	width: auto;
+	height: 100px;
+}
+
+.mycomment-userdata img {
+	width: auto;
+	height: 100px;
+	float: left;
+}
+
+.mycomment-userdata div {
+	width: auto;
+	height: 100px;
+	float: center;
+	text-align: left;
+	vertical-align: middle;
+	padding-top: 35px;
+}
+
+.mycomment-userdata div h3 {
+	font-weight: 600;
+}
+
+.mycomment .body {
+	padding: 0px 30px 20px 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #cac6c6;
+	text-align: justify;
+}
+
+.mycomment .body .word {
+	width: 85%;
+	font-size: 20px;
+	font-weight: bold;
+	opacity: 70%;
+}
+
+.mycomment .submit {
+	float: right;
+	background: transparent;
+	border-radius: 16px;
+	border: solid 2px #686a6d;
+}
+
+.mycomment .submit:hover {
+    background-color: rgb(13, 151, 243);
+}
+
+.mycomment .submit p {
+    margin: 0px auto;
+	font-size: 20px;
+	color:#2F3640;
+}
+
+.mycomment .submit:hover p {
+	color: aliceblue;
 }
