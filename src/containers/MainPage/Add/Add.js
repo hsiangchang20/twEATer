@@ -59,7 +59,7 @@ export default function Add(){
                 cost: cost,
                 staple: staple,
                 location: location,
-                Star: Star
+                Star: Star,
             }
         })
         setAddress('');

@@ -19,7 +19,7 @@
 
   /*decoration for Posts.js*/
   .posts-overview {
-    width: 680px;
+    width: 600px;
     height: auto;
     padding: 0px 20px;
   }
@@ -27,6 +27,16 @@
   .posts-picture {
     width: 360px;
     height: 320px;
+    line-height: 320px;
+    text-align: center;
+    overflow: hidden;
+    margin: auto 10px auto auto;
+  }
+
+  .posts-picture img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
   }
 
   img {  
@@ -69,10 +79,10 @@
 
   .posts-restaurant p {
     font-size: 40px;
-	font-weight: 900;
-	letter-spacing: 3px;
-    color: #2F3640;
-    text-shadow: 3px 3px #FEDC6B;
+    font-weight: 900;
+    letter-spacing: 3px;
+      color: #2F3640;
+      text-shadow: 3px 3px #FEDC6B;
   }
 
   .posts-body p {

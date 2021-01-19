@@ -54,7 +54,7 @@ const RestaurantSchema = new Schema({
     Star:{
         type: String,
         require: [false]
-    }
+    },
 })
 
 // Creating a table within database with the defined schema
