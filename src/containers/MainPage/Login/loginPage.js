@@ -1,14 +1,4 @@
 import React, {useState, useEffect} from "react";
-import watermelon from "./images/fruit/watermelon.PNG"
-import apple from "./images/fruit/apple.PNG"
-import avocado from "./images/fruit/avocado.PNG"
-import cherry from "./images/fruit/cherry.PNG"
-import kiwi from "./images/fruit/kiwi.PNG"
-import lemon from "./images/fruit/lemon.PNG"
-import orange from "./images/fruit/orange.PNG"
-import pineapple from "./images/fruit/pineapple.PNG"
-import strawberry from "./images/fruit/strawberry.PNG"
-import peach from "./images/fruit/peach.PNG"
 import loginLogo from "./images/logo.png"
 import poppingImg from "./images/popping.gif"
 import { NavLink } from "react-router-dom";
@@ -21,6 +11,8 @@ import './vendor/css-hamburgers/hamburgers.min.css'
 import './vendor/select2/select2.min.css'
 import {LOGIN_QUERY} from '../../../graphql'
 import { useLazyQuery } from "@apollo/client";
+
+import fruits from "../fruits/fruits"
 
 function LoginPage(props) {
     const [forgetPasswordPressed, setForgetPasswordPressed] = useState('none');
@@ -44,6 +36,8 @@ function LoginPage(props) {
     const [border8, setBorder8] = useState('');
     const [border9, setBorder9] = useState('');
     const [border10, setBorder10] = useState('');
+
+    const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
 
     function setBorder(num) {
         setBorder1("");
