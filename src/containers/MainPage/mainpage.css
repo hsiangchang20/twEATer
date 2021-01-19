@@ -181,6 +181,10 @@
     padding-bottom: 40px;
   }
 
+  #wrapper::-webkit-scrollbar {
+    display: none;
+}
+
   #page {
       overflow: scroll;
       width: 1000px;

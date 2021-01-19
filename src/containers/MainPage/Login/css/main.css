@@ -485,3 +485,24 @@ iframe {
     opacity: 1;
   }
 }
+
+.choose-fruit {
+  text-align: center;
+}
+
+.choose-fruit img {
+  max-width: 56px;
+  max-height: 56px;
+  margin: auto;
+}
+
+.button-fruit {
+  width: 60px;
+  height: 60px;
+  margin: 3px;
+}
+
+.button-fruit:hover {
+  border: solid 1px #333333;
+  box-shadow: 0 0 3px 1px rgba(0, 140, 186, 0.5);
+}

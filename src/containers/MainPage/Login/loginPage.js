@@ -1,4 +1,14 @@
 import React, {useState, useEffect} from "react";
+import watermelon from "./images/fruit/watermelon.PNG"
+import apple from "./images/fruit/apple.PNG"
+import avocado from "./images/fruit/avocado.PNG"
+import cherry from "./images/fruit/cherry.PNG"
+import kiwi from "./images/fruit/kiwi.PNG"
+import lemon from "./images/fruit/lemon.PNG"
+import orange from "./images/fruit/orange.PNG"
+import pineapple from "./images/fruit/pineapple.PNG"
+import strawberry from "./images/fruit/strawberry.PNG"
+import peach from "./images/fruit/peach.PNG"
 import loginLogo from "./images/logo.png"
 import poppingImg from "./images/popping.gif"
 import { NavLink } from "react-router-dom";
@@ -21,6 +31,43 @@ function LoginPage(props) {
     const [email, setEmail] = useState('');
     const [password, setPW] = useState('');
     const [Login, {loading, data}] = useLazyQuery(LOGIN_QUERY);
+    const [create, setCreate] = useState(false);
+    const [usernametmp, setUsernametmp] = useState('');
+    const [passwordtmp, setPasswordtmp] = useState('');
+    const [border1, setBorder1] = useState('');
+    const [border2, setBorder2] = useState('');
+    const [border3, setBorder3] = useState('');
+    const [border4, setBorder4] = useState('');
+    const [border5, setBorder5] = useState('');
+    const [border6, setBorder6] = useState('');
+    const [border7, setBorder7] = useState('');
+    const [border8, setBorder8] = useState('');
+    const [border9, setBorder9] = useState('');
+    const [border10, setBorder10] = useState('');
+
+    function setBorder(num) {
+        setBorder1("");
+        setBorder2("");
+        setBorder3("");
+        setBorder4("");
+        setBorder5("");
+        setBorder6("");
+        setBorder7("");
+        setBorder8("");
+        setBorder9("");
+        setBorder10("");
+        if (num===1){setBorder1("solid 1px #333333")}
+        else if (num===2){setBorder2("solid 1px #333333")}
+        else if (num===3){setBorder3("solid 1px #333333")}
+        else if (num===4){setBorder4("solid 1px #333333")}
+        else if (num===5){setBorder5("solid 1px #333333")}
+        else if (num===6){setBorder6("solid 1px #333333")}
+        else if (num===7){setBorder7("solid 1px #333333")}
+        else if (num===8){setBorder8("solid 1px #333333")}
+        else if (num===9){setBorder9("solid 1px #333333")}
+        else if (num===10){setBorder10("solid 1px #333333")}
+    }
+
     useEffect( ()=> {
         console.log(data);
         props.onClick(data);
@@ -54,87 +101,153 @@ function LoginPage(props) {
         <div className="wrap-login100">
             <div className="login100-pic js-tilt" data-tilt>
                 <img src={loginLogo} alt="IMG" />
-            </div>                    
-            <form className="login100-form validate-form">
-                <span className="login100-form-title">
-                    Login
-                </span>
-
-                <div className="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <input  className="input100" 
-                            type="text" 
-                            name="email" 
-                            placeholder="Email" 
-                            value={email} 
-                            onChange={(e)=>{ setEmail(e.target.value)} }
-                    />
-                    <span className="focus-input100"></span>
-                    <span className="symbol-input100">
-                        <i className="fa fa-envelope" aria-hidden="true"></i>
+            </div>
+            {!create?
+            (
+                <form className="login100-form validate-form">
+                    <span className="login100-form-title">
+                        Login
                     </span>
-                </div>
 
-                <div className="wrap-input100 validate-input" dataValidation = "Password is required">
-                    <input  className="input100" 
-                            type="password" 
-                            name="pass" 
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e)=>{setPW(e.target.value)}}
-                    />
-                    <span className="focus-input100"></span>
-                    <span className="symbol-input100">
-                        <i className="fa fa-lock" aria-hidden="true"></i>
+                    <div className="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <input  className="input100" 
+                                type="text" 
+                                name="email" 
+                                placeholder="Email" 
+                                value={email} 
+                                onChange={(e)=>{ setEmail(e.target.value)} }
+                        />
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <i className="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div className="wrap-input100 validate-input" dataValidation = "Password is required">
+                        <input  className="input100" 
+                                type="password" 
+                                name="pass" 
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e)=>{setPW(e.target.value)}}
+                        />
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <i className="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    
+                    <div className="container-login100-form-btn">
+                        <button className="login100-form-btn" onClick={(e)=>{
+                            e.preventDefault();
+                            Login({ variables: { email: email, password: password } });
+                        }}>
+                            <NavLink to="/post" style={{fontFamily: 'Montserrat-Bold', color: "white", fontSize: "12pt"}}>Login</NavLink>
+                        </button>
+                    </div>
+
+                    <div className="text-center p-t-12">
+                        <span className="txt1">
+                            Forgot{' '}
+                        </span>
+                        <a className="txt2" href="#" onClick={() => setForgetPasswordPressed('')}>
+                            Username / Password?
+                        </a>
+                    </div>
+                    <div className="text-center p-t-12">
+                        <span className="txt2" style={{display: forgetPasswordPressed,}} id="forget">
+                            你是<a href="#" onClick={() => {setForgetPressed(''); setAfraidPressed('none'); setPoppingPressed('none'); setPoppingDoublePressed('none')}}>忘記</a>了，還是<a href="#" onClick={() => {setAfraidPressed('');setForgetPressed('none')}}>害怕想起來</a>？
+                        </span>
+                    </div>
+                    <div className="text-center p-t-12">
+                    <span className="txt3" style={{display: forgetPressed}}>
+                        Poor You.
                     </span>
-                </div>
-                
-                <div className="container-login100-form-btn">
-                    <button className="login100-form-btn" onClick={(e)=>{
-                        e.preventDefault();
-                        Login({ variables: { email: email, password: password } });
-                    }}>
-                        <NavLink to="/post" style={{fontFamily: 'Montserrat-Bold', color: "white", fontSize: "12pt"}}>Login</NavLink>
+                    </div>
+                    <div className="text-center p-t-12">
+                        <span className="txt3" style={{display: afraidPressed}}>
+                            啊你是在<a href='#' onClick={() => {setPoppingPressed(''); setAfraidPressed('none')}} style={{fontSize: '16pt'}}>怕屁</a>喔？
+                        </span>
+                    </div>
+                    <div className="text-center p-t-12" style={{display: poppingPressed}}>
+                        <span className="txt3">
+                            啊你是在<a href='#' onClick={() => setPoppingDoublePressed('')} style={{fontSize: '16pt'}}>popping</a>喔？
+                        </span>
+                    </div>
+                    <div className="popping-img">
+                        <img src={poppingImg} alt="IMG" id="poppingImg" style={{display: poppingDoublePressed}} />
+                    </div>
+                    <div className="text-center p-t-20">
+                        <button onClick={() => {setCreate(true)}}>
+                            <a to="/create" href="#" className="txt2">Create your Account{"  "}<i className="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </button>
+                    </div>
+                </form>
+            ) : (
+                <form className="login100-form">
+                    <div className="login100-form-title">
+                        Create Account
+                    </div>
+                    <div className="wrap-input100">
+                        <input  className="input100"
+                                placeholder="Username"
+                                value={usernametmp}
+                                onChange={(e)=>{setUsernametmp(e.target.value)}}
+                        />
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <i className="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div className="wrap-input100" dataValidate = "Valid email is required: ex@abc.xyz">
+                        <input  className="input100"
+                                placeholder="Email"
+                                value={passwordtmp}
+                                onChange={(e)=>{setPasswordtmp(e.target.value)}}
+                        />
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <i className="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div className="wrap-input100 validate-input" dataValidation = "Password is required">
+                        <input  className="input100" 
+                                type="password"
+                                placeholder="Password"
+                        />
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <i className="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div className="wrap-input100 validate-input" dataValidation = "Password is required">
+                        <input  className="input100" 
+                                type="password"
+                                placeholder="Confirmed Password"
+                        />
+                        <span className="focus-input100"></span>
+                        <span className="symbol-input100">
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div className="txt1 choose-fruit">
+                        <span style={{color: "black"}}>Choose Your Favorite Fruit: </span><br/>
+                        <button className="button-fruit" style={{border: border1}} onClick={() => {setBorder(1)}}><img src={watermelon}/></button>
+                        <button className="button-fruit" style={{border: border2}} onClick={() => {setBorder(2)}}><img src={cherry}/></button>
+                        <button className="button-fruit" style={{border: border3}} onClick={() => {setBorder(3)}}><img src={strawberry}/></button>
+                        <button className="button-fruit" style={{border: border4}} onClick={() => {setBorder(4)}}><img src={apple}/></button>
+                        <button className="button-fruit" style={{border: border5}} onClick={() => {setBorder(5)}}><img src={lemon}/></button>
+                        <button className="button-fruit" style={{border: border6}} onClick={() => {setBorder(6)}}><img src={peach}/></button>
+                        <button className="button-fruit" style={{border: border7}} onClick={() => {setBorder(7)}}><img src={kiwi}/></button>
+                        <button className="button-fruit" style={{border: border8}} onClick={() => {setBorder(8)}}><img src={orange}/></button>
+                        <button className="button-fruit" style={{border: border9}} onClick={() => {setBorder(9)}}><img src={pineapple}/></button>
+                        <button className="button-fruit" style={{border: border10}} onClick={() => {setBorder(10)}}><img src={avocado}/></button>
+                    </div>
+                    <button className="login100-form-btn" onClick={(()=>{setCreate(false)})}>
+                        Create
                     </button>
-                </div>
-
-                <div className="text-center p-t-12">
-                    <span className="txt1">
-                        Forgot{' '}
-                    </span>
-                    <a className="txt2" href="#" onClick={() => setForgetPasswordPressed('')}>
-                        Username / Password?
-                    </a>
-                </div>
-                <div className="text-center p-t-12">
-                    <span className="txt2" style={{display: forgetPasswordPressed,}} id="forget">
-                        你是<a href="#" onClick={() => {setForgetPressed(''); setAfraidPressed('none'); setPoppingPressed('none'); setPoppingDoublePressed('none')}}>忘記</a>了，還是<a href="#" onClick={() => {setAfraidPressed('');setForgetPressed('none')}}>害怕想起來</a>？
-                    </span>
-                </div>
-                <div className="text-center p-t-12">
-                <span className="txt3" style={{display: forgetPressed}}>
-                    Poor You.
-                </span>
-                </div>
-                <div className="text-center p-t-12">
-                    <span className="txt3" style={{display: afraidPressed}}>
-                        啊你是在<a href='#' onClick={() => {setPoppingPressed(''); setAfraidPressed('none')}} style={{fontSize: '16pt'}}>怕屁</a>喔？
-                    </span>
-                </div>
-                <div className="text-center p-t-12" style={{display: poppingPressed}}>
-                    <span className="txt3">
-                        啊你是在<a href='#' onClick={() => setPoppingDoublePressed('')} style={{fontSize: '16pt'}}>popping</a>喔？
-                    </span>
-                </div>
-                <div className="popping-img">
-                    <img src={poppingImg} alt="IMG" id="poppingImg" style={{display: poppingDoublePressed}} />
-                </div>
-                <div className="text-center p-t-20">
-                    <a className="txt2" href="#">
-                        Create your Account
-                        <i className="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </form>
+                </form>
+            )}
         </div>
     );
 };

@@ -81,3 +81,7 @@ body.loading .loading-modal {
 .img {
     width: 100%;
 }
+
+.app::-webkit-scrollbar {
+    display: none;
+}

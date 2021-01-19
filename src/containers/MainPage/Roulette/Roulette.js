@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { NavLink } from "react-router-dom";
 import './css/roulette.css'
 import rouletteImg from './image/roulette.png'
 import { Fireworks } from 'fireworks/lib/react'
