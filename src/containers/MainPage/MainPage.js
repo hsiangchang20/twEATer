@@ -63,7 +63,7 @@ export default function MainPage() {
                                     <Route path="/post/:id?" component={PostsRender} />
                                     <Route exact path="/search" component={Searches} />
                                     <Route exact path="/roulette" component={Roulette} />
-                                    <Route path="/restaurant/:id?" component={Restaurant} />
+                                    <Route path="/restaurant/:name?" component={Restaurant} />
                                     <Route exact path="/add" component={Add} />
                                     <Route path="/profile/:id?" component={Profile}/>
                                     <Redirect from="/home" to="/" />

@@ -1,34 +1,20 @@
 import React from "react";
+import "./restaurant.css";
 
 export default function Restaurant(props) {
-    const restaurantIDs = ["1", "2", "3", "4", "5", "6", "7"];
-    const { id } = props.match.params;
-    return id && restaurantIDs.includes(id) ? (
-        <article>
-            <h1>Restaurant #{id}</h1>
-            <p>This is the {id}-th restaurant</p>
-        </article>
-    ) : (
-            <div>
-                <h3>Error: Restaurant #{id} NOT FOUND</h3>
+    const restaurant_view = (
+        <div className="wrap-restaurant">
+            <div className="name">
+                <p>{'< ' + 'post.restaurant' + ' >'}</p>
             </div>
-        )
+            <div className="info">
+                <p>Types:</p>
+                <p>Telephone:</p>
+                <p>Address:</p>
+                <p>Openhours:</p>
+            </div>
+        </div>
+    )
+
+    return restaurant_view;
 }
-/*
-{
-    render() {
-        const restaurantIDs = ["1", "2", "3", "4", "5", "6", "7"];
-        const { id } = this.props.match.params;
-        return id && restaurantIDs.includes(id) ? (
-            <article>
-                <h1>Restaurant #{id}</h1>
-                <p>This is the {id}-th restaurant</p>
-            </article>
-        ) : (
-                <div>
-                    <h3>Error: Restaurant #{id} NOT FOUND</h3>
-                </div>
-            )
-    }
-}
-*/

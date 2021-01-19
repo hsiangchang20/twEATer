@@ -39,7 +39,7 @@ body, html {
 .post-body {
 	width: 1000px;
 	height:auto;
-	margin: 0 auto;
+	margin: 30px auto 0px;
 }
 
 .post-response {
@@ -91,9 +91,6 @@ body, html {
 	margin-bottom: 0;
 }
 
-.post-body {
-	margin-top: 30px;
-}
 
 .post-body p {
 	font-size: 30px;
