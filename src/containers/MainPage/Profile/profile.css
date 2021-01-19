@@ -29,6 +29,7 @@ html, body {
   
   .bold {
       font-weight: bold;
+      margin: 0px auto;
   }
   
   .tm-border {
@@ -46,6 +47,10 @@ html, body {
   
   .white {
     color: #fff;
+  }
+
+  input {
+    background: transparent;
   }
   
   
@@ -71,6 +76,14 @@ html, body {
     border-color: #3366CC;
     width: 120px;
     margin: 30px auto 20px;
+  }
+
+  .edit-input {
+    margin: 0px 0px 0px 225px;
+  }
+
+  .edit-input input{
+    font-size: 30px;
   }
 
   .edit {
