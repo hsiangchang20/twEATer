@@ -24,8 +24,10 @@ function LoginPage(props) {
     const [password, setPW] = useState('');
     const [Login, {loading, data}] = useLazyQuery(LOGIN_QUERY);
     const [create, setCreate] = useState(false);
-    const [usernametmp, setUsernametmp] = useState('');
-    const [passwordtmp, setPasswordtmp] = useState('');
+    const [username, setUsername] = useState('');
+    const [emailname, setEmailname] = useState('');
+    const [passwordname, setPasswordname] = useState('');
+    const [confirmPw, setConfirmPw] = useState('');
     const [border1, setBorder1] = useState('');
     const [border2, setBorder2] = useState('');
     const [border3, setBorder3] = useState('');
@@ -36,6 +38,7 @@ function LoginPage(props) {
     const [border8, setBorder8] = useState('');
     const [border9, setBorder9] = useState('');
     const [border10, setBorder10] = useState('');
+    const [fruit, setFruit] = useState(0);
 
     const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
 
@@ -70,6 +73,37 @@ function LoginPage(props) {
     useEffect( ()=> {
         console.log(email, password);
     }, [email, password])
+
+    const createUser = () => {
+        if (!username || !emailname) {
+            alert("Please fill in all the required information!")
+        }
+
+        if (!emailname.includes('@')) {
+            alert("Your email is invalid!")
+        }
+
+        else if (passwordname !== confirmPw) {
+            alert("Password and Confirmed Password is incosistent!")
+        }
+        
+        else if (passwordname.length < 8) {
+            alert("The password should have at least 8 characters!")
+        }
+
+        else if (!fruit) {
+            alert("Please select a fruit as your twEATer icon")
+        }
+        else {
+            setCreate(false)
+        }
+        
+        console.log(username)
+        console.log(emailname)
+        console.log(passwordname)
+        //console.log(confirmPw)
+        console.log(fruit)
+    }
     /*
     return(
         <div>
@@ -185,8 +219,8 @@ function LoginPage(props) {
                     <div className="wrap-input100">
                         <input  className="input100"
                                 placeholder="Username"
-                                value={usernametmp}
-                                onChange={(e)=>{setUsernametmp(e.target.value)}}
+                                value={username}
+                                onChange={(e)=>{setUsername(e.target.value)}}
                         />
                         <span className="focus-input100"></span>
                         <span className="symbol-input100">
@@ -196,8 +230,8 @@ function LoginPage(props) {
                     <div className="wrap-input100" dataValidate = "Valid email is required: ex@abc.xyz">
                         <input  className="input100"
                                 placeholder="Email"
-                                value={passwordtmp}
-                                onChange={(e)=>{setPasswordtmp(e.target.value)}}
+                                value={emailname}
+                                onChange={(e)=>{setEmailname(e.target.value)}}
                         />
                         <span className="focus-input100"></span>
                         <span className="symbol-input100">
@@ -208,6 +242,7 @@ function LoginPage(props) {
                         <input  className="input100" 
                                 type="password"
                                 placeholder="Password"
+                                onChange={(e) => {setPasswordname(e.target.value)}}
                         />
                         <span className="focus-input100"></span>
                         <span className="symbol-input100">
@@ -218,6 +253,7 @@ function LoginPage(props) {
                         <input  className="input100" 
                                 type="password"
                                 placeholder="Confirmed Password"
+                                onChange={(e) => {setConfirmPw(e.target.value)}}
                         />
                         <span className="focus-input100"></span>
                         <span className="symbol-input100">
@@ -226,18 +262,48 @@ function LoginPage(props) {
                     </div>
                     <div className="txt1 choose-fruit">
                         <span style={{color: "black"}}>Choose Your Favorite Fruit: </span><br/>
-                        <button className="button-fruit" style={{border: border1}} onClick={() => {setBorder(1)}}><img src={watermelon}/></button>
-                        <button className="button-fruit" style={{border: border2}} onClick={() => {setBorder(2)}}><img src={cherry}/></button>
-                        <button className="button-fruit" style={{border: border3}} onClick={() => {setBorder(3)}}><img src={strawberry}/></button>
-                        <button className="button-fruit" style={{border: border4}} onClick={() => {setBorder(4)}}><img src={apple}/></button>
-                        <button className="button-fruit" style={{border: border5}} onClick={() => {setBorder(5)}}><img src={lemon}/></button>
-                        <button className="button-fruit" style={{border: border6}} onClick={() => {setBorder(6)}}><img src={peach}/></button>
-                        <button className="button-fruit" style={{border: border7}} onClick={() => {setBorder(7)}}><img src={kiwi}/></button>
-                        <button className="button-fruit" style={{border: border8}} onClick={() => {setBorder(8)}}><img src={orange}/></button>
-                        <button className="button-fruit" style={{border: border9}} onClick={() => {setBorder(9)}}><img src={pineapple}/></button>
-                        <button className="button-fruit" style={{border: border10}} onClick={() => {setBorder(10)}}><img src={avocado}/></button>
+                        <button className="button-fruit" style={{border: border1}} onClick={() => {
+                            setBorder(1)
+                            setFruit(1)
+                        }}><img src={watermelon}/></button>
+                        <button className="button-fruit" style={{border: border2}} onClick={() => {
+                            setBorder(2)
+                            setFruit(2)
+                        }}><img src={cherry}/></button>
+                        <button className="button-fruit" style={{border: border3}} onClick={() => {
+                            setBorder(3)
+                            setFruit(3)
+                        }}><img src={strawberry}/></button>
+                        <button className="button-fruit" style={{border: border4}} onClick={() => {
+                            setBorder(4)
+                            setFruit(4)
+                        }}><img src={apple}/></button>
+                        <button className="button-fruit" style={{border: border5}} onClick={() => {
+                            setBorder(5)
+                            setFruit(5)
+                        }}><img src={lemon}/></button>
+                        <button className="button-fruit" style={{border: border6}} onClick={() => {
+                            setBorder(6)
+                            setFruit(6)
+                        }}><img src={peach}/></button>
+                        <button className="button-fruit" style={{border: border7}} onClick={() => {
+                            setBorder(7)
+                            setFruit(7)
+                        }}><img src={kiwi}/></button>
+                        <button className="button-fruit" style={{border: border8}} onClick={() => {
+                            setBorder(8)
+                            setFruit(8)
+                        }}><img src={orange}/></button>
+                        <button className="button-fruit" style={{border: border9}} onClick={() => {
+                            setBorder(9)
+                            setFruit(9)
+                        }}><img src={pineapple}/></button>
+                        <button className="button-fruit" style={{border: border10}} onClick={() => {
+                            setBorder(10)
+                            setFruit(10)
+                        }}><img src={avocado}/></button>
                     </div>
-                    <button className="login100-form-btn" onClick={(()=>{setCreate(false)})}>
+                    <button className="login100-form-btn" onClick={createUser}>
                         Create
                     </button>
                 </form>

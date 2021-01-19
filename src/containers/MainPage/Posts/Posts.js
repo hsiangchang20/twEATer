@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import './posts.css';
 import avocado_pic from "../../../components/Images/avocado.png";
 
+import fruits from "../fruits/fruits";
+
 import {POST_QUERY, LIKE_MUTATION} from '../../../graphql'
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 
@@ -12,6 +14,8 @@ export default function Posts(props) {
     const { loading, error, data} = useQuery(POST_QUERY);
     const [posts, setPosts] = useState([]);
     const [like] = useMutation(LIKE_MUTATION);
+
+    const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
     
     useEffect( ()=> {
         //console.log(data);
