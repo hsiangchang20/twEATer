@@ -35,6 +35,7 @@ export default function PostRender(props) {
     })
 
     useEffect(()=>{
+        console.log(data);
         if (data !== undefined){
             setPost(data.posts[0])
             var time = new Date()

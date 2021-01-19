@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import loginLogo from "./images/logo.png"
 import poppingImg from "./images/popping.gif"
 import { NavLink } from "react-router-dom";
@@ -9,8 +9,8 @@ import './fonts/font-awesome-4.7.0/css/font-awesome.min.css'
 import './vendor/animate/animate.css'
 import './vendor/css-hamburgers/hamburgers.min.css'
 import './vendor/select2/select2.min.css'
-import {LOGIN_QUERY} from '../../../graphql'
-import { useLazyQuery } from "@apollo/client";
+import {LOGIN_QUERY, CREATE_USER_MUTATION} from '../../../graphql'
+import { useLazyQuery, useMutation } from "@apollo/client";
 
 import fruits from "../fruits/fruits"
 
@@ -39,6 +39,7 @@ function LoginPage(props) {
     const [border9, setBorder9] = useState('');
     const [border10, setBorder10] = useState('');
     const [fruit, setFruit] = useState(0);
+    const [addUser] = useMutation(CREATE_USER_MUTATION);
 
     const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
 
@@ -96,7 +97,7 @@ function LoginPage(props) {
             alert("Please select a fruit as your twEATer icon")
         }
         else {
-            setCreate(false)
+            buildUser();
         }
         
         console.log(username)
@@ -105,6 +106,18 @@ function LoginPage(props) {
         //console.log(confirmPw)
         console.log(fruit)
     }
+
+    const buildUser = useCallback(()=>{
+        addUser({
+            variables: {
+                name: username,
+                email: emailname,
+                password: passwordname,
+                fruit: fruit,
+            }
+        })
+        setCreate(false);
+    })
     /*
     return(
         <div>
