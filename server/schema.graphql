@@ -6,7 +6,7 @@ type Query {
   message(name: String!): [Message!]!
   me: User!
   post: Post!
-  restaurant(name: String!): [Restaurant!]!
+  restaurant(name: String!, type: String, time: String, cost: String, staple: String, location: String, Star: String): [Restaurant!]!
 }
 
 type Mutation {
@@ -38,6 +38,11 @@ input createRestaurantInput {
   tele: String!
   type: String!
   menu: String
+  time: String
+  cost: String
+  staple: String
+  location: String
+  Star: String
 }
 
 input CreateMessageInput {
@@ -126,6 +131,11 @@ type Restaurant {
   menu: String
   thumb: Int
   posts: [Post!]
+  time: String
+  cost: String
+  staple: String
+  location: String
+  Star: String
 }
 
 type Comment {

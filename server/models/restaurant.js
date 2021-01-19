@@ -34,6 +34,26 @@ const RestaurantSchema = new Schema({
     thumb: {
         type: Number,
         require: [false]
+    },
+    time: {
+        type: String,
+        required: [false]
+    },
+    cost: {
+        type: String,
+        required: [false]
+    },
+    staple: {
+        type: String,
+        required: [false]
+    },
+    location: {
+        type: String,
+        required: [false]
+    },
+    Star:{
+        type: String,
+        require: [false]
     }
 })
 

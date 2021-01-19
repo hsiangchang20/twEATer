@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { NavLink, Switch, Route, Redirect } from "react-router-dom";
 //import ScriptTag from 'react-script-tag'
 import './mainpage.css'

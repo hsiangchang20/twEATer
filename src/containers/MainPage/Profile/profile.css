@@ -139,8 +139,8 @@ html, body {
   }
   header img {
     display: inline-block !important;
-	border-radius: 50%;
-	border: 1px solid rgb(61, 224, 46);
+	  border-radius: 50%;
+	  border: 1px solid rgb(61, 224, 46);
   }
   header h2 {
     padding-top: 40px;
@@ -148,7 +148,7 @@ html, body {
   header hr {
     border-color: #3366CC;
     width: 120px;
-    margin: 20px auto 30px;
+    margin: 30px auto 20px;
   }
   
   /* about section */
