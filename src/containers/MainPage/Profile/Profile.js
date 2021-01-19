@@ -9,7 +9,9 @@ import { useQuery } from "@apollo/client";
 export default function Profile(props){
 	const { id } = props.match.params
     const { loading, error, data} = useQuery(USER_QUERY, {variables: {query: id}});
-	const [name, setName] = useState('')
+	const [name, setName] = useState('');
+
+	const [editing, setEditing] = useState(false);
 
 	useEffect(()=>{
 		if (data !== undefined){
@@ -25,8 +27,32 @@ export default function Profile(props){
 					<div className="col-md-12 col-sm-12">
 						<img src={allen_pic} className="img-responsive img-circle tm-border" alt="templatemo easy profile" />
 						<hr/>
-						<h1 className="tm-title bold shadow">{name}</h1>
-						<h1 className="white bold shadow">Creative Golem</h1>
+						{editing ? (
+							<div>
+								<input className='tm-title bold shadow' 
+                                    type="text" 
+                                    placeholder="New name..." 
+                            	/>
+								<input className='white bold shadow' 
+                                    type="text" 
+                                    placeholder="New motto..." 
+                            	/>
+							</div>) : (
+								<>
+								<h1 className="tm-title bold shadow">
+									{name}
+								</h1>
+								<h1 className="white bold shadow">
+									Creative Golem
+								</h1>
+								</>
+								)}
+						<div className="edit">
+							<button onClick={() => setEditing(!editing)}>
+								<p>{editing ? "Confirm" : "Edit Profile"}</p>
+							</button>
+							
+						</div>
 					</div>
 				</div>
 			</div>
