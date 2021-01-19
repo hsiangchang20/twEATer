@@ -1,6 +1,6 @@
 .wrap-post100 {
     width: auto;
-    height: 360px;
+    height: 400px;
     background: #fff;
     border-radius: 50px;
     overflow: auto;
@@ -14,13 +14,14 @@
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 20px 10px 10px 20px;
+    padding: 20px 10px 0px 20px;
   }
 
   /*decoration for Posts.js*/
   .posts-overview {
-    width: 720px;
-    height: 320px;
+    width: 680px;
+    height: auto;
+    padding: 0px 20px;
   }
 
   .posts-picture {
@@ -29,7 +30,7 @@
   }
 
   .posts-userdata {
-    width: 720px;
+    width: auto;
   }
 
   .posts-userdata img{
@@ -39,7 +40,7 @@
   }
 
   .posts-userdata div{
-    width: 650px;
+    width: auto;
     height: 60px;
     float: center;
     text-align: left;
@@ -68,26 +69,29 @@
   }
 
   .posts-likeOrResponse{
-    width: 720px;
+    width: auto;
     height: 90px;
+    margin: 0px auto;
   }
 
-  .posts-likeOrResponse div{
-    width: 150px;
-    padding: 30px;
+  .posts-likeOrResponse p {
+      font-size: 20px;
   }
+
 
   .posts-like{
     float: left;
   }
 
   .posts-response{
-    float: left;
+    float: center;
   }
 
   .posts-readmore{
-    width: 720px;
     text-align: right;
+    float: right;
+    font-size: 20px;
+    font-weight: 600px;
   }
 
   .posts-picture img{

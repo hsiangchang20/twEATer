@@ -47,19 +47,18 @@ export default function Posts() {
                 <div className="posts-body">
                     <p>{post.body}</p>
                 </div>
-                <li className="posts-readmore">
-                    <NavLink to={"/post/" + post._id} className="posts-readmore">
-                        Read More
-                    </NavLink>
-                </li> 
-                <div className='posts-likeOrResponse'>
-                    <button onClick={()=>Like(post._id)}>
-                        <div className="posts-like">
-                            Like
-                        </div>
-                    </button>
+                <div className='posts-likeOrResponse'>  
+                    <div className="posts-like">
+                        <button onClick={()=>Like(post._id)}>
+                            <p>Like&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </button>
+                    </div>
                     <div className="posts-response">
-                        Response
+                        <p>Comment
+                            <NavLink to={"/post/" + post._id} className="posts-readmore">
+                                Read More&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </NavLink>
+                        </p>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import {RESTAURANT_QUERY} from '../../../graphql'
 import { useQuery, useLazyQuery } from "@apollo/client";
 
 export default function Restaurant(props) {
-    const restaurantIDs = ["1", "2", "3", "4", "5", "6", "7"];
+    //const restaurantIDs = ["1", "2", "3", "4", "5", "6", "7"];
     const { name } = props.match.params;
     console.log(props)
     const { loading, error, data} = useQuery(RESTAURANT_QUERY, {variables: {name: name}});
@@ -23,10 +23,10 @@ export default function Restaurant(props) {
                 <p>{'< ' + restaurant.name + ' >'}</p>
             </div>
             <div className="info">
-                <p>Type: {restaurant.type}</p>
-                <p>Telephone: {restaurant.tele}</p>
-                <p>Address: {restaurant.address}</p>
-                <p>Openhours: {restaurant.Openhours}</p>
+                <p>Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; {restaurant.type}</p>
+                <p>Telephone&ensp;&nbsp;:&nbsp;&nbsp; {restaurant.tele}</p>
+                <p>Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; {restaurant.address}</p>
+                <p>Openhours&nbsp;&nbsp;:&nbsp;&nbsp; {restaurant.Openhours}</p>
             </div>
         </div>
     )
