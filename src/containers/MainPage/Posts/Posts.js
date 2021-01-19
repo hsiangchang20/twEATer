@@ -6,8 +6,9 @@ import avocado_pic from "../../../components/Images/avocado.png";
 import {POST_QUERY, LIKE_MUTATION} from '../../../graphql'
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 
-export default function Posts() {
-    //console.log('dao');
+export default function Posts(props) {
+    const { userid } = props.match.params;
+    console.log(userid)
     const { loading, error, data} = useQuery(POST_QUERY);
     const [posts, setPosts] = useState([]);
     const [like] = useMutation(LIKE_MUTATION);
@@ -55,7 +56,7 @@ export default function Posts() {
                     </div>
                     <div className="posts-response">
                         <p>Comment
-                            <NavLink to={"/post/" + post._id} className="posts-readmore">
+                            <NavLink to={"/postrender/" + post._id + "/" + userid} className="posts-readmore">
                                 Read More&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </NavLink>
                         </p>

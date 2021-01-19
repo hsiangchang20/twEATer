@@ -17,6 +17,7 @@ export default function MainPage() {
 
     const [login, setLogin] = useState(false);
     const [userdata, setUserdata] = useState([]);
+    console.log(userdata._id);
     return (
         <div>
             <title>Login V1</title>
@@ -31,22 +32,22 @@ export default function MainPage() {
                                     <ul>
                                         <li>
                                             <button className="main-button">
-                                                <NavLink to="/post" className="main-button-text">Post</NavLink>
+                                                <NavLink to={"/post/" + userdata._id} className="main-button-text">Post</NavLink>
                                             </button>
                                         </li>
                                         <li>
                                             <button className="main-button">
-                                                <NavLink to="/search" className="main-button-text">Search</NavLink>
+                                                <NavLink to={"/search/" + userdata._id} className="main-button-text">Search</NavLink>
                                             </button>
                                         </li>
                                         <li>
                                             <button className="main-button">
-                                                <NavLink to="/roulette" className="main-button-text">Roulette</NavLink>
+                                                <NavLink to={"/roulette/" + userdata._id} className="main-button-text">Roulette</NavLink>
                                             </button>
                                         </li>
                                         <li>
                                             <button className="main-button">
-                                                <NavLink to="/add" className="main-button-text">Add</NavLink>
+                                                <NavLink to={"/add/" + userdata._id} className="main-button-text">Add</NavLink>
                                             </button>
                                         </li>
                                         <li>
@@ -59,13 +60,13 @@ export default function MainPage() {
                             </div>
                             <div id='wrapper'>
                                 <Switch>
-                                    <Route exact path="/post" component={Posts} />
-                                    <Route path="/post/:id?" component={PostsRender} />
-                                    <Route exact path="/search" component={Searches} />
-                                    <Route exact path="/roulette" component={Roulette} />
-                                    <Route path="/restaurant/:name?" component={Restaurant} />
-                                    <Route exact path="/add" component={Add} />
-                                    <Route path="/profile/:id?" component={Profile}/>
+                                    <Route path="/post/:userid?" component={Posts} />
+                                    <Route path="/postrender/:postid?/:userid?" component={PostsRender} />
+                                    <Route path="/search/:userid?" component={Searches} />
+                                    <Route path="/roulette/:userid?" component={Roulette} />
+                                    <Route path="/restaurant/:name?/:userid?" component={Restaurant} />
+                                    <Route path="/add/:userid?" component={Add} />
+                                    <Route path="/profile/:id?/:userid?" component={Profile}/>
                                     <Redirect from="/home" to="/" />
                                 </Switch>
                             </div>

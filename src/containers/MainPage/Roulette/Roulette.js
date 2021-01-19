@@ -6,7 +6,8 @@ import { Fireworks } from 'fireworks/lib/react'
 import {RESTAURANT_QUERY} from '../../../graphql'
 import {useQuery} from '@apollo/client'
 
-export default function Roulette() {
+export default function Roulette(props) {
+    const { userid } = props.match.params
     // -webkit-animation:spin 1s linear infinite; -moz-animation:spin 1s linear infinite; animation:spin 1s linear infinite;
     const [animation, setAnimation] = useState({})
     const [restaurant, SetRestaurant] = useState('')
@@ -62,7 +63,7 @@ export default function Roulette() {
             </div>
             <div className="result-wrapper">
                 <button className="result">
-                    <NavLink to={"/restaurant/" + restaurant} className="posts-readmore">
+                    <NavLink to={"/restaurant/" + restaurant + "/" + userid} className="posts-readmore">
                         {restaurant ? (<p>{"< " + restaurant + " >"}</p>) : <p></p>}
                         
                     </NavLink>

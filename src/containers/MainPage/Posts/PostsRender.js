@@ -9,9 +9,11 @@ import {ONE_POST_QUERY, POST_SUBSCRIPTION} from '../../../graphql'
 import { useQuery, useLazyQuery, useSubscription } from "@apollo/client";
 
 export default function PostRender(props) {
-    const { id } = props.match.params;
+    const { postid, userid } = props.match.params;
+    console.log(userid)
+    console.log(postid)
 
-    const { loading, error, data, subscribeToMore} = useQuery(ONE_POST_QUERY, {variables: {query: id}});
+    const { loading, error, data, subscribeToMore} = useQuery(ONE_POST_QUERY, {variables: {query: postid}});
     const [post, setPost] = useState([]);
     const [post_time, setPost_time] = useState("");
     const {data: posts, loading2} = useSubscription(POST_SUBSCRIPTION);
@@ -102,7 +104,7 @@ export default function PostRender(props) {
                 </div>
                 <div className="post-comment-number">
                     <p>comments : { (post.comments !== undefined) ? post.comments.length : " "}
-                        <NavLink to={"/restaurant/" + post.restaurant} className="post-restaurant-info">
+                        <NavLink to={"/restaurant/" + post.restaurant + "/" + userid} className="post-restaurant-info">
                             查看餐廳資訊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </NavLink>
                     </p>
@@ -113,5 +115,5 @@ export default function PostRender(props) {
             </div>
         </div>
     )
-    return ( !id || loading || error || loading2) ? nothing : postview;
+    return ( !postid || loading || error || loading2) ? nothing : postview;
 }
