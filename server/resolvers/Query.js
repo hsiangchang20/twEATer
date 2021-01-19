@@ -60,12 +60,22 @@ const Query = {
     },  
  
     restaurant(parent, args, {db}, info){
-        async function GetRestaurantData(name){
-            let data = await restaurant.find({name: name});
+        async function GetRestaurantData(rest){
+            console.log(rest)
+            let data = undefined
+            if(rest.name!=='') {data = await restaurant.find( { name: rest.name, })}
+            else {
+                data = await restaurant.find({  time: { "$regex": rest.time, "$options": "i" },
+                                                type: { "$regex": rest.type, "$options": "i" },
+                                                cost: { "$regex": rest.cost, "$options": "i" },
+                                                staple: { "$regex": rest.staple, "$options": "i" },
+                                                location: { "$regex": rest.location, "$options": "i" },
+                                                Star: { "$regex": rest.Star, "$options": "i" }});
+            }
             console.log(data);
             return data;
         }
-        return GetRestaurantData(args.name)
+        return GetRestaurantData(args)
     }
 }
  

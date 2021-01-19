@@ -17,6 +17,37 @@ export default function Searches() {
 
     const [Search, {loading, data}] = useLazyQuery(RESTAURANT_QUERY);
     const [Restaurant, SetRestaurant] = useState('')
+    const [type, setType] = useState('');
+    const [time, setTime] = useState('');
+    const [cost, setCost] = useState('');
+    const [staple, setStaple] = useState('');
+    const [location, setLocation] = useState('');
+    const [Star, setStar] = useState('');
+
+    const selectType = (event) => {
+        setType(event.target.value)
+    }
+
+    const selectTime = (event) => {
+        setTime(event.target.value)
+    }
+
+    const selectCost = (event) => {
+        setCost(event.target.value)
+    }
+
+    const selectStaple = (event) => {
+        setStaple(event.target.value)
+    }
+
+    const selectLocation = (event) => {
+        setLocation(event.target.value)
+    }
+
+    const selectStar = (event) => {
+        setStar(event.target.value)
+    }
+
     useEffect(()=>{
         console.log(data)
     }, [loading, data])
@@ -44,7 +75,7 @@ export default function Searches() {
                         <div className="row">
                             <div className="input-field">
                                 <div className="input-select">
-                                    <select data-trigger="" className="choices__inner">
+                                    <select data-trigger="" className="choices__inner" onChange={selectType}>
                                         <option placeholder="" value="">TYPE</option>
                                         <option>Taiwanese</option>
                                         <option>American</option>
@@ -55,7 +86,7 @@ export default function Searches() {
                             </div>
                             <div className="input-field">
                                 <div className="input-select">
-                                    <select data-trigger="" className="choices__inner">
+                                    <select data-trigger="" className="choices__inner" onChange={selectTime}>
                                         <option placeholder="" value="">TIME</option>
                                         <option>Breakfast</option>
                                         <option>Lunch</option>
@@ -65,7 +96,7 @@ export default function Searches() {
                             </div>
                             <div className="input-field">
                                 <div className="input-select">
-                                <select data-trigger="" className="choices__inner">
+                                <select data-trigger="" className="choices__inner" onChange={selectCost}>
                                     <option placeholder="" value="">COST</option>
                                     <option>Under $100</option>
                                     <option>$100~$200</option>
@@ -78,7 +109,7 @@ export default function Searches() {
                         <div className="row second">
                             <div className="input-field">
                                 <div className="input-select">
-                                    <select data-trigger="" className="choices__inner">
+                                    <select data-trigger="" className="choices__inner" onChange={selectStaple}>
                                         <option placeholder="" value="">Staple</option>
                                         <option>Rice</option>
                                         <option>Noodle</option>
@@ -88,7 +119,7 @@ export default function Searches() {
                             </div>
                             <div className="input-field">
                                 <div className="input-select">
-                                    <select data-trigger="" className="choices__inner">
+                                    <select data-trigger="" className="choices__inner" onChange={selectLocation}>
                                         <option placeholder="" value="">Location</option>
                                         <option>Taiwan</option>
                                         <option>South Africa</option>
@@ -98,7 +129,7 @@ export default function Searches() {
                             </div>
                             <div className="input-field">
                                 <div className="input-select">
-                                    <select data-trigger="" className="choices__inner">
+                                    <select data-trigger="" className="choices__inner" onChange={selectStar}>
                                         <option placeholder="" value="">Star</option>
                                         <option>5</option>
                                         <option>3~5</option>
@@ -111,7 +142,7 @@ export default function Searches() {
                             <div className="input-field">
                                 <button className="btn-search" onClick={(e)=>{
                                     e.preventDefault();
-                                    Search({ variables: { name: Restaurant } });
+                                    Search({ variables: { name: Restaurant,  type:type, time: time, cost: cost, staple: staple, location: location, Star: Star} });
                                 }}>Search</button>
                                 <button className="btn-delete" id="delete">Delete</button>
                             </div>
