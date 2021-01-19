@@ -80,7 +80,8 @@
       list-style-type: none;
   }
   
-  
+
+
   /*---------------------------------------------*/
   input {
       outline: none;
@@ -137,17 +138,24 @@
   #menu-wrapper {
       overflow: hidden;
       height: 90px;
+      background: #afee4a;
+      background: -webkit-linear-gradient(-135deg, #e4fa23, #40f708);
+      background: -o-linear-gradient(-135deg, #e4fa23, #40f708);
+      background: -moz-linear-gradient(-135deg, #e4fa23, #40f708);
+      background: linear-gradient(-135deg, #e4fa23, #40f708);
+      
   }
 
   #menu {
       width: auto;
       height: 55px;
-      margin: 0px auto;
+      margin: 0 auto;
       padding: 0px;
+      text-align: center;
   }
 
   menu ul {
-      margin: 0;
+      margin: 0 auto;
       padding: 0px 0px 0px 0px;
       list-style: none;
       line-height: normal;
@@ -157,12 +165,21 @@
   #menu li {
     display: inline-block;
     border-right: 1px solid #6F8651;
-    border-left: 1px solid #6F8651;
     min-width: 200px;
+    height: 90px;
+    padding: 0;
+  }
+
+  #menu li img {
+    margin: 10px 10px 20px 0px;
+    max-height: 76px;
+    max-width: 160px;
+    display: inline-block;
+    transition: 0.5s ease;
   }
 
   #menu button {
-      display: block;
+      display: inline-block;
       letter-spacing: 1px;
       line-height: 0px;
       padding: 0;
@@ -229,7 +246,7 @@
     overflow: auto;
   }
   
-  .container-background100 {
+  .container-background100-login {
     width: 100%;
     min-height: 100vh;
     display: -webkit-box;
@@ -245,6 +262,20 @@
     background: -o-linear-gradient(-135deg, #e4fa23, #40f708);
     background: -moz-linear-gradient(-135deg, #e4fa23, #40f708);
     background: linear-gradient(-135deg, #e4fa23, #40f708);
+  }
+
+  .container-background100 {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+    background: #f4ff53
   }
 
 
@@ -276,3 +307,9 @@
     padding-top: 20px;
   }
 
+  .main-button-li:hover{
+    background: #f4ff53
+  }
+  li:hover .main-button-text {
+    color: #40f708;
+  }

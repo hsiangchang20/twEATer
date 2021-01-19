@@ -144,7 +144,6 @@ export default function Searches() {
                                     e.preventDefault();
                                     Search({ variables: { name: Restaurant,  type:type, time: time, cost: cost, staple: staple, location: location, Star: Star} });
                                 }}>Search</button>
-                                <button className="btn-delete" id="delete">Delete</button>
                             </div>
                         </div>
                     </div>
