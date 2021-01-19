@@ -5,15 +5,14 @@ import { NavLink } from "react-router-dom";
 import './PostsRender.css'
 import avocado_pic from "../../../components/Images/avocado.png";
 
-import {ONE_POST_QUERY, POST_SUBSCRIPTION} from '../../../graphql'
+import {ONE_POST_QUERY, POST_SUBSCRIPTION, USER_QUERY} from '../../../graphql'
 import { useQuery, useLazyQuery, useSubscription } from "@apollo/client";
 
 export default function PostRender(props) {
     const { postid, userid } = props.match.params;
-    console.log(userid)
-    console.log(postid)
 
     const { loading, error, data, subscribeToMore} = useQuery(ONE_POST_QUERY, {variables: {query: postid}});
+    // const [ getUser, {loading3, userdata}] = useLazyQuery(USER_QUERY);
     const [post, setPost] = useState([]);
     const [post_time, setPost_time] = useState("");
     const {data: posts, loading2} = useSubscription(POST_SUBSCRIPTION);
@@ -49,6 +48,10 @@ export default function PostRender(props) {
             }
         });
     }, [subscribeToMore]);
+
+    // useEffect(()=>{
+    //     console.log(userdata);
+    // }, userdata);
 
     const Time = (t) => {
         var time = new Date();
@@ -113,6 +116,7 @@ export default function PostRender(props) {
             <div className="post-comments">
                 {comments}
             </div>
+            {/* <button onClick={getUser({variables: {query: userid}})}/> */}
         </div>
     )
     return ( !postid || loading || error || loading2) ? nothing : postview;

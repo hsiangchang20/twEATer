@@ -22,7 +22,8 @@ function LoginPage(props) {
     const [password, setPW] = useState('');
     const [Login, {loading, data}] = useLazyQuery(LOGIN_QUERY);
     useEffect( ()=> {
-        console.log(data);
+        if(data)
+            console.log(data.login._id);
         props.onClick(data);
     }, [data])
 
@@ -93,7 +94,7 @@ function LoginPage(props) {
                         e.preventDefault();
                         Login({ variables: { email: email, password: password } });
                     }}>
-                        <NavLink to="/post" style={{fontFamily: 'Montserrat-Bold', color: "white", fontSize: "12pt"}}>Login</NavLink>
+                        <NavLink to={"/post"} style={{fontFamily: 'Montserrat-Bold', color: "white", fontSize: "12pt"}}>Login</NavLink>
                     </button>
                 </div>
 
