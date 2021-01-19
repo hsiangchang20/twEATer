@@ -5,8 +5,9 @@ import { useQuery, useLazyQuery } from "@apollo/client";
 
 export default function Restaurant(props) {
     const restaurantIDs = ["1", "2", "3", "4", "5", "6", "7"];
-    const { id } = props.match.params;
-    const { loading, error, data} = useQuery(RESTAURANT_QUERY, {variables: {name: id}});
+    const { name } = props.match.params;
+    console.log(props)
+    const { loading, error, data} = useQuery(RESTAURANT_QUERY, {variables: {name: name}});
     const [rest, {loading2, data2}] = useLazyQuery(RESTAURANT_QUERY)
     const [restaurant, setRestaurant] = useState('dao')
     useEffect(()=>{
