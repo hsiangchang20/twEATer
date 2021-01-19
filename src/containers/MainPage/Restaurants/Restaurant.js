@@ -16,7 +16,10 @@ export default function Restaurant(props) {
         
         if (data){
             setRestaurant(data.restaurant[0]);
-            setPhoto(data.restaurant[0].posts[0].photo)
+            if (data.restaurant[0].posts[0]){
+                setPhoto(data.restaurant[0].posts[0].photo)
+            }
+            
         }
     })
 
@@ -25,7 +28,7 @@ export default function Restaurant(props) {
             <div className="name">
                 <p>{'< ' + restaurant.name + ' >'}</p>
             </div>
-            <img src={photo}></img>
+            {photo ? <img src={photo}></img> : null}
             <div className="info">
                 <p>Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; {restaurant.type}</p>
                 <p>Telephone&ensp;&nbsp;:&nbsp;&nbsp; {restaurant.tele}</p>
