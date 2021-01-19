@@ -16,8 +16,8 @@ export default function Posts() {
         //console.log(data);
         if (data !== undefined){
             setPosts(data.posts);
+            console.log(data);
         }
-        //console.log(data);
     }, [data])
 
     const Like = useCallback((id) => {

@@ -12,6 +12,7 @@ body.loading .loading-modal {
     text-align: center;
 }
 
+
 .dropzone {
     border: 4px dashed #ccc;
     height: 200px;
