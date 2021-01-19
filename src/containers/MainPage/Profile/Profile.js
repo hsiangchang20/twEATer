@@ -15,7 +15,7 @@ export default function Profile(props){
 		if (data !== undefined){
 			setName(data.users[0].name);
 		}
-		
+		console.log(data)
 	})
 
     return (data === undefined || data.users === undefined) ? <></> : (

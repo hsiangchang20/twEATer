@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import './css/roulette.css'
 import rouletteImg from './image/roulette.png'
 import { Fireworks } from 'fireworks/lib/react'
+import {RESTAURANT_QUERY} from '../../../graphql'
+import {useQuery} from '@apollo/client'
 
 export default function Roulette() {
     // -webkit-animation:spin 1s linear infinite; -moz-animation:spin 1s linear infinite; animation:spin 1s linear infinite;
@@ -10,6 +12,14 @@ export default function Roulette() {
     const [restaurant, SetRestaurant] = useState('')
     const [fireworks, setFireworks] = useState(false)
     const [firstspin, setFirstspin] = useState(true)
+    const { loading, error, data} = useQuery(RESTAURANT_QUERY, {variables: {name: "", type: "", time: "", cost: "", staple: "", location: "", Star: ""}});
+    const [rest, setRest] = useState([])
+
+    useEffect(()=>{
+        console.log(data);
+        if(data)
+            setRest(data.restaurant.map(res=>(res.name)));
+    }, data)
 
     function spinAnimate() {
         SetRestaurant('')
@@ -21,17 +31,17 @@ export default function Roulette() {
     }
 
     function chooseRestaurant(){
-        SetRestaurant('五福餃子')
+        SetRestaurant(rest[Math.floor(Math.random()*Math.floor(rest.length))])
         if (firstspin) {
             setFireworks(true)
-            setInterval(() => setFireworks(false), 5000)
+            setInterval(() => setFireworks(false), 2000)
         }
         setFirstspin(false)
     }
 
     const fxProps = {
         count: 3,
-        interval: 700,
+        interval: 200,
         canvasWidth: window.innerWidth,
         canvasHeight: window.innerHeight,
         colors: ['#cc3333', '#81C784'],
@@ -51,9 +61,13 @@ export default function Roulette() {
                 <img src={rouletteImg} />
             </div>
             <div className="result-wrapper">
-                <button className="result">{restaurant}</button>
+                <button className="result">
+                    <NavLink to={"/restaurant/" + restaurant} className="posts-readmore">
+                        {restaurant}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </NavLink>
+                </button>
             </div>
-            {fireworks ? (<Fireworks {...fxProps}/>) : null}
+            {/* {fireworks ? (<Fireworks {...fxProps}/>) : null} */}
         </div>
     )
 }
