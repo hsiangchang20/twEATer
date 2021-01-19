@@ -14,14 +14,14 @@ export default function PostRender(props) {
     const { loading, error, data, subscribeToMore} = useQuery(ONE_POST_QUERY, {variables: {query: postid}});
     const { data: userdata} = useQuery(USER_QUERY, {variables: {query: userid}});
     const [post, setPost] = useState([]);
+    const [comment, setComment] = useState("");
     const [post_time, setPost_time] = useState("");
     const { data: commentdata, loading2} = useSubscription(COMMENT_SUBSCRIPTION, {variables: {postId: postid}});
     const [username, setUsername] = useState('');
     const [addComment] = useMutation(CREATE_COMMENT_MUTATION);
     const [body, setBody] = useState('');
-    const [comment, setComment] = useState([]);
 
-    const createComment = useCallback(()=>{
+    const submitComment = useCallback(()=>{
         if(body==='') return
         addComment({
             variables: {
@@ -102,23 +102,22 @@ export default function PostRender(props) {
     ));
 
     const mycomment = (
-        <div className="comment">
-            <div className="comment-userdata">
+        <div className="mycomment">
+            <div className="mycomment-userdata">
                 <img src={avocado_pic} alt="IMG" className="userfruit"/>
                 <div>
-                    <h3>銀河眼光子龍</h3><span className="date">{"11:11:11"/*Time(comment.time).toString().slice(4, 24)*/}</span>
+                    <h3>{username}</h3>
                 </div>
             </div>
             <div className="body">
-            <input type="text" placeholder="Allen" />
-                <p className="word">dao</p>
+                <input type="text" placeholder="Click here to respond ..." className="word" onChange={(e) => setBody(e.target.value)} value={body}/>
+                <button className="submit" onClick={submitComment}>
+                    <p>&nbsp;&nbsp;Submit&nbsp;&nbsp;</p>
+                </button>
             </div>
         </div>
     );
 
-    const nothing = (
-        <div></div>
-    )
 
     const postview = (
         <div className="wrap-post1">
@@ -160,5 +159,5 @@ export default function PostRender(props) {
             </div>
         </div>
     )
-    return ( !postid || loading || error || loading2) ? nothing : postview;
+    return ( !postid || loading || error || loading2) ? <></> : postview;
 }

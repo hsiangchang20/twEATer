@@ -10,7 +10,6 @@ import Restaurant from "./Restaurants/Restaurant";
 import Roulette from "./Roulette/Roulette";
 import LoginPage from "./Login/loginPage";
 import Profile from "./Profile/Profile";
-
 import Add from "./Add/Add"
 
 export default function MainPage() {
@@ -25,7 +24,7 @@ export default function MainPage() {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <div className="limiter">
                 <div className="container-background100">
-                    {login ?
+                    {login?
                         (<div>
                             <div id='menu-wrapper'>
                                 <div id='menu'>
@@ -79,7 +78,8 @@ export default function MainPage() {
                                 }
                                 //else console.log(data);
                             }} />
-                        )}
+                        )
+                    }
                 </div>
             </div>
         </div>

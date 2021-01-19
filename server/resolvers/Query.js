@@ -21,7 +21,7 @@ const Query = {
 
     posts(parent, args, {db}, info){
         async function GetPost(){
-            let data = await Post.find()
+            let data = await Post.find().sort({$natural:-1})
             console.log(data);
             return data;
         }
