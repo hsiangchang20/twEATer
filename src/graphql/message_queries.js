@@ -10,6 +10,7 @@ export const MESSAGES_QUERY = gql`
     date
     users{
       name
+      fruit
     }
   }
 `
