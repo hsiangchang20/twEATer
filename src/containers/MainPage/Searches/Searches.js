@@ -64,6 +64,17 @@ export default function Searches(props) {
         )
     );
 
+    const NoData = (
+        <div className="restaurant-container">
+            <div className="restaurant-label">
+                No Corresponding Restaurant Yet!
+            </div>
+            <div className="restaurant-label">
+                Please Add Posts to Help us Build the Society~~~
+            </div>
+        </div>
+    )
+
 
     useEffect(()=>{
         //console.log(data);
@@ -170,9 +181,11 @@ export default function Searches(props) {
                         </div>
                     </div>
                 {restaurantList}
+                {restaurantData.length ? <></> : NoData}
                 </div>
             </form>   
         </div>
+        
     );
 }
 /*

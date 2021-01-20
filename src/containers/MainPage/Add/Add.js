@@ -34,7 +34,10 @@ export default function Add(props){
 
     /*
     const createTweat = useCallback(() => {
-        if (!(tweat_res&&tweat_time&&tweat_people&&tweat_body)) return
+        if (!(tweat_res&&tweat_time&&tweat_people&&tweat_body)) {
+            alert("Please fill in all the required information!")
+            return
+        }
         addTweat({
             variables: {
                 
@@ -54,7 +57,10 @@ export default function Add(props){
     */
 
     const createPost = useCallback(()=>{
-        if (!(images&&restaurant&&body)) return
+        if (!(images&&restaurant&&body)) {
+            alert("Please fill in all the required information!")
+            return
+        }
         addPost({
             variables: {
                 authorID: userid,
@@ -74,6 +80,7 @@ export default function Add(props){
     const createRestaurant = useCallback(()=>{
         if(!(restaurant&&openhours&&type&&address&&tele)) {
             console.log('missing');
+            alert("Please fill in all the required information!")
             return
         }
         addRestaurant({
