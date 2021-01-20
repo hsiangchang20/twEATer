@@ -35,10 +35,10 @@ export default function tweat(props){
                         </tr>
                         <tr className="tweats-container">
                             <td>
-                                ??minutes left
+                                ?? minutes left
                             </td>
                             <td>
-                                ?? Qouta left
+                                ?? Quota left
                             </td>
                         </tr>
                     </tbody>

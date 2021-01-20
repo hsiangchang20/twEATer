@@ -1,5 +1,5 @@
 .wrap-tweat100 {
-    width: 1000px;
+    width: 700px;
     height: auto;
     background: rgb(255, 255, 255);
     border-radius: 50px;
@@ -76,13 +76,18 @@
   }
 
 
+  .tweats-overview table {
+    margin: 0 auto;
+  }
+
+
   .tweats-container-header td{
     margin: 0 auto;
     padding: 0px 0px 0px 0px;
     list-style: none;
     line-height: normal;
     text-align: center;
-    width: 500px;
+    width: 300px;
     font-size: 25px;
     background:#40f708;  
   }
@@ -93,7 +98,7 @@
     list-style: none;
     line-height: normal;
     text-align: center;
-    width: 500px;
+    width: 300px;
     font-size: 25px;
     background: #e6e6e6;
   }
