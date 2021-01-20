@@ -65,6 +65,8 @@ export default function Roulette(props) {
         <div className="roulette-wrapper">
             <div className="btn-wrapper">
                 <button className="btn-roulette" onClick={spinAnimate}>I'M FEELING LUCKY</button>
+                
+                
             </div>
             <div className="rotateImg" style={animation}>
                 <img src={rouletteImg} />

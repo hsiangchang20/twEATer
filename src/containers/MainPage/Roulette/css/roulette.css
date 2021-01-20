@@ -1,7 +1,7 @@
 .roulette-wrapper {
-    width: 800px;
+    width: 1000px;
     margin: 30px auto;
-    padding: 50px 120px;
+    padding: 70px 220px;
     background: #fff;
     min-height: 800px;
     border-radius: 25px;
@@ -19,7 +19,6 @@
   .btn-wrapper {
     vertical-align: middle;
     padding: 0 auto;
-    
   }
 
   .btn-roulette {
