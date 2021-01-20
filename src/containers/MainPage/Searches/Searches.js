@@ -4,18 +4,12 @@ import './css/searches.css'
 import './font-awesome-4.7.0/css/font-awesome.css'
 import {RESTAURANT_QUERY} from '../../../graphql'
 import { useLazyQuery } from "@apollo/client";
+import { getDefaultNormalizer } from "@testing-library/react";
 
-export default function Searches() {
-    const RestaurantIDs = ["1", "2", "3", "4", "5", "6", "7"];
-    const restaurants_list = RestaurantIDs.map((i, index) => (
-        <li key={index}>
-            <NavLink to={"/restaurant/" + i}>
-                Restaurant #{i}
-            </NavLink>
-        </li>
-    ));
-
+export default function Searches(props) {
+    const {userid} = props.match.params;
     const [Search, {loading, data}] = useLazyQuery(RESTAURANT_QUERY);
+    const [restaurantData, setRestaurantData] = useState([])
     const [Restaurant, SetRestaurant] = useState('')
     const [type, setType] = useState('');
     const [time, setTime] = useState('');
@@ -49,9 +43,33 @@ export default function Searches() {
     }
 
 
+    const restaurantList = restaurantData.map(restaurant => (
+        <div className="restaurant-container">
+            <div className="restaurant-title">
+                {restaurant.name}
+            </div>
+            <div className="restaurant-label">
+                Telephone: {restaurant.tele}
+            </div>
+            <div className="restaurant-label">
+                Address: {restaurant.address}
+            </div>
+            <div className="restaurant-label">
+                Openhours: {restaurant.Openhours}
+            </div>
+            <NavLink to={"/restaurant/" + restaurant.name + "/" + userid} className="post-restaurant-info">
+                 查看餐廳資訊
+            </NavLink>
+        </div>
+        )
+    );
+
+
     useEffect(()=>{
-        console.log(data)
-    }, [loading, data])
+        //console.log(data);
+        if (data!==undefined) {setRestaurantData(data.restaurant)}
+        console.log(restaurantData)
+    }, [loading, data, restaurantData])
 
     return (
         <div className="s007">
@@ -151,6 +169,7 @@ export default function Searches() {
                             </div>
                         </div>
                     </div>
+                {restaurantList}
                 </div>
             </form>   
         </div>

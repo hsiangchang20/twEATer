@@ -933,6 +933,7 @@ html {
   .s007 form .inner-form .advance-search {
     background: #fff;
     padding: 40px;
+    margin-bottom: 10px;
     border-radius: 25px;
     box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
   }
@@ -1171,4 +1172,30 @@ transition: all 0.4s;
 .search-input:focus + .focus-input100 + .symbol-input100 {
 color: #57b846;
 padding-left: 28px;
+}
+
+.s007 form .inner-form .restaurant-container {
+  background: #fff;
+  padding: 20px 30px 40px 30px;
+  border-radius: 25px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+}
+
+.s007 form .inner-form .restaurant-container .restaurant-label {
+  font-size: 18px;
+}
+
+.s007 form .inner-form .restaurant-container .restaurant-title {
+  font-size: 25px;
+	font-weight: 900;
+	letter-spacing: 3px;
+  color: #2F3640;
+  text-shadow: 3px 3px #FEDC6B;
+}
+
+.post-restaurant-info {
+	font-size: 20px;
+  font-weight: 600;
+  float: right;
 }

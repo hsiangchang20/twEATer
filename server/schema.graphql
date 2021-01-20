@@ -154,6 +154,7 @@ type Comment {
   authorID: ID!
   time: String!
   _id: ID!
+  user: [User!]!
 }
 
 enum MutationType {
