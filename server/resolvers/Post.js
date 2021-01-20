@@ -15,7 +15,6 @@ const Post = {
     comments(parent, args, {db}, info) {
         async function searchPost(PostID){
             let comment = await Comment.find({PostID: PostID});
-            console.log(comment);
             return comment;
         }
  

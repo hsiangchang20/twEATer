@@ -26,11 +26,21 @@ export const RESTAURANT_QUERY = gql`
         type
         menu
         posts{
+          authorID
+          _id
           body
-            users{
-                name
-            }
+          time
+          restaurant
           photo
+          thumb
+          users{
+            name
+          }
+          comments{
+            Author
+            body
+            time
+          }
         }
     }
   }

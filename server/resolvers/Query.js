@@ -22,7 +22,6 @@ const Query = {
     posts(parent, args, {db}, info){
         async function GetPost(){
             let data = await Post.find().sort({$natural:-1})
-            console.log(data);
             return data;
         }
 
@@ -53,10 +52,10 @@ const Query = {
 
     message(parent, args, {db}, info){
         async function GetMessage(n){
-            let data = await Message.find({$or:[{'sender': n}, {'receiver': n}]});
+            let data = await Message.find();
             return data;
         } 
-        return GetMessage(args.name);
+        return GetMessage(args.author); 
     },  
  
     restaurant(parent, args, {db}, info){
