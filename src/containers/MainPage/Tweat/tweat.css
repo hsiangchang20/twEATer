@@ -1,4 +1,4 @@
-.wrap-tweat100 {
+  .wrap-tweat100 {
     width: 700px;
     height: auto;
     background: rgb(255, 255, 255);
@@ -15,6 +15,19 @@
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 20px 0px 0px 20px;
+  }
+
+  .joined {
+    background: #5cecff;
+  }
+
+  .joined button {
+    background: rgb(255, 187, 0);
+  }
+
+  .joined button:hover {
+    background:rgb(255, 187, 0);
+    cursor: not-allowed;
   }
 
   /*decoration for tweats.js*/

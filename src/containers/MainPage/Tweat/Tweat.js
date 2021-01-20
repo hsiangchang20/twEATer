@@ -59,7 +59,7 @@ export default function Tweat(props){
     }, [subscribeToMore]);
 
     const tweats = tweat.map(tweat => (
-        <div className="wrap-tweat100" key={tweat}>
+        <div className={tweat.follower.includes(userid) ? "wrap-tweat100 joined" : "wrap-tweat100"} key={tweat}>
             <div className="tweats-overview">
                 <div className="tweats-userdata">
                     <img src={fruitlist[tweat.users[0].fruit]} alt="IMG" className="user-fruit"/> 
