@@ -9,22 +9,23 @@ import { FaCommentAlt } from "react-icons/fa"
 import fruits from "../fruits/fruits";
 
 import {ONE_POST_QUERY, POST_SUBSCRIPTION, USER_QUERY, CREATE_COMMENT_MUTATION, COMMENT_SUBSCRIPTION} from '../../../graphql'
-import { useQuery, useLazyQuery, useSubscription, useMutation } from "@apollo/client";
+import { useQuery, useSubscription, useMutation } from "@apollo/client";
 
 export default function PostRender(props) {
     const { postid, userid } = props.match.params;
 
     const { loading, error, data, subscribeToMore, refetch} = useQuery(ONE_POST_QUERY, {variables: {query: postid}});
-    const { data: userdata} = useQuery(USER_QUERY, {variables: {query: userid}});
+    const { data: userdata, refetch: refetchUser} = useQuery(USER_QUERY, {variables: {query: userid}});
     const [post, setPost] = useState([]);
     const [comment, setComment] = useState("");
     const [post_time, setPost_time] = useState("");
-    const { data: commentdata, loading2} = useSubscription(COMMENT_SUBSCRIPTION, {variables: {postId: postid}});
+    const { data: commentdata} = useSubscription(COMMENT_SUBSCRIPTION, {variables: {postId: postid}});
     const [username, setUsername] = useState('');
     const [addComment] = useMutation(CREATE_COMMENT_MUTATION);
     const [body, setBody] = useState('');
     const [init, setInit] = useState(true);
     const [userfruit, setUserfruit] = useState('');
+    const [liked, setLiked] = useState(false);
 
     
 	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
@@ -44,7 +45,6 @@ export default function PostRender(props) {
     })
 
     useEffect(()=>{
-        console.log(data);
         if (data !== undefined){
             setPost(data.posts[0])
             var time = new Date()
@@ -57,10 +57,12 @@ export default function PostRender(props) {
 
     useEffect(()=>{
         if(init){
+            console.log('init')
             refetch();
+            refetchUser();
             setInit(false);
         }
-    })
+    }, [init, refetch, refetchUser])
 
     useEffect(()=>{
         if(commentdata) console.log(commentdata.comment.data);
@@ -70,18 +72,16 @@ export default function PostRender(props) {
             let add = {Author: dao.Author, body: dao.body, time: time.getTime(), user: dao.user}
             setComment([...comment, add])
         }
-    }, commentdata);
+    }, [commentdata, comment]);
 
     useEffect(()=>{
         subscribeToMore({
             document: POST_SUBSCRIPTION,
             updateQuery: (prev,{ subscriptionData }) => {
                 if (!subscriptionData.data) {
-                    console.log('dao');
                     return prev
                 }
                 else {
-                    console.log(subscriptionData)
                     return subscriptionData
                 }
             }
@@ -89,11 +89,13 @@ export default function PostRender(props) {
     }, [subscribeToMore]);
 
     useEffect(()=>{
-        if(userdata){
+        if(userdata&&!init){
+            console.log(userdata);
+            setLiked(userdata.users[0].Like.includes(postid))
             setUsername(userdata.users[0].name);
             setUserfruit(userdata.users[0].fruit);
         }
-    }, userdata);
+    }, [userdata, postid, init]);
 
     const Time = (t) => {
         var time = new Date();
@@ -158,7 +160,8 @@ export default function PostRender(props) {
             </div>
             <div className="post-response">
                 <div className="post-like-number">
-                    <p><FaThumbsUp/>&nbsp;&nbsp;&nbsp;{post.thumb}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    {liked?(<p><FaThumbsUp color="lightblue"/>&nbsp;&nbsp;&nbsp;{post.thumb}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>):
+                    (<p><FaThumbsUp/>&nbsp;&nbsp;&nbsp;{post.thumb}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>)}
                 </div>
                 <div className="post-comment-number">
                     <p><FaCommentAlt/>&nbsp;&nbsp;{ (post.comments !== undefined) ? post.comments.length : " "}
@@ -174,5 +177,5 @@ export default function PostRender(props) {
             </div>
         </div>
     )
-    return ( !postid || loading || error || loading2) ? <></> : postview;
+    return ( !postid || loading || error) ? <></> : postview;
 }
