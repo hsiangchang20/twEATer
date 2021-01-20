@@ -2,8 +2,20 @@
 
 /* Imgur Upload Style */
 
+pre, body {
+    font-family: 'Poppins-Regular';
+}
+
 body.loading .loading-modal {
     display: block
+}
+
+.App {
+    width: 1000px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
 .title {
@@ -38,7 +50,7 @@ body.loading .loading-modal {
     height: 100%;
     left: 0;
     outline: 0;
-    opacity: 0;
+    opacity: 1;
     position: absolute;
     top: 0;
     width: 100%
@@ -84,4 +96,81 @@ body.loading .loading-modal {
 
 .app::-webkit-scrollbar {
     display: none;
+}
+
+.add-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.add-label {
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'Poppins-Regular';
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.add-input {
+    transition: all 0.6s;
+}
+
+.add-input:focus {
+    border: solid 2px #333333;
+    background: #e6e6e6;
+}
+
+.add-select {
+    background: transparent;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 2px solid #ccc;
+    height: 40px;
+    color: #000;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    padding: 0;
+    padding-right: 30px;
+    font-size: 18px;
+    margin: 10px auto;
+    font-family: 'Poppins-Regular';
+}
+
+.add-select option {
+    color: #57b846;
+    transition: all 0.6s;
+}
+
+.add-btn-container {
+    margin: 20px auto 0 auto;
+    text-align: center;
+}
+
+.add-submit-btn {
+    min-width: 100px;
+    height: 40px;
+    padding: 0 15px;
+    background: #57b846;
+    white-space: nowrap;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #fff;
+    transition: all .2s ease-out, color .2s ease-out;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+  
+.add-submit-btn:hover {
+    background: #333333;
+  }
+  
+
+.add-uploadfile {
+    display: transparent
 }

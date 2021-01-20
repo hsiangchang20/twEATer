@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import './css/searches.css'
-import searchLogo from './image/search.PNG'
+import './font-awesome-4.7.0/css/font-awesome.css'
 import {RESTAURANT_QUERY} from '../../../graphql'
 import { useLazyQuery } from "@apollo/client";
 
@@ -48,6 +48,7 @@ export default function Searches() {
         setStar(event.target.value)
     }
 
+
     useEffect(()=>{
         console.log(data)
     }, [loading, data])
@@ -58,25 +59,28 @@ export default function Searches() {
                 <div className="inner-form">
                     <div className="basic-search">
                         <div className="input-field">
-                            <div className="icon-wrap">
-                                <img src={searchLogo} />
-                            </div>
                             <input  className='search-input' 
                                     type="text" 
                                     placeholder="Search..." 
                                     value={Restaurant} 
                                     onChange={(e)=>{ SetRestaurant(e.target.value)} }
                             />
-                            <span className="focus-input100"></span>
+                            <div className="focus-input100"></div>
+                            <span className="symbol-input100">
+                                <i className="fa fa-search" aria-hidden="true"></i>
+                            </span>
                         </div>
                     </div>
                     <div className="advance-search">
+                    <link 
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" 
+                        rel="stylesheet"  type='text/css'/>
                         <span className="desc">Advanced Search</span>
                         <div className="row">
                             <div className="input-field">
                                 <div className="input-select">
-                                    <select data-trigger="" className="choices__inner" onChange={selectType}>
-                                        <option placeholder="" value="">TYPE</option>
+                                    <select data-trigger="" className="choices__inner fa" onChange={selectType}>
+                                        <option placeholder="" value="">&#xf1b1; TYPE</option>
                                         <option>Taiwanese</option>
                                         <option>American</option>
                                         <option>Japanese</option>
@@ -86,8 +90,8 @@ export default function Searches() {
                             </div>
                             <div className="input-field">
                                 <div className="input-select">
-                                    <select data-trigger="" className="choices__inner" onChange={selectTime}>
-                                        <option placeholder="" value="">TIME</option>
+                                    <select data-trigger="" className="choices__inner fa" onChange={selectTime}>
+                                        <option placeholder="" value="">&#xf017; TIME</option>
                                         <option>Breakfast</option>
                                         <option>Lunch</option>
                                         <option>Dinner</option>
@@ -96,8 +100,8 @@ export default function Searches() {
                             </div>
                             <div className="input-field">
                                 <div className="input-select">
-                                <select data-trigger="" className="choices__inner" onChange={selectCost}>
-                                    <option placeholder="" value="">COST</option>
+                                <select data-trigger="" className="choices__inner fa" onChange={selectCost}>
+                                    <option placeholder="" value="">&#xf155; COST</option>
                                     <option>Under $100</option>
                                     <option>$100~$200</option>
                                     <option>$200~$300</option>
@@ -109,8 +113,8 @@ export default function Searches() {
                         <div className="row second">
                             <div className="input-field">
                                 <div className="input-select">
-                                    <select data-trigger="" className="choices__inner" onChange={selectStaple}>
-                                        <option placeholder="" value="">Staple</option>
+                                    <select data-trigger="" className="choices__inner fa" onChange={selectStaple}>
+                                        <option placeholder="" value="">&#xf0f4; STAPLE</option>
                                         <option>Rice</option>
                                         <option>Noodle</option>
                                         <option>Others</option>
@@ -119,8 +123,8 @@ export default function Searches() {
                             </div>
                             <div className="input-field">
                                 <div className="input-select">
-                                    <select data-trigger="" className="choices__inner" onChange={selectLocation}>
-                                        <option placeholder="" value="">Location</option>
+                                    <select data-trigger="" className="choices__inner fa" onChange={selectLocation}>
+                                        <option placeholder="" value="">&#xf024; LOCATION</option>
                                         <option>Taiwan</option>
                                         <option>South Africa</option>
                                         <option>Republic of Sierra Leone</option>
@@ -129,8 +133,8 @@ export default function Searches() {
                             </div>
                             <div className="input-field">
                                 <div className="input-select">
-                                    <select data-trigger="" className="choices__inner" onChange={selectStar}>
-                                        <option placeholder="" value="">Star</option>
+                                    <select data-trigger="" className="choices__inner fa" onChange={selectStar}>
+                                        <option placeholder="" value="">&#xf005; STAR</option>
                                         <option>5</option>
                                         <option>3~5</option>
                                         <option>Under 3</option>

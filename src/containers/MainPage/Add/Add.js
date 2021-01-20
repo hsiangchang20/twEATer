@@ -3,6 +3,7 @@ import { Form, FormGroup, Label, CustomInput, Button, Input, Row, Col } from "re
 import { NavLink } from "react-router-dom";
 import './css/style.css'
 import './css/mobile-style.css'
+import './font-awesome-4.7.0/css/font-awesome.css'
 import post from "../../../components/Post/Post";
 import { CREATE_POST_MUTATION, CREATE_RESTAURANT_MUTATION, USER_QUERY } from '../../../graphql'
 import { useMutation, useQuery } from "@apollo/client";
@@ -142,18 +143,22 @@ export default function Add(props){
 
     return (
         <div className="App">
-            <Form>
+            <link 
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" 
+                rel="stylesheet"  type='text/css'/>
+            <div>
                 <FormGroup>
-                    <Label>You Want To Add?</Label>
-                    <Input type="select" name="select" id="exampleSelectMulti" onChange={selected}>
+                    <div><p className="add-title">You Want To Add?</p></div>
+                    <select className="add-select" type="select" name="select" id="exampleSelectMulti" onChange={selected}>
                         <option>Type</option>
                         <option>Restaurant</option>
                         <option>Post</option>
-                    </Input>
+                    </select>
                 </FormGroup>
                 {state==='Post'? (<FormGroup>
-                    <Label for="fileBrowser">File (Up to 10MB)</Label>
-                    <Input
+                    <Label className="add-label" for="fileBrowser">File (Up to 10MB)</Label>
+                    <input
+                        className="add-uploadfile"
                         type="file"
                         multiple="multiple"
                         id="fileBrowser"
@@ -170,28 +175,30 @@ export default function Add(props){
                 )}
                 {state==='Post'? ( <>
                     <FormGroup>
-                        <Label>Restaurant</Label>
-                        <Input  placeholder="Restaurant" 
+                        <Label className="add-label">Restaurant</Label>
+                        <Input className="add-input" placeholder="Restaurant" 
                                 onChange={(e) => setRestaurant(e.target.value)}
                                 value={restaurant}
                                 style={{ marginBottom: 10 }}
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label>Article</Label>
-                        <Input  type="textarea" 
+                        <Label className="add-label">Article</Label>
+                        <Input className="add-input" type="textarea" 
                                 name="text" 
                                 placeholder="Article" 
                                 onChange={(e) => setBody(e.target.value)}
                                 value={body}
                         />
                     </FormGroup>
-                    <Button onClick={createPost}>Submit</Button>
+                    <div className="add-btn-container">
+                        <Button className="add-submit-btn" onClick={createPost}>Submit</Button>
+                    </div>
                 </>): ""}
                 {state==='Restaurant'? ( <>
                     <FormGroup>
-                        <Label>Restaurant</Label>
-                        <Input  placeholder="Restaurant" 
+                        <Label className="add-label">Restaurant</Label>
+                        <Input className="add-input" placeholder="Name" 
                                 onChange={(e) => setRestaurant(e.target.value)}
                                 value={restaurant}
                                 style={{ marginBottom: 10 }}
@@ -200,9 +207,8 @@ export default function Add(props){
                     <Row>
                     <Col md={4}>
                     <FormGroup>
-                        <Label>Type</Label>
-                        <Input  type="select" placeholder="Type" onChange={selectType} style={{ marginBottom: 10 }}>
-                            <option placeholder="" value="">TYPE</option>
+                        <Input className="add-select fa" type="select" placeholder="Type" onChange={selectType} style={{ marginBottom: 10 }}>
+                            <option placeholder="" value="">&#xf1b1; TYPE</option>
                             <option>Taiwanese</option>
                             <option>American</option>
                             <option>Japanese</option>
@@ -212,9 +218,8 @@ export default function Add(props){
                     </Col>
                     <Col md={4}>
                     <FormGroup>
-                        <Label>Time</Label>
-                        <Input  type="select" placeholder="Time" onChange={selectTime} style={{ marginBottom: 10 }}>
-                            <option placeholder="" value="">TIME</option>
+                        <Input className="add-select fa" type="select" placeholder="Time" onChange={selectTime} style={{ marginBottom: 10 }}>
+                            <option placeholder="" value="">&#xf017; TIME</option>
                             <option>Breakfast</option>
                             <option>Lunch</option>
                             <option>Dinner</option>
@@ -223,9 +228,8 @@ export default function Add(props){
                     </Col>
                     <Col md={4}>
                     <FormGroup>
-                        <Label>Cost</Label>
-                        <Input  type="select" placeholder="Cost" onChange={selectCost} style={{ marginBottom: 10 }}>
-                            <option placeholder="" value="">COST</option>
+                        <Input className="add-select fa" type="select" placeholder="Cost" onChange={selectCost} style={{ marginBottom: 10 }}>
+                            <option placeholder="" value="">&#xf155; COST</option>
                             <option>Under $100</option>
                             <option>$100~$200</option>
                             <option>$200~$300</option>
@@ -237,9 +241,8 @@ export default function Add(props){
                     <Row>
                     <Col md={4}>
                     <FormGroup>
-                        <Label>Staple</Label>
-                        <Input  type="select" placeholder="Staple" onChange={selectStaple} style={{ marginBottom: 10 }}>
-                            <option placeholder="" value="">Staple</option>
+                        <Input className="add-select fa" type="select" placeholder="Staple" onChange={selectStaple} style={{ marginBottom: 10 }}>
+                            <option placeholder="" value="">&#xf0f4; STAPLE</option>
                             <option>Rice</option>
                             <option>Noodle</option>
                             <option>Others</option>
@@ -248,9 +251,8 @@ export default function Add(props){
                     </Col>
                     <Col md={4}>
                     <FormGroup>
-                        <Label>Location</Label>
-                        <Input  type="select" placeholder="Location" onChange={selectLocation} style={{ marginBottom: 10 }}>
-                            <option placeholder="" value="">Location</option>
+                        <Input className="add-select fa" type="select" placeholder="Location" onChange={selectLocation} style={{ marginBottom: 10 }}>
+                            <option placeholder="" value="">&#xf024; LOCATION</option>
                             <option>Taiwan</option>
                             <option>South Africa</option>
                             <option>Republic of Sierra Leone</option>
@@ -259,9 +261,8 @@ export default function Add(props){
                     </Col>
                     <Col md={4}>
                     <FormGroup>
-                        <Label>Star</Label>
-                        <Input  type="select" placeholder="Star" onChange={selectStar} style={{ marginBottom: 10 }}>
-                            <option placeholder="" value="">Star</option>
+                        <Input className="add-select fa" type="select" placeholder="Star" onChange={selectStar} style={{ marginBottom: 10 }}>
+                            <option placeholder="" value="">&#xf005; STAR</option>
                             <option>5</option>
                             <option>3~5</option>
                             <option>Under 3</option>
@@ -270,32 +271,37 @@ export default function Add(props){
                     </Col>
                     </Row>
                     <FormGroup>
-                        <Label>Openhours</Label>
-                        <Input  placeholder="Type" 
+                        <Label className="add-label">Openhours</Label>
+                        <Input  className="add-input"
+                                placeholder="Type" 
                                 onChange={(e) => setOpenhours(e.target.value)}
                                 value={openhours}
                                 style={{ marginBottom: 10 }}
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label>Address</Label>
-                        <Input  placeholder="Type" 
+                        <Label className="add-label">Address</Label>
+                        <Input  className="add-input"
+                                placeholder="Type" 
                                 onChange={(e) => setAddress(e.target.value)}
                                 value={address}
                                 style={{ marginBottom: 10 }}
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label>Telephone</Label>
-                        <Input  placeholder="Type" 
+                        <Label className="add-label">Telephone</Label>
+                        <Input  className="add-input"
+                                placeholder="Type" 
                                 onChange={(e) => setTele(e.target.value)}
                                 value={tele}
                                 style={{ marginBottom: 10 }}
                         />
                     </FormGroup>
-                    <Button onClick={createRestaurant}>Submit</Button>
+                    <div className="add-btn-container">
+                        <Button className="add-submit-btn" onClick={createRestaurant}>Submit</Button>
+                    </div>
                 </>): ""}
-            </Form>
+            </div>
         </div>
     );
 }

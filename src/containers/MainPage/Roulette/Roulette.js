@@ -21,7 +21,7 @@ export default function Roulette(props) {
         console.log(data);
         if(data)
             setRest(data.restaurant.map(res=>(res.name))); 
-    }, data)
+    }, [data])
 
     useEffect(()=>{
         if(init){

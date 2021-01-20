@@ -221,7 +221,7 @@ function LoginPage(props) {
                     </div>
                     <div className="text-center p-t-20">
                         <button onClick={() => {setCreate(true)}}>
-                            <a to="/create" href="#" className="txt2">Create your Account{"  "}<i className="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            <a href="#" className="txt2">Create your Account{"  "}<i className="fa fa-arrow-right" aria-hidden="true"></i></a>
                         </button>
                     </div>
                 </form>
@@ -276,43 +276,43 @@ function LoginPage(props) {
                     </div>
                     <div className="txt1 choose-fruit">
                         <span style={{color: "black"}}>Choose Your Favorite Fruit: </span><br/>
-                        <button className="button-fruit" style={{border: border1}} onClick={() => {
+                        <button type="button" className="button-fruit" style={{border: border1}} onClick={() => {
                             setBorder(1)
                             setFruit(1)
                         }}><img src={watermelon}/></button>
-                        <button className="button-fruit" style={{border: border2}} onClick={() => {
+                        <button type="button" className="button-fruit" style={{border: border2}} onClick={() => {
                             setBorder(2)
                             setFruit(2)
                         }}><img src={cherry}/></button>
-                        <button className="button-fruit" style={{border: border3}} onClick={() => {
+                        <button type="button" className="button-fruit" style={{border: border3}} onClick={() => {
                             setBorder(3)
                             setFruit(3)
                         }}><img src={strawberry}/></button>
-                        <button className="button-fruit" style={{border: border4}} onClick={() => {
+                        <button type="button" className="button-fruit" style={{border: border4}} onClick={() => {
                             setBorder(4)
                             setFruit(4)
                         }}><img src={apple}/></button>
-                        <button className="button-fruit" style={{border: border5}} onClick={() => {
+                        <button type="button" className="button-fruit" style={{border: border5}} onClick={() => {
                             setBorder(5)
                             setFruit(5)
                         }}><img src={lemon}/></button>
-                        <button className="button-fruit" style={{border: border6}} onClick={() => {
+                        <button type="button" className="button-fruit" style={{border: border6}} onClick={() => {
                             setBorder(6)
                             setFruit(6)
                         }}><img src={peach}/></button>
-                        <button className="button-fruit" style={{border: border7}} onClick={() => {
+                        <button type="button" className="button-fruit" style={{border: border7}} onClick={() => {
                             setBorder(7)
                             setFruit(7)
                         }}><img src={kiwi}/></button>
-                        <button className="button-fruit" style={{border: border8}} onClick={() => {
+                        <button type="button" className="button-fruit" style={{border: border8}} onClick={() => {
                             setBorder(8)
                             setFruit(8)
                         }}><img src={orange}/></button>
-                        <button className="button-fruit" style={{border: border9}} onClick={() => {
+                        <button type="button" className="button-fruit" style={{border: border9}} onClick={() => {
                             setBorder(9)
                             setFruit(9)
                         }}><img src={pineapple}/></button>
-                        <button className="button-fruit" style={{border: border10}} onClick={() => {
+                        <button type="button" className="button-fruit" style={{border: border10}} onClick={() => {
                             setBorder(10)
                             setFruit(10)
                         }}><img src={avocado}/></button>
