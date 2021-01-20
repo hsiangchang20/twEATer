@@ -87,7 +87,7 @@ export default function Restaurant(props) {
     return (loading || error) ? (<></>) : (
         <>
             {restaurant_view}
-            <p className="view-posts">&nbsp;&nbsp;&nbsp;Relating Posts:</p>
+            {(restaurant.posts && restaurant.posts.length !== 0) ? (<p className="view-posts">&nbsp;&nbsp;&nbsp;Relating Posts:</p>) : <></>}
             {posts_list}
         </>
     );

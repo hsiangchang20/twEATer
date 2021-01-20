@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import './posts.css';
-import avocado_pic from "../../../components/Images/avocado.png";
+//import avocado_pic from "../../../components/Images/avocado.png";
 
 import fruits from "../fruits/fruits";
 
@@ -15,8 +15,9 @@ export default function Posts(props) {
     const [posts, setPosts] = useState([]);
     const [like] = useMutation(LIKE_MUTATION);
     const [init, setInit] = useState(true)
-
-    const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
+    
+	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
+	const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
     
     useEffect( ()=> {
         //console.log(data);
@@ -56,7 +57,7 @@ export default function Posts(props) {
         <div className="wrap-post100" key={post.time}>
             <div className="posts-overview">
                 <div className="posts-userdata">
-                    <img src={avocado_pic} alt="IMG" className="user-fruit"/> 
+                    <img src={fruitlist[post.users[0].fruit]} alt="IMG" className="user-fruit"/> 
                     <div>
                         <p>{post.users[0].name}</p>
                     </div>

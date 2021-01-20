@@ -40,6 +40,8 @@ export default function Profile(props){
     const [border9, setBorder9] = useState('');
     const [border10, setBorder10] = useState('');
 	const [fruit, setFruit] = useState(0);
+	const [newfruit, setNewfruit] = useState(0);
+	const [newusername, setNewusername] = useState('');
 	
 	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
 	const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
@@ -69,7 +71,7 @@ export default function Profile(props){
 	
 	const mutateUser = () => {
 		if (editing){
-			if (!username || !emailname) {
+			if (!newusername || !emailname) {
 				alert("Please fill in all the required information!")
 			}
 	
@@ -85,25 +87,25 @@ export default function Profile(props){
 				alert("The password should have at least 8 characters!")
 			}
 	
-			else if (!fruit) {
+			else if (!newfruit) {
 				alert("Please select a fruit as your twEATer icon")
 			}
 			
 			else {
-				setEditing(false)
+				setEditing(false)		
+				setName(newusername)
+				setFruit(newfruit)
 			}
 			
 			
-			console.log(username)
+			console.log(newusername)
 			console.log(emailname)
 			console.log(passwordname)
 			//console.log(confirmPw)
-			console.log(fruit)
+			console.log(newfruit)
 		}
 		else {
 			setEditing(!editing)
-			setFruit(fruit)
-			setName(username)
 		}
     }
 
@@ -115,7 +117,7 @@ export default function Profile(props){
 			setFruit(data.users[0].fruit);
 		}
 		console.log(data)
-	})
+	}, [data])
 	/*
 	const old_profile_edit = (
 		<div>
@@ -144,8 +146,8 @@ export default function Profile(props){
 			<div className="wrap-input100">
 				<input  className="input100"
 						placeholder={"Username"}
-						value={username}
-						onChange={(e)=>{setUsername(e.target.value)}}
+						value={newusername}
+						onChange={(e)=>{setNewusername(e.target.value)}}
 				/>
 				<span className="focus-input100"></span>
 				<span className="symbol-input100">
@@ -189,43 +191,43 @@ export default function Profile(props){
 				<span style={{color: "black"}}>Choose Your Favorite Fruit: </span><br/>
 				<button type="button" className="button-fruit" style={{border: border1}} onClick={() => {
 					setBorder(1)
-					setFruit(1)
+					setNewfruit(1)
 				}}><img src={watermelon}/></button>
 				<button type="button" className="button-fruit" style={{border: border2}} onClick={() => {
 					setBorder(2)
-					setFruit(2)
+					setNewfruit(2)
 				}}><img src={cherry}/></button>
 				<button type="button" className="button-fruit" style={{border: border3}} onClick={() => {
 					setBorder(3)
-					setFruit(3)
+					setNewfruit(3)
 				}}><img src={strawberry}/></button>
 				<button type="button" className="button-fruit" style={{border: border4}} onClick={() => {
 					setBorder(4)
-					setFruit(4)
+					setNewfruit(4)
 				}}><img src={apple}/></button>
 				<button type="button" className="button-fruit" style={{border: border5}} onClick={() => {
 					setBorder(5)
-					setFruit(5)
+					setNewfruit(5)
 				}}><img src={lemon}/></button>
 				<button type="button" className="button-fruit" style={{border: border6}} onClick={() => {
 					setBorder(6)
-					setFruit(6)
+					setNewfruit(6)
 				}}><img src={peach}/></button>
 				<button type="button" className="button-fruit" style={{border: border7}} onClick={() => {
 					setBorder(7)
-					setFruit(7)
+					setNewfruit(7)
 				}}><img src={kiwi}/></button>
 				<button type="button" className="button-fruit" style={{border: border8}} onClick={() => {
 					setBorder(8)
-					setFruit(8)
+					setNewfruit(8)
 				}}><img src={orange}/></button>
 				<button type="button" className="button-fruit" style={{border: border9}} onClick={() => {
 					setBorder(9)
-					setFruit(9)
+					setNewfruit(9)
 				}}><img src={pineapple}/></button>
 				<button type="button" className="button-fruit" style={{border: border10}} onClick={() => {
 					setBorder(10)
-					setFruit(10)
+					setNewfruit(10)
 				}}><img src={avocado}/></button>
 			</div>
 		</form>
@@ -236,7 +238,7 @@ export default function Profile(props){
 			<div className="container">
 				<div className="row">
 					<div className="col-md-12 col-sm-12">
-						<img src={fruitlist[fruit]} className="img-responsive img-circle tm-border" alt="templatemo easy profile" />
+						<img src={fruitlist[fruit]} className="img-responsive img-circle tm-border" alt="慘了" />
 						<hr/>
 						{editing ? <div className="edit-container">{profile_edit}</div> : (
 								<>
