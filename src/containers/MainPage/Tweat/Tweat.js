@@ -84,10 +84,17 @@ export default function Tweat(props){
                         </tr>
                         <tr className="tweats-container">
                             <td>
+<<<<<<< HEAD
                                 {tweat.date}
                             </td>
                             <td>
                                 {tweat.follower.length} / {tweat.limit}
+=======
+                                ?? minutes left
+                            </td>
+                            <td>
+                                ?? Quota left
+>>>>>>> 1dd765a914f35491b7015a5f79d9c47252b75623
                             </td>
                         </tr>
                     </tbody>

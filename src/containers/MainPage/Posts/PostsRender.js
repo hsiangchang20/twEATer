@@ -104,7 +104,7 @@ export default function PostRender(props) {
     }
 
     const comments = (comment === [])||!comment ? " " : comment.map(comment => (
-        <div className="comment" key = {comment}>
+        <div className="comment" key = {comment.time}>
             <div className="comment-userdata">
                 <img src={fruitlist[comment.user[0].fruit]} alt="IMG" className="userfruit"/>
                 <div>
@@ -159,7 +159,7 @@ export default function PostRender(props) {
             </div>
             <div className="post-response">
                 <div className="post-like-number">
-                    {liked?(<p><FaThumbsUp color="lightblue"/>&nbsp;&nbsp;&nbsp;{post.thumb}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>):
+                    {liked?(<p><FaThumbsUp color="lightgreen"/>&nbsp;&nbsp;&nbsp;{post.thumb}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>):
                     (<p><FaThumbsUp/>&nbsp;&nbsp;&nbsp;{post.thumb}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>)}
                 </div>
                 <div className="post-comment-number">

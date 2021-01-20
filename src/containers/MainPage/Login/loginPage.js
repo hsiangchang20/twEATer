@@ -68,11 +68,22 @@ function LoginPage(props) {
     }
 
     useEffect( ()=> {
+<<<<<<< HEAD
         if(data && click)
             console.log(data.login.name);
         props.onClick(data);
         setClick(false)
     }, [data, click])
+=======
+        if(data){
+            console.log(data.login._id);
+            props.onClick(data);
+        }
+        else{
+            console.log('daodaodao')
+        }
+    }, [data])
+>>>>>>> 1dd765a914f35491b7015a5f79d9c47252b75623
 
     useEffect( ()=> {
         console.log(email, password);
