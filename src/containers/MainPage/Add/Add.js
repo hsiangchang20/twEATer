@@ -5,7 +5,7 @@ import './css/style.css'
 import './css/mobile-style.css'
 import './font-awesome-4.7.0/css/font-awesome.css'
 import post from "../../../components/Post/Post";
-import { CREATE_POST_MUTATION, CREATE_RESTAURANT_MUTATION, USER_QUERY } from '../../../graphql'
+import { CREATE_POST_MUTATION, CREATE_RESTAURANT_MUTATION, USER_QUERY, CREATE_MESSAGE_MUTATION } from '../../../graphql'
 import { useMutation, useQuery } from "@apollo/client";
 
 export default function Add(props){
@@ -31,19 +31,17 @@ export default function Add(props){
     const [tweat_body, setTweat_body] = useState('');
     const [addPost] = useMutation(CREATE_POST_MUTATION);
     const [addRestaurant] = useMutation(CREATE_RESTAURANT_MUTATION);
+    const [addTweat] = useMutation(CREATE_MESSAGE_MUTATION)
 
-    /*
     const createTweat = useCallback(() => {
         if (!(tweat_res&&tweat_time&&tweat_people&&tweat_body)) return
         addTweat({
             variables: {
-                
-                //authorID: userid,
-                //餐廳:tweat_res
-                //內文:tweat_body
-                //人數:tweat_people
-                //時間:tweat_time
-                
+                author: userid,
+                restaurant:tweat_res,
+                body:tweat_body,
+                limit:parseInt(tweat_people, 10),
+                date:tweat_time
             }
         });
         setTweat_body('');
@@ -51,7 +49,6 @@ export default function Add(props){
         setTweat_res('');
         setTweat_time('');
     })
-    */
 
     const createPost = useCallback(()=>{
         if (!(images&&restaurant&&body)) return
@@ -376,7 +373,7 @@ export default function Add(props){
                         />
                     </FormGroup>
                     <div className="add-btn-container">
-                        <Button className="add-submit-btn" onClick={/*createTweat*/console.log("createtweat")}>Submit</Button>
+                        <Button className="add-submit-btn" onClick={createTweat}>Submit</Button>
                     </div>
                     </>): ""}
             </div>

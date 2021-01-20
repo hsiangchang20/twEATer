@@ -87,7 +87,7 @@ export default function Tweat(props){
                                 {tweat.date}
                             </td>
                             <td>
-                                {tweat.follower.length} / {tweat.limit}
+                                {tweat.follower.length+1} / {tweat.limit}
                             </td>
                         </tr>
                     </tbody>
@@ -100,7 +100,7 @@ export default function Tweat(props){
                         {(tweat.follower.length<tweat.limit)&&!(tweat.follower.includes(userid))?(<button onClick={()=>followTweat(tweat._id)} className="tweats-btn">
                             <p>Join</p>
                         </button>): ""}
-                        {tweat.follower.includes(userid)? (<button className="tweats-btn">
+                        {(tweat.follower.includes(userid)||tweat.users[0].name===userName)? (<button className="tweats-btn">
                             <p>joined</p>
                         </button>):""}
                     </div>
