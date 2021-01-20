@@ -20,7 +20,7 @@ export default function Roulette(props) {
     useEffect(()=>{
         console.log(data);
         if(data)
-            setRest(data.restaurant.map(res=>(res.name)));
+            setRest(data.restaurant.map(res=>(res.name))); 
     }, data)
 
     useEffect(()=>{

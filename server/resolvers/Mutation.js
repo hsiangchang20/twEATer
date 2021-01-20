@@ -79,10 +79,20 @@ const Mutation = {
     },
     sendMessage(parent, args, {pubsub}, info){
         const message = {
+            _id: uuidv4(),
             ...args.data
         };
-        Message.insertMany(message);
+        Message.insertMany(message); 
         return message;
+    },
+    deleteMessage(parent, args, {db}, info){
+        async function Delete(id){
+            let toDelete = await Message.find({author: id});
+            await Message.deleteMany();
+            return toDelete[0];
+        }  
+
+        return Delete(args.author);
     },
     createRestaurant(parent, args, {pubsub}, info){
         console.log(args.data);
@@ -97,7 +107,7 @@ const Mutation = {
                 console.log(Created);
                 await restaurant.deleteMany({name: data.name});
             }
-            restaurant.insertMany(rest); 
+            restaurant.insertMany(rest);
             return rest;
         }
 
@@ -145,7 +155,18 @@ const Mutation = {
             }
         })
         return comment;
-
+    },
+    follow(parent, args, {pubsub}, info){
+        async function follow(id, follower, name){
+            let data = await Message.find({_id: id});
+            console.log(data)
+            data[0].follower.push(follower);
+            data[0].followerName.push(name)
+            await Message.updateMany({_id: id}, {follower: data[0].follower, followerName: data[0].followerName});
+            console.log(data[0].follower);
+            return data;
+        }
+        return follow(args.id, args.follower, args.followerName); 
     }
 }
 

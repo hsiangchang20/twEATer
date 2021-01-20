@@ -3,7 +3,11 @@ const Schema = mongoose.Schema
 
 // Creating a schema, sort of like working with an ORM
 const MessageSchema = new Schema({
-	sender: {
+	_id:{
+		type: String,
+		required: [true, 'ID field is required.']
+	},
+	author: {
 		type: String,
 		required: [true, 'Name field is required.']
 	},
@@ -14,10 +18,20 @@ const MessageSchema = new Schema({
 	time: {
         type: Date,
         default: Date.now
-    },
-	receiver: {
+	},
+	restaurant: {
 		type: String,
-		required: [true, 'receiver field is required.']
+		require: [true, 'Restaurant is required']
+	},
+	date: {
+		type: String,
+		require: [true, 'date is required']
+	},
+	follower: {
+		type: [String] 
+	},
+	followerName: {
+		type: [String]
 	}
 })
 

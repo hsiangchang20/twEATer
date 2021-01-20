@@ -3,7 +3,7 @@ type Query {
   posts(query: String): [Post!]!
   login(data: loginInput!): User!
   comments: [Comment!]!
-  message(name: String!): [Message!]!
+  message(author: String): [Message!]!
   me: User!
   post: Post!
   restaurant(name: String!, type: String, time: String, cost: String, staple: String, location: String, Star: String): [Restaurant!]!
@@ -20,10 +20,12 @@ type Mutation {
   deleteComment(id: ID!): Comment!
   updateComment(id: ID!, data: UpdateCommentInput!): Comment!
   sendMessage(data: CreateMessageInput!): Message! 
+  deleteMessage(author: ID!): Message!
 
   createRestaurant(data: createRestaurantInput!): Restaurant!
   deleteRestaurant(name: String!): Restaurant!
   Like(PostID: String!): [Post!]!
+  follow(id: ID!, follower: ID!, followerName: String!): [Message!]
 }
 
 type Subscription {
@@ -47,9 +49,10 @@ input createRestaurantInput {
 }
 
 input CreateMessageInput {
-  sender: String!
+  author: ID!
   body: String!
-  receiver: String!
+  restaurant: String!
+  date: String!
 }
 
 input loginInput {
@@ -117,9 +120,14 @@ type Post {
 }
 
 type Message {
-  sender: String!
-  receiver: String!
+  _id: ID!
+  author: ID!
+  follower: [ID!]
+  followerName: [String!]
   body: String!
+  date: String!
+  restaurant: String!
+  users: [User!]
 }
 
 type Restaurant {
