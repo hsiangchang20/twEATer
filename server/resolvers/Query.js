@@ -41,7 +41,7 @@ const Query = {
             
             if(user.length===0){
                 console.log(uselessUser);
-                return uselessUser[0];
+                return uselessUser[0]
             }
             else{
                 console.log(user);
@@ -62,7 +62,7 @@ const Query = {
     restaurant(parent, args, {db}, info){
         async function GetRestaurantData(rest){
             let data = undefined
-            if(rest.name!=='') {data = await restaurant.find( { name: rest.name, })}
+            if(rest.name!=='') {data = await restaurant.find( { name: { "$regex": rest.name, "$options": "i" } })}
             else if(rest.time===''&&rest.type===''&&rest.cost===''&&rest.staple===''&&rest.location===''&&rest.Star===''){
                 data = await restaurant.find();
             }
