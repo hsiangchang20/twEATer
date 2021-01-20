@@ -1,6 +1,6 @@
 .roulette-wrapper {
     width: 800px;
-    margin: 30px auto;
+    margin: 30px auto 0px auto;
     padding: 50px 120px;
     background: #fff;
     min-height: 800px;
@@ -10,41 +10,53 @@
 .rotateImg img{
     width: 500px;
     height: 500px;
-    margin: 30px 30px;
+    margin: 0 30px;
   }
   @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
   @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
   @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
   .btn-wrapper {
-    vertical-align: middle;
+    vertical-align: center;
     padding: 0 auto;
-    
+    margin: 0 auto;   
   }
 
   .btn-roulette {
-    height: 80px;
-    min-width: 500px;
+    height: 60px;
+    min-width: 350px;
     background: #40f708;
     white-space: nowrap;
     border-radius: 25px;
     font-size: 30px;
     font-family: Poppins-Regular;
-    color: #000;
+    color: rgb(255, 255, 255);
     transition: all .2s ease-out, color .2s ease-out;
     cursor: pointer;
     font-weight: bold;
-    margin: 0 30px;
+    margin: 0 105px;
   }
 
   .btn-roulette:hover {
-    background: #e71a1a;
+    background: #727171;
   }
   
-  .result-wrapper {  
-    border-bottom: solid 1px #383737;
+  #result-wrapper {  
+    position: relative;
     margin: 0 auto;
     text-align: center;
+    transition: all 0.6s;
+    position: relative;
+  }
+
+  @-webkit-keyframes moving {
+    from {top: 0px;}
+    to {top: 200px;}
+  }
+
+  @keyframes moving {
+      from {top: -200px;}
+      to {top: 0px;}
   }
 
   .result {
@@ -66,4 +78,16 @@
     color: #2F3640;
     text-shadow: 3px 3px #FEDC6B;
     margin: 0px auto;
+
+
+  }
+
+  .result:hover {
+    background: #9c9a9a;
+    border-radius: 50px;
+  }
+
+  .result:hover p{
+    color: #222222;
+    text-shadow: 3px 3px #fff;
   }
