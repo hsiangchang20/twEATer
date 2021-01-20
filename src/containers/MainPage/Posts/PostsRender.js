@@ -66,7 +66,7 @@ export default function PostRender(props) {
         if(commentdata) {
             var time = new Date()
             let dao = commentdata.comment.data
-            let add = {Author: dao.Author, body: dao.body, time: time.getTime()}
+            let add = {Author: dao.Author, body: dao.body, time: time.getTime(), user: dao.user}
             setComment([...comment, add])
         }
     }, commentdata);
