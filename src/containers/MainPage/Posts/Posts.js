@@ -6,7 +6,7 @@ import { FaThumbsUp, FaThumbsDown } from "react-icons/fa"
 import { FaCommentAlt } from "react-icons/fa"
 import fruits from "../fruits/fruits";
 
-import {POST_QUERY, LIKE_MUTATION, USER_QUERY, UNLIKE_MUTATION} from '../../../graphql'
+import {POST_QUERY, LIKE_MUTATION, USER_QUERY, UNLIKE_MUTATION, POST_SUBSCRIPTION} from '../../../graphql'
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 
 export default function Posts(props) {
@@ -20,7 +20,7 @@ export default function Posts(props) {
     
 	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
 	const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
-
+    
     useEffect(()=>{
         if(userData&&data){
             let POST = [];
@@ -36,6 +36,7 @@ export default function Posts(props) {
                     POST.push(dao)
                 }
             }
+            console.log(POST)
             setPosts(POST);
         }
     }, [userData, data])

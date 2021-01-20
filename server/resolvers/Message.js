@@ -6,7 +6,6 @@ const Message = {
             let mess = await User.find({_id: message.author})
             return mess;
         }
-
         return searchUser(parent);
     }
 }

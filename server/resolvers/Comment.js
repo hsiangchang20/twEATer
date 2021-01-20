@@ -6,7 +6,6 @@ const Comment = {
             let author = await User.find({_id: userID});
             return author;
         }
-
         return searchComment(parent.authorID); 
     },
 }

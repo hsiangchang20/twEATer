@@ -9,17 +9,7 @@ import Message from './resolvers/Message'
 import Comment from './resolvers/Comment'
 
 require('dotenv-defaults').config()
-
-//const http = require('http')
-//const express = require('express')
 const mongoose = require('mongoose')
-//const WebSocket = require('ws')
-
-// const Message = require('./models/message')
-
-//const app = express()
-//const server = http.createServer(app)
-//const wss = new WebSocket.Server({ server })
 
 if (!process.env.MONGO_URL) {
   console.error('Missing MONGO_URL!!!')
@@ -62,61 +52,4 @@ mongodb.once('open', () => {
   server.start({ port: process.env.PORT | 4000 }, () => {
     console.log(`The server is up on port ${process.env.PORT | 4000}!`)
   })
-  /*
-  wss.on('connection', ws => {
-    const sendData = (data) => {
-      ws.send(JSON.stringify(data))
-    }
-
-    const sendStatus = (s) => {
-      sendData(['status', s])
-    }
-
-    Message.find()
-      .limit(100)
-      .sort({ _id: 1 })
-      .exec((err, res) => {
-        if (err) throw err
-
-        // initialize app with existing messages
-        sendData(['init', res])
-      })
-
-    ws.onmessage = (message) => {
-      const { data } = message
-      console.log(data)
-      const [task, payload] = JSON.parse(data)
-      
-      switch (task) {
-        case 'input': {
-          // TODO
-          Message.insertMany(payload, () => {
-            sendData(['output', [payload]])
-
-            sendStatus({
-              type: 'success',
-              msg: 'message sent'
-            })
-          })
-          
-          break
-        }
-        case 'clear': {
-          Message.deleteMany({}, () => {
-            sendData(['cleared'])
-
-            sendStatus({
-              type: 'info',
-              msg: 'Message cache cleared.'
-            })
-          })
-
-          break
-        }
-        default:
-          break
-      }
-    }
-  })
-  */
 })

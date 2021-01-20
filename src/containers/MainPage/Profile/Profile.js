@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import avocado_pic from "../../../components/Images/avocado.png";
 import allen_pic from "../../../components/Images/creative_allen.jpg";
 
 import "./profile.css"
-import {USER_QUERY} from '../../../graphql'
-import { useQuery } from "@apollo/client";
+import {USER_QUERY, UPDATE_USER_MUTATION} from '../../../graphql'
+import { useQuery, useMutation } from "@apollo/client";
 
 //for editing profile
 import '../../MainPage/Login/css/main.css'
@@ -45,6 +45,7 @@ export default function Profile(props){
 	
 	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
 	const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
+	const [updateUser] = useMutation(UPDATE_USER_MUTATION);
 
     function setBorder(num) {
         setBorder1("");
@@ -95,6 +96,7 @@ export default function Profile(props){
 				setEditing(false)		
 				setName(newusername)
 				setFruit(newfruit)
+				update()
 			}
 			
 			
@@ -109,7 +111,16 @@ export default function Profile(props){
 		}
     }
 
-
+	const update = useCallback(()=>{
+		updateUser({
+			variables: {
+				id: id,
+				fruit: newfruit,
+				name: newusername,
+				password: passwordname
+			}
+		})
+	})
 
 	useEffect(()=>{
 		if (data !== undefined){
