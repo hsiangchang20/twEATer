@@ -42,6 +42,7 @@ export default function Profile(props){
 	const [fruit, setFruit] = useState(0);
 	
 	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
+	const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
 
     function setBorder(num) {
         setBorder1("");
@@ -101,6 +102,8 @@ export default function Profile(props){
 		}
 		else {
 			setEditing(!editing)
+			setFruit(fruit)
+			setName(username)
 		}
     }
 
@@ -109,6 +112,7 @@ export default function Profile(props){
 	useEffect(()=>{
 		if (data !== undefined){
 			setName(data.users[0].name);
+			setFruit(data.users[0].fruit);
 		}
 		console.log(data)
 	})
@@ -232,7 +236,7 @@ export default function Profile(props){
 			<div className="container">
 				<div className="row">
 					<div className="col-md-12 col-sm-12">
-						<img src={allen_pic} className="img-responsive img-circle tm-border" alt="templatemo easy profile" />
+						<img src={fruitlist[fruit]} className="img-responsive img-circle tm-border" alt="templatemo easy profile" />
 						<hr/>
 						{editing ? <div className="edit-container">{profile_edit}</div> : (
 								<>
