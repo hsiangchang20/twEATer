@@ -40,6 +40,7 @@ function LoginPage(props) {
     const [border10, setBorder10] = useState('');
     const [fruit, setFruit] = useState(0);
     const [addUser] = useMutation(CREATE_USER_MUTATION);
+    const [click, setClick] = useState(false);
 
     const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
 
@@ -67,10 +68,11 @@ function LoginPage(props) {
     }
 
     useEffect( ()=> {
-        if(data)
-            console.log(data.login._id);
+        if(data && click)
+            console.log(data.login.name);
         props.onClick(data);
-    }, [data])
+        setClick(false)
+    }, [data, click])
 
     useEffect( ()=> {
         console.log(email, password);
@@ -183,6 +185,7 @@ function LoginPage(props) {
                         <button className="login100-form-btn" onClick={(e)=>{
                             e.preventDefault();
                             Login({ variables: { email: email, password: password } });
+                            setClick(true);
                         }}>
                             <NavLink to="/intermediate" style={{fontFamily: 'Montserrat-Bold', color: "white", fontSize: "12pt"}}>Login</NavLink>
                         </button>
