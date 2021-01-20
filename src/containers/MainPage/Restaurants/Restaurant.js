@@ -3,8 +3,9 @@ import "./restaurant.css";
 import {RESTAURANT_QUERY, USER_QUERY} from '../../../graphql'
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { NavLink } from "react-router-dom";
+import fruits from "../fruits/fruits";
+import { FaThumbsUp, FaCommentAlt } from "react-icons/fa"
 import avocado_pic from "../../../components/Images/avocado.png"
-import { FaThumbsUp } from "react-icons/fa";
 
 export default function Restaurant(props) {
     //const restaurantIDs = ["1", "2", "3", "4", "5", "6", "7"];
@@ -15,6 +16,10 @@ export default function Restaurant(props) {
     const [restaurant, setRestaurant] = useState('dao')
     const [photo, setPhoto] = useState('')
     const [posts, setPosts] = useState([]);
+
+	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
+    const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
+    
     useEffect(()=>{    
         console.log(data)    
         if (data && (data.restaurant[0])){
@@ -72,7 +77,7 @@ export default function Restaurant(props) {
         <div className="wrap-post100" key={post.time}>
             <div className="posts-overview">
                 <div className="posts-userdata">
-                    <img src={avocado_pic} alt="IMG" className="user-fruit"/> 
+                    <img src={fruitlist[post.users[0].fruit]} alt="IMG" className="user-fruit"/> 
                     <div>
                         <p>{post.users[0].name}</p>
                     </div>
@@ -94,7 +99,7 @@ export default function Restaurant(props) {
                         </button>
                     </div>
                     <div className="posts-response">
-                        <p>Comment
+                        <p>Comment&nbsp;&nbsp;<FaCommentAlt/>
                             <NavLink to={"/postrender/" + post._id + "/" + userid} className="posts-readmore">
                                 Read More&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </NavLink>

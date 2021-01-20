@@ -113,7 +113,6 @@ export default function PostRender(props) {
             </div>
             <div className="body">
                 <p className="word">{comment.body}</p>
-                <p className="like">Like</p>
             </div>
         </div>
     ));
