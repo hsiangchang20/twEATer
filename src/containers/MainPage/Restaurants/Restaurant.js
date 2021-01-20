@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./restaurant.css";
-import {RESTAURANT_QUERY} from '../../../graphql'
+import {RESTAURANT_QUERY, USER_QUERY} from '../../../graphql'
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { NavLink } from "react-router-dom";
 import fruits from "../fruits/fruits";
@@ -11,9 +11,11 @@ export default function Restaurant(props) {
     //const restaurantIDs = ["1", "2", "3", "4", "5", "6", "7"];
     const { name, userid } = props.match.params;
     const { loading, error, data} = useQuery(RESTAURANT_QUERY, {variables: {name: name}});
+    const { data: userData } = useQuery(USER_QUERY, {variables: {query: userid}})
     const [rest, {loading2, data2}] = useLazyQuery(RESTAURANT_QUERY)
     const [restaurant, setRestaurant] = useState('dao')
     const [photo, setPhoto] = useState('')
+    const [posts, setPosts] = useState([]);
 
 	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
     const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
@@ -28,6 +30,26 @@ export default function Restaurant(props) {
             
         }
     })
+
+    useEffect(()=>{
+        if(userData&&data){
+            let POST = [];
+            for(let i=0;i<data.restaurant[0].posts.length;i++){
+                if(userData.users[0].Like.includes(data.restaurant[0].posts[i]._id)){
+                    const dao = {...data.restaurant[0].posts[i]}
+                    dao.liked = true;
+                    POST.push(dao)
+                }
+                else{
+                    const dao = {...data.restaurant[0].posts[i]}
+                    dao.liked = false;
+                    POST.push(dao)
+                }
+            }
+            console.log(POST)
+            setPosts(POST);
+        }
+    }, [userData, data])
 
     const Time = (t) => {
         var time = new Date();
@@ -51,7 +73,7 @@ export default function Restaurant(props) {
         </div>
     )
 
-    const posts_list = (!restaurant.posts) ? (<></>) : restaurant.posts.map(post => (
+    const posts_list = (!restaurant.posts) ? (<></>) : posts.map(post => (
         <div className="wrap-post100" key={post.time}>
             <div className="posts-overview">
                 <div className="posts-userdata">
@@ -72,7 +94,8 @@ export default function Restaurant(props) {
                 <div className='posts-likeOrResponse'>  
                     <div className="posts-like">
                         <button onClick={/*()=>Like(post._id)*/console.log("nothing")}>
-                            <p>Like&nbsp;&nbsp;<FaThumbsUp/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                            {post.liked?(<p><FaThumbsUp color="lightblue"/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>):
+                            (<p><FaThumbsUp/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>)}
                         </button>
                     </div>
                     <div className="posts-response">
