@@ -67,9 +67,13 @@ function LoginPage(props) {
     }
 
     useEffect( ()=> {
-        if(data)
+        if(data){
             console.log(data.login._id);
-        props.onClick(data);
+            props.onClick(data);
+        }
+        else{
+            console.log('daodaodao')
+        }
     }, [data])
 
     useEffect( ()=> {
