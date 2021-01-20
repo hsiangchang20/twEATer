@@ -4,6 +4,7 @@ import {RESTAURANT_QUERY} from '../../../graphql'
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { NavLink } from "react-router-dom";
 import fruits from "../fruits/fruits";
+import { FaThumbsUp, FaCommentAlt } from "react-icons/fa"
 import avocado_pic from "../../../components/Images/avocado.png"
 
 export default function Restaurant(props) {
@@ -71,11 +72,11 @@ export default function Restaurant(props) {
                 <div className='posts-likeOrResponse'>  
                     <div className="posts-like">
                         <button onClick={/*()=>Like(post._id)*/console.log("nothing")}>
-                            <p>Like&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                            <p>Like&nbsp;&nbsp;<FaThumbsUp/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
                         </button>
                     </div>
                     <div className="posts-response">
-                        <p>Comment
+                        <p>Comment&nbsp;&nbsp;<FaCommentAlt/>
                             <NavLink to={"/postrender/" + post._id + "/" + userid} className="posts-readmore">
                                 Read More&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </NavLink>

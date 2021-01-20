@@ -165,17 +165,6 @@ export default function Profile(props){
 					<i className="fa fa-user" aria-hidden="true"></i>
 				</span>
 			</div>
-			<div className="wrap-input100" dataValidate = "Valid email is required: ex@abc.xyz">
-				<input  className="input100"
-						placeholder="Email"
-						value={emailname}
-						onChange={(e)=>{setEmailname(e.target.value)}}
-				/>
-				<span className="focus-input100"></span>
-				<span className="symbol-input100">
-					<i className="fa fa-envelope" aria-hidden="true"></i>
-				</span>
-			</div>
 			<div className="wrap-input100 validate-input" dataValidation = "Password is required">
 				<input  className="input100" 
 						type="password"
