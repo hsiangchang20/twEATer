@@ -1,7 +1,7 @@
-.wrap-post100 {
+  .wrap-post100 {
     width: auto;
-    height: 450px;
-    background: #fff;
+    height: 350px;
+    background: rgb(255, 255, 255);
     border-radius: 50px;
     overflow: auto;
   
@@ -14,7 +14,7 @@
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 20px 10px 0px 20px;
+    padding: 20px 0px 0px 20px;
   }
 
   /*decoration for Posts.js*/
@@ -25,18 +25,17 @@
   }
 
   .posts-picture {
-    width: 360px;
-    height: 360px;
-    line-height: 360px;
-    text-align: center;
+    max-width: 360px;
+    max-height: 360px;
+    margin-bottom: 0px;
     overflow: hidden;
-    margin: auto 10px auto auto;
   }
 
   .posts-picture img {
     max-width: 100%;
     max-height: 100%;
     vertical-align: middle;
+    border-radius: 25px;
   }
 
   img {  
@@ -56,25 +55,24 @@
   }
 
   .posts-userdata img{
-    width: 13%;
-    height: 13%;
+    margin: 6px;
+    width: 5%;
+    height: 5%;
     float: left;
   }
 
   .posts-userdata div{
     width: auto;
-    height: 60px;
-    float: center;
+    height: 20px;
     text-align: left;
-    vertical-align: middle;
-    padding-top: 20px;
-    padding-bottom: 80px;
+    padding: 0;
   }
 
   .posts-userdata p {
-    font-weight: 600;
-    font-size: 40px;
+    font-weight: 400;
+    font-size: 20px;
     color: black;
+    margin: 0;
   }
 
   .posts-restaurant p {
@@ -103,7 +101,7 @@
 
   .posts-likeOrResponse{
     width: auto;
-    height: 90px;
+    height: 50px;
     margin: 0px auto;
   }
 
@@ -116,14 +114,10 @@
     float: left;
   }
 
-  .posts-response{
-    float: center;
-  }
-
   .posts-readmore{
     text-align: right;
     float: right;
     font-size: 20px;
-    font-weight: 600px;
+    font-weight: 500px;
   }
 

@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import './posts.css';
 //import avocado_pic from "../../../components/Images/avocado.png";
-
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa"
+import { FaCommentAlt } from "react-icons/fa"
 import fruits from "../fruits/fruits";
 
 import {POST_QUERY, LIKE_MUTATION, USER_QUERY, UNLIKE_MUTATION} from '../../../graphql'
@@ -100,26 +101,21 @@ export default function Posts(props) {
                 <div className="posts-time">
                     <p>{Time(post.time).toString().slice(4, 24)}</p>
                 </div>
-                <div className='posts-likeOrResponse'>  
-                    {post.liked?(<div className="posts-like">
-                        <button onClick={()=>unLike(post._id, userid, posts)}>
-                            <p>unLike&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                        </button>
-                    </div>):(<div className="posts-like">
-                        <button onClick={()=>Like(post._id, userid, posts)}>
-                            <p>Like&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                        </button>
-                    </div>)}
-                    <div className="posts-response">
-                        <p>Comment
-                            <NavLink to={"/postrender/" + post._id + "/" + userid} className="posts-readmore">
-                                Read More&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </NavLink>
-                        </p>
-                    </div>
+                <NavLink to={"/postrender/" + post._id + "/" + userid} className="posts-readmore">
+                    Read More
+                </NavLink>
+                <div className="posts-like">
+                    {post.liked?(<button onClick={()=>unLike(post._id, userid, posts)}>
+                        <p>unLike&nbsp;&nbsp;<FaThumbsUp/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    </button>):(<button onClick={()=>Like(post._id, userid, posts)}>
+                        <p>Like&nbsp;&nbsp;<FaThumbsUp/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    </button>)}
+                    <button>
+                        <p>Comment&nbsp;&nbsp;<FaCommentAlt/></p>
+                    </button>
                 </div>
             </div>
-            <div className='posts-picture'>
+            <div className="posts-picture">
                 <img src={post.photo} alt="IMG"/>
             </div>
         </div>        

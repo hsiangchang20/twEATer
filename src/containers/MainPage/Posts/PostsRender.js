@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 //import '../mainpage.css';
 import './PostsRender.css'
 import avocado_pic from "../../../components/Images/avocado.png";
-
+import { FaThumbsUp } from "react-icons/fa"
+import { FaCommentAlt } from "react-icons/fa"
 import fruits from "../fruits/fruits";
 
 import {ONE_POST_QUERY, POST_SUBSCRIPTION, USER_QUERY, CREATE_COMMENT_MUTATION, COMMENT_SUBSCRIPTION} from '../../../graphql'
@@ -157,10 +158,10 @@ export default function PostRender(props) {
             </div>
             <div className="post-response">
                 <div className="post-like-number">
-                    <p>likes : {post.thumb} &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p><FaThumbsUp/>&nbsp;&nbsp;&nbsp;{post.thumb}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 </div>
                 <div className="post-comment-number">
-                    <p>comments : { (post.comments !== undefined) ? post.comments.length : " "}
+                    <p><FaCommentAlt/>&nbsp;&nbsp;{ (post.comments !== undefined) ? post.comments.length : " "}
                         <NavLink to={"/restaurant/" + post.restaurant + "/" + userid} className="post-restaurant-info">
                             查看餐廳資訊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </NavLink>
