@@ -69,12 +69,13 @@ export default function Posts(props) {
                 <div className="posts-body">
                     <p>{(post.body.length <= 18) ? post.body : post.body.slice(0, 17) + "  .  .  ."}</p>
                 </div>
-                <div className="posts-time">
-                    <p>{Time(post.time).toString().slice(4, 24)}</p>
-                </div>
                 <NavLink to={"/postrender/" + post._id + "/" + userid} className="posts-readmore">
                     Read More
                 </NavLink>
+                <br></br><br></br>
+                <div className="posts-time">
+                    <p>{Time(post.time).toString().slice(4, 24)}</p>
+                </div>
                 <div className="posts-like">
                     <button onClick={()=>Like(post._id)}>
                         <p>Like&nbsp;&nbsp;<FaThumbsUp/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -84,6 +85,7 @@ export default function Posts(props) {
                     </button>
                 </div>
             </div>
+            
             <div className="posts-picture">
                 <img src={post.photo} alt="IMG"/>
             </div>
