@@ -23,7 +23,8 @@ export default function PostRender(props) {
     const [username, setUsername] = useState('');
     const [addComment] = useMutation(CREATE_COMMENT_MUTATION);
     const [body, setBody] = useState('');
-    const [init, setInit] = useState(true)
+    const [init, setInit] = useState(true);
+    const [userfruit, setUserfruit] = useState('');
 
     
 	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
@@ -64,14 +65,9 @@ export default function PostRender(props) {
     useEffect(()=>{
         if(commentdata) console.log(commentdata.comment.data);
         if(commentdata) {
-            // let Com = comment;
-            // console.log(typeof( Com))
-            // Com.push(commentdata.comment.data)
-            // setComment([Com]);
-            // let add = [...commentdata.comment.data]
             var time = new Date()
             let dao = commentdata.comment.data
-            let add = {Author: dao.Author, body: dao.body, time: time.getTime()}
+            let add = {Author: dao.Author, body: dao.body, time: time.getTime(), user: dao.user}
             setComment([...comment, add])
         }
     }, commentdata);
@@ -95,6 +91,7 @@ export default function PostRender(props) {
     useEffect(()=>{
         if(userdata){
             setUsername(userdata.users[0].name);
+            setUserfruit(userdata.users[0].fruit);
         }
     }, userdata);
 
@@ -107,7 +104,7 @@ export default function PostRender(props) {
     const comments = (comment === [])||!comment ? " " : comment.map(comment => (
         <div className="comment" key = {comment}>
             <div className="comment-userdata">
-                <img src={avocado_pic} alt="IMG" className="userfruit"/>
+                <img src={fruitlist[comment.user[0].fruit]} alt="IMG" className="userfruit"/>
                 <div>
                     <h3>{comment.Author}</h3><span className="date">{Time(comment.time).toString().slice(4, 24)}</span>
                 </div>
@@ -122,7 +119,7 @@ export default function PostRender(props) {
     const mycomment = (
         <div className="mycomment">
             <div className="mycomment-userdata">
-                <img src={(post.users !== undefined) ? fruitlist[post.users[0].fruit] : avocado_pic} alt="IMG" className="userfruit"/>
+                <img src={(post.users !== undefined) ? fruitlist[userfruit] : avocado_pic} alt="IMG" className="userfruit"/>
                 <div>
                     <h3>{username}</h3>
                 </div>

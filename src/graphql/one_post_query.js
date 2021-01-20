@@ -22,6 +22,9 @@ export const ONE_POST_QUERY = gql`
             Author
             body
             time
+            user{
+              fruit
+            }
         }
     }
   }
