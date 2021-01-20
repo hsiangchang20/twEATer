@@ -23,15 +23,9 @@ const UserSchema = new Schema({
         type: String,
         required: [true, 'password is required.']
     },
-    // elite: {
-    //     type: Boolean,   
-    // },
-    // father: {
-    //     type: String,
-    // },
-    // mother: {
-    //     type: String,
-    // },
+    Like:{
+        type: [String]
+    }
 })
 
 // Creating a table within database with the defined schema

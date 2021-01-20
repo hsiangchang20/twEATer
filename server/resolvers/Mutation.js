@@ -129,10 +129,13 @@ const Mutation = {
         return Delete(args.name);
     },
     Like(parent, args, {pubsub}, info){
-        async function like(id){
+        async function like(id, userId){
             let data = await Post.find({_id: id});
+            let userdata = await User.find({_id: userId});
+            userdata[0].Like.push(id)
             data[0].thumb += 1;
             await Post.updateMany({_id: id},  {thumb: data[0].thumb});
+            await User.updateMany({_id: userId}, {Like: userdata[0].Like})
             console.log(data);
             await pubsub.publish(`post`, {
                 post: { mutation: 'CREATED', data: data[0] }
@@ -140,7 +143,24 @@ const Mutation = {
             return data;
         }
 
-        return like(args.PostID);
+        return like(args.PostID, args.userId);
+    },
+    unLike(parent, args, {pubsub}, info){
+        async function like(id, userId){
+            let data = await Post.find({_id: id});
+            let userdata = await User.find({_id: userId});
+            userdata[0].Like.pop(id);
+            data[0].thumb -= 1;
+            await Post.updateMany({_id: id},  {thumb: data[0].thumb});
+            await User.updateMany({_id: userId}, {Like: userdata[0].Like})
+            console.log(data);
+            await pubsub.publish(`post`, {
+                post: { mutation: 'CREATED', data: data[0] }
+            })
+            return data;
+        }
+
+        return like(args.PostID, args.userId);
     },
     createComment(parent, args, {pubsub}, info){
         const comment = {

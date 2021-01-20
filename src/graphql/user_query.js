@@ -13,8 +13,9 @@ export const USER_QUERY = gql`
         password
         fruit
         posts{
-        body
+          body
         }
+        Like
     }
   } 
 `

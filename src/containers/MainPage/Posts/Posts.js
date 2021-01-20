@@ -5,42 +5,71 @@ import './posts.css';
 
 import fruits from "../fruits/fruits";
 
-import {POST_QUERY, LIKE_MUTATION} from '../../../graphql'
+import {POST_QUERY, LIKE_MUTATION, USER_QUERY, UNLIKE_MUTATION} from '../../../graphql'
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 
 export default function Posts(props) {
     const { userid } = props.match.params;
-    console.log(userid)
     const { loading, error, data, refetch} = useQuery(POST_QUERY);
+    const { data: userData, refetch: refetchUser } = useQuery(USER_QUERY, {variables: {query: userid}})
     const [posts, setPosts] = useState([]);
     const [like] = useMutation(LIKE_MUTATION);
-    const [init, setInit] = useState(true)
+    const [unlike] = useMutation(UNLIKE_MUTATION)
+    const [init, setInit] = useState(true);
     
 	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
 	const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
-    
-    useEffect( ()=> {
-        //console.log(data);
-        if (data !== undefined){
-            setPosts(data.posts);
-            console.log(data);
+
+    useEffect(()=>{
+        if(userData&&data){
+            let POST = [];
+            for(let i=0;i<data.posts.length;i++){
+                if(userData.users[0].Like.includes(data.posts[i]._id)){
+                    const dao = {...data.posts[i]}
+                    dao.liked = true;
+                    POST.push(dao)
+                }
+                else{
+                    const dao = {...data.posts[i]}
+                    dao.liked = false;
+                    POST.push(dao)
+                }
+            }
+            setPosts(POST);
         }
-    }, [data])
+    }, [userData, data])
 
     useEffect(()=>{
         if(init){
             refetch();
+            refetchUser();
             setInit(false);
         }
     })
 
-    const Like = useCallback((id) => {
-        return like({
+    const Like = useCallback((id, userid, dao) => {
+        like({
             variables: {
-                PostID: id
+                PostID: id,
+                userId: userid
             }
         })
+        const index = dao.findIndex((element)=>element._id===id);
+        dao[index].liked = true
+        setPosts(dao);
     }, [like])
+
+    const unLike = useCallback((id, userid, dao)=>{
+        unlike({
+            variables: {
+                PostID: id,
+                userId: userid
+            }
+        })
+        const index = dao.findIndex((element)=>element._id===id);
+        dao[index].liked = false
+        setPosts(dao);
+    }, [unlike])
 
     const Time = (t) => {
         var time = new Date();
@@ -72,11 +101,15 @@ export default function Posts(props) {
                     <p>{Time(post.time).toString().slice(4, 24)}</p>
                 </div>
                 <div className='posts-likeOrResponse'>  
-                    <div className="posts-like">
-                        <button onClick={()=>Like(post._id)}>
+                    {post.liked?(<div className="posts-like">
+                        <button onClick={()=>unLike(post._id, userid, posts)}>
+                            <p>unLike&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </button>
+                    </div>):(<div className="posts-like">
+                        <button onClick={()=>Like(post._id, userid, posts)}>
                             <p>Like&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
                         </button>
-                    </div>
+                    </div>)}
                     <div className="posts-response">
                         <p>Comment
                             <NavLink to={"/postrender/" + post._id + "/" + userid} className="posts-readmore">
@@ -91,6 +124,7 @@ export default function Posts(props) {
             </div>
         </div>        
     ));
+
     return (
         <div>
             {loading ? nothing : posts_list}
