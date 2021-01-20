@@ -108,7 +108,7 @@ export default function Posts(props) {
                 </div>
                 <div className="posts-like">
                     {post.liked?(<button onClick={()=>unLike(post._id, userid, posts)}>
-                        <p>unLike&nbsp;&nbsp;<FaThumbsUp/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>unLike&nbsp;&nbsp;<FaThumbsUp color="lightgreen"/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
                     </button>):(<button onClick={()=>Like(post._id, userid, posts)}>
                         <p>Like&nbsp;&nbsp;<FaThumbsUp/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
                     </button>)}
