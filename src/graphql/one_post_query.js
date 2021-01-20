@@ -23,6 +23,7 @@ export const ONE_POST_QUERY = gql`
             body
             time
             user{
+              name
               fruit
             }
         }

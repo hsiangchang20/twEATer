@@ -13,6 +13,7 @@ export const POST_QUERY = gql`
         restaurant
         photo
         authorID
+        thumb
         users{
             name
             fruit

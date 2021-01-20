@@ -40,7 +40,7 @@ export default function Restaurant(props) {
             <div className="name">
                 <p>{'< ' + restaurant.name + ' >'}</p>
             </div>
-            {photo!==""?<img src={photo}></img>:""}
+            {photo!==""?<img className="photo" src={photo}></img>:""}
             <div className="info">
                 <p>Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; {restaurant.type}</p>
                 <p>Telephone&ensp;&nbsp;:&nbsp;&nbsp; {restaurant.tele}</p>

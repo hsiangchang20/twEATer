@@ -7,8 +7,6 @@ const uuidv4  = require('uuid/v4');
 
 const Mutation = {
     createUser(parent, args, {pubsub}, info){
-        console.log(args.data);
-
         async function create(data){
             let Created = await User.find({email: data.email});
             
@@ -17,7 +15,6 @@ const Mutation = {
                 ...args.data
             }
             if(Created.length!==0){
-                console.log(Created);
                 throw new Error('email taken');
             }
             else{
@@ -25,13 +22,11 @@ const Mutation = {
                 return user;
             }
         }
-
         return create(args.data);
     },
     deleteUser(parent, args, {db}, info){
         async function checkEmail(emailAddress){
             let target = await User.find({email: emailAddress})
-            console.log(target);
             return target;
         }
         async function Delete(Email){
@@ -48,13 +43,23 @@ const Mutation = {
 
         return Delete(args.email);
     },
+    updateUser(parent, args, {db}, info){
+        async function Update(data){
+            const toUpdate = await User.find({_id: data.id})
+            if(data.data.name) await User.updateMany({_id:data.id}, {name: data.data.name});
+            if(data.data.fruit) await User.updateMany({_id:data.id}, {fruit: data.data.fruit});
+            if(data.data.password) await User.updateMany({_id:data.id}, {password: data.data.password});
+            return toUpdate;
+        }
+
+        return Update(args);
+    },
     createPost(parent, args, {db, pubsub}, info){
         const post = {
             _id: uuidv4(),
             ...args.data
         };
-        console.log(post)
-        Post.insertMany(post)
+        Post.insertMany(post) 
 
         pubsub.publish(`post`, {
             post: { mutation: 'CREATED', data: post }
@@ -95,8 +100,6 @@ const Mutation = {
         return Delete(args.author);
     },
     createRestaurant(parent, args, {pubsub}, info){
-        console.log(args.data);
-
         async function create(data){
             let Created = await restaurant.find({name: data.name});
             
@@ -104,13 +107,11 @@ const Mutation = {
                 ...args.data
             }
             if(Created.length!==0){
-                console.log(Created);
                 await restaurant.deleteMany({name: data.name});
             }
             restaurant.insertMany(rest);
             return rest;
         }
-
         return create(args.data);
     },
     deleteRestaurant(parent, args, {pubsub}, info){
@@ -129,18 +130,36 @@ const Mutation = {
         return Delete(args.name);
     },
     Like(parent, args, {pubsub}, info){
-        async function like(id){
+        async function like(id, userId){
             let data = await Post.find({_id: id});
+            let userdata = await User.find({_id: userId});
+            userdata[0].Like.push(id)
             data[0].thumb += 1;
             await Post.updateMany({_id: id},  {thumb: data[0].thumb});
-            console.log(data);
+            await User.updateMany({_id: userId}, {Like: userdata[0].Like})
             await pubsub.publish(`post`, {
                 post: { mutation: 'CREATED', data: data[0] }
             })
             return data;
         }
 
-        return like(args.PostID);
+        return like(args.PostID, args.userId);
+    },
+    unLike(parent, args, {pubsub}, info){
+        async function like(id, userId){
+            let data = await Post.find({_id: id});
+            let userdata = await User.find({_id: userId});
+            userdata[0].Like.pop(id);
+            data[0].thumb -= 1;
+            await Post.updateMany({_id: id},  {thumb: data[0].thumb});
+            await User.updateMany({_id: userId}, {Like: userdata[0].Like})
+            await pubsub.publish(`post`, {
+                post: { mutation: 'CREATED', data: data[0] }
+            })
+            return data;
+        }
+
+        return like(args.PostID, args.userId);
     },
     createComment(parent, args, {pubsub}, info){
         const comment = {
@@ -159,11 +178,12 @@ const Mutation = {
     follow(parent, args, {pubsub}, info){
         async function follow(id, follower, name){
             let data = await Message.find({_id: id});
-            console.log(data)
             data[0].follower.push(follower);
             data[0].followerName.push(name)
             await Message.updateMany({_id: id}, {follower: data[0].follower, followerName: data[0].followerName});
-            console.log(data[0].follower);
+            await pubsub.publish(`message`, {
+                message: { mutation: 'CREATED', data: data[0] }
+            })
             return data;
         }
         return follow(args.id, args.follower, args.followerName); 

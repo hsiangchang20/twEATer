@@ -106,7 +106,7 @@ export default function PostRender(props) {
             <div className="comment-userdata">
                 <img src={fruitlist[comment.user[0].fruit]} alt="IMG" className="userfruit"/>
                 <div>
-                    <h3>{comment.Author}</h3><span className="date">{Time(comment.time).toString().slice(4, 24)}</span>
+                    <h3>{comment.user[0].name}</h3><span className="date">{Time(comment.time).toString().slice(4, 24)}</span>
                 </div>
             </div>
             <div className="body">

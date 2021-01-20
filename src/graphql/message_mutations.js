@@ -6,6 +6,7 @@ export const CREATE_MESSAGE_MUTATION = gql`
     $author: ID!
     $restaurant: String!
     $date: String!
+    $limit: Int!
   ) {
     sendMessage(
       data: {
@@ -13,6 +14,7 @@ export const CREATE_MESSAGE_MUTATION = gql`
         author: $author
         restaurant: $restaurant
         date: $date
+        limit: $limit
       }
     ) {
       author

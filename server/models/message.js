@@ -21,17 +21,21 @@ const MessageSchema = new Schema({
 	},
 	restaurant: {
 		type: String,
-		require: [true, 'Restaurant is required']
+		required: [true, 'Restaurant is required'] 
 	},
 	date: {
 		type: String,
-		require: [true, 'date is required']
+		required: [true, 'date is required']
 	},
 	follower: {
 		type: [String] 
 	},
 	followerName: {
 		type: [String]
+	},
+	limit: {
+		type: Number,
+		required: [true]
 	}
 })
 

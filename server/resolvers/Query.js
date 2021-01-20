@@ -18,7 +18,7 @@ const Query = {
         if (!args.query) return GetUser();
         else return GetUserbyID(args.query);
     },
-
+ 
     posts(parent, args, {db}, info){
         async function GetPost(){
             let data = await Post.find().sort({$natural:-1})
@@ -26,7 +26,6 @@ const Query = {
         }
 
         async function GetPostbyID(n){
-            console.log(n);
             let data = await Post.find({_id: n})
             return data;
         }
@@ -36,7 +35,6 @@ const Query = {
     },
     
     login(parent, args, {db}, info){
-        console.log(args.data);
         async function GetUserData(data){
             let user = await User.find({email: data.email, password: data.password})
             
@@ -60,7 +58,6 @@ const Query = {
  
     restaurant(parent, args, {db}, info){
         async function GetRestaurantData(rest){
-            console.log(rest)
             let data = undefined
             if(rest.name!=='') {data = await restaurant.find( { name: rest.name, })}
             else if(rest.time===''&&rest.type===''&&rest.cost===''&&rest.staple===''&&rest.location===''&&rest.Star===''){
@@ -74,7 +71,6 @@ const Query = {
                                                 location: { "$regex": rest.location, "$options": "i" },
                                                 Star: { "$regex": rest.Star, "$options": "i" }});
             }
-            console.log(data);
             return data;
         }
         return GetRestaurantData(args)

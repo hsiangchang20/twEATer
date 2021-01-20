@@ -5,10 +5,8 @@ const Post = {
     users(parent, args, {db}, info) {
         async function searchPost(userID){
             let author = await User.find({_id: userID});
-            console.log(author);
             return author;
         }
-
         return searchPost(parent.authorID); 
     },
 
@@ -17,7 +15,6 @@ const Post = {
             let comment = await Comment.find({PostID: PostID});
             return comment;
         }
- 
         return searchPost(parent._id); 
     }
 

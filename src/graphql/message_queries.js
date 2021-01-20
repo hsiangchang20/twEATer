@@ -12,5 +12,6 @@ export const MESSAGES_QUERY = gql`
       name
       fruit
     }
+    limit
   }
 `
