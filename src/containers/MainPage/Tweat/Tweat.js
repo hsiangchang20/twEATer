@@ -16,6 +16,26 @@ export default function Tweat(props){
     const [userName, setUserName] = useState('');
     const [follow] = useMutation(FOLLOW_MUTATION);
 
+    const TimeOver = (posttime) => {
+        //console.log(posttime)
+        const post_hour = posttime.slice(0,2)
+        const post_minute = posttime.slice(3, 5)
+        console.log(post_hour, post_minute)
+        const now = Date()
+        const hour = now.slice(16, 18)
+        const minute = now.slice(19, 21)
+        console.log(hour)
+        console.log(minute)
+        if (parseInt(post_hour, 10) < parseInt(hour, 10)){
+            return true
+        }
+        if (parseInt(post_minute, 10) < parseInt(minute, 10)){
+            return true
+        }
+
+        return false
+    }
+
     useEffect(()=>{
         if(data) setTweat(data.message)
     }, [data])
@@ -58,7 +78,7 @@ export default function Tweat(props){
         });
     }, [subscribeToMore]);
 
-    const tweats = tweat.map(tweat => (
+    const tweats = tweat.map(tweat => TimeOver(tweat.date) ? (<></>) : (
         <div className={tweat.follower.includes(userid) ? "wrap-tweat100 joined" : "wrap-tweat100"} key={tweat}>
             <div className="tweats-overview">
                 <div className="tweats-userdata">
