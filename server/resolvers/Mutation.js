@@ -95,12 +95,10 @@ const Mutation = {
             }
             if(Created.length!==0){
                 console.log(Created);
-                throw new Error('restaurant taken');
+                await restaurant.deleteMany({name: data.name});
             }
-            else{
-                restaurant.insertMany(rest); 
-                return rest;
-            }
+            restaurant.insertMany(rest); 
+            return rest;
         }
 
         return create(args.data);

@@ -11,9 +11,10 @@ import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 export default function Posts(props) {
     const { userid } = props.match.params;
     console.log(userid)
-    const { loading, error, data} = useQuery(POST_QUERY);
+    const { loading, error, data, refetch} = useQuery(POST_QUERY);
     const [posts, setPosts] = useState([]);
     const [like] = useMutation(LIKE_MUTATION);
+    const [init, setInit] = useState(true)
 
     const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
     
@@ -24,6 +25,13 @@ export default function Posts(props) {
             console.log(data);
         }
     }, [data])
+
+    useEffect(()=>{
+        if(init){
+            refetch();
+            setInit(false);
+        }
+    })
 
     const Like = useCallback((id) => {
         return like({

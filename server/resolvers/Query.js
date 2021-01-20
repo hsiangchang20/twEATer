@@ -64,6 +64,9 @@ const Query = {
             console.log(rest)
             let data = undefined
             if(rest.name!=='') {data = await restaurant.find( { name: rest.name, })}
+            else if(rest.time===''&&rest.type===''&&rest.cost===''&&rest.staple===''&&rest.location===''&&rest.Star===''){
+                data = await restaurant.find();
+            }
             else {
                 data = await restaurant.find({  time: { "$regex": rest.time, "$options": "i" },
                                                 type: { "$regex": rest.type, "$options": "i" },

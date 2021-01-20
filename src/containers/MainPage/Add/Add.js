@@ -4,10 +4,11 @@ import { NavLink } from "react-router-dom";
 import './css/style.css'
 import './css/mobile-style.css'
 import post from "../../../components/Post/Post";
-import { CREATE_POST_MUTATION, CREATE_RESTAURANT_MUTATION } from '../../../graphql'
-import { useMutation } from "@apollo/client";
+import { CREATE_POST_MUTATION, CREATE_RESTAURANT_MUTATION, USER_QUERY } from '../../../graphql'
+import { useMutation, useQuery } from "@apollo/client";
 
-export default function Add(){
+export default function Add(props){
+    const { userid } = props.match.params;
     const [images, setImage] = useState('');
     const [loading, setLoading] = useState(false);
     const [restaurant, setRestaurant] = useState('');
@@ -29,7 +30,7 @@ export default function Add(){
         if (!(images&&restaurant&&body)) return
         addPost({
             variables: {
-                authorID: "81c2c68d-7464-4b23-a8cd-d65796eabe66",
+                authorID: userid,
                 photo: images,
                 body: body,
                 restaurant: restaurant,
@@ -74,10 +75,6 @@ export default function Add(){
         setStar('');
         setStaple('');
         setLocation('');
-    })
-
-    useEffect(()=>{
-        console.log(images, images.length);
     })
 
     const imageUpload = async e => {

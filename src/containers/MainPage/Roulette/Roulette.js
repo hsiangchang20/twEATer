@@ -13,14 +13,22 @@ export default function Roulette(props) {
     const [restaurant, SetRestaurant] = useState('')
     const [fireworks, setFireworks] = useState(false)
     const [firstspin, setFirstspin] = useState(true)
-    const { loading, error, data} = useQuery(RESTAURANT_QUERY, {variables: {name: "", type: "", time: "", cost: "", staple: "", location: "", Star: ""}});
+    const { loading, error, data, refetch} = useQuery(RESTAURANT_QUERY, {variables: {name: "", type: "", time: "", cost: "", staple: "", location: "", Star: ""}});
     const [rest, setRest] = useState([])
+    const [init, setInit] = useState(true);
 
     useEffect(()=>{
         console.log(data);
         if(data)
             setRest(data.restaurant.map(res=>(res.name)));
     }, data)
+
+    useEffect(()=>{
+        if(init){
+            refetch();
+            setInit(false);
+        }
+    })
 
     function spinAnimate() {
         SetRestaurant('')

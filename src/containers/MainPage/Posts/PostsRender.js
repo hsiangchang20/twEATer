@@ -11,7 +11,7 @@ import { useQuery, useLazyQuery, useSubscription, useMutation } from "@apollo/cl
 export default function PostRender(props) {
     const { postid, userid } = props.match.params;
 
-    const { loading, error, data, subscribeToMore} = useQuery(ONE_POST_QUERY, {variables: {query: postid}});
+    const { loading, error, data, subscribeToMore, refetch} = useQuery(ONE_POST_QUERY, {variables: {query: postid}});
     const { data: userdata} = useQuery(USER_QUERY, {variables: {query: userid}});
     const [post, setPost] = useState([]);
     const [comment, setComment] = useState("");
@@ -20,6 +20,7 @@ export default function PostRender(props) {
     const [username, setUsername] = useState('');
     const [addComment] = useMutation(CREATE_COMMENT_MUTATION);
     const [body, setBody] = useState('');
+    const [init, setInit] = useState(true)
 
     const submitComment = useCallback(()=>{
         if(body==='') return
@@ -45,6 +46,13 @@ export default function PostRender(props) {
             setComment(data.posts[0].comments)
         }
     }, [loading, data])
+
+    useEffect(()=>{
+        if(init){
+            refetch();
+            setInit(false);
+        }
+    })
 
     useEffect(()=>{
         if(commentdata) console.log(commentdata.comment.data);
