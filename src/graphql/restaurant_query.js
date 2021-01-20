@@ -35,6 +35,7 @@ export const RESTAURANT_QUERY = gql`
           thumb
           users{
             name
+            fruit
           }
           comments{
             Author
