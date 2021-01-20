@@ -34,7 +34,10 @@ export default function Add(props){
     const [addTweat] = useMutation(CREATE_MESSAGE_MUTATION)
 
     const createTweat = useCallback(() => {
-        if (!(tweat_res&&tweat_time&&tweat_people&&tweat_body)) return
+        if (!(tweat_res&&tweat_time&&tweat_people&&tweat_body)) {
+            alert("Please fill in all the required information!")
+            return
+        }
         addTweat({
             variables: {
                 author: userid,
@@ -51,7 +54,10 @@ export default function Add(props){
     })
 
     const createPost = useCallback(()=>{
-        if (!(images&&restaurant&&body)) return
+        if (!(images&&restaurant&&body)) {
+            alert("Please fill in all the required information!")
+            return
+        }
         addPost({
             variables: {
                 authorID: userid,
@@ -71,6 +77,7 @@ export default function Add(props){
     const createRestaurant = useCallback(()=>{
         if(!(restaurant&&openhours&&type&&address&&tele)) {
             console.log('missing');
+            alert("Please fill in all the required information!")
             return
         }
         addRestaurant({
