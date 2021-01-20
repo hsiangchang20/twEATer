@@ -102,7 +102,7 @@ export default function PostRender(props) {
     }
 
     const comments = (comment === [])||!comment ? " " : comment.map(comment => (
-        <div className="comment" key = {comment}>
+        <div className="comment" key = {comment.time}>
             <div className="comment-userdata">
                 <img src={fruitlist[comment.user[0].fruit]} alt="IMG" className="userfruit"/>
                 <div>

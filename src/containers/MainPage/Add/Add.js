@@ -24,8 +24,34 @@ export default function Add(props){
     const [staple, setStaple] = useState('');
     const [location, setLocation] = useState('');
     const [Star, setStar] = useState('');
+    //tweat
+    const [tweat_res, setTweat_res] = useState('');
+    const [tweat_time, setTweat_time] = useState('');
+    const [tweat_people, setTweat_people] = useState('');
+    const [tweat_body, setTweat_body] = useState('');
     const [addPost] = useMutation(CREATE_POST_MUTATION);
     const [addRestaurant] = useMutation(CREATE_RESTAURANT_MUTATION);
+
+    /*
+    const createTweat = useCallback(() => {
+        if (!(tweat_res&&tweat_time&&tweat_people&&tweat_body)) return
+        addTweat({
+            variables: {
+                
+                //authorID: userid,
+                //餐廳:tweat_res
+                //內文:tweat_body
+                //人數:tweat_people
+                //時間:tweat_time
+                
+            }
+        });
+        setTweat_body('');
+        setTweat_people(0);
+        setTweat_res('');
+        setTweat_time('');
+    })
+    */
 
     const createPost = useCallback(()=>{
         if (!(images&&restaurant&&body)) return
@@ -151,6 +177,7 @@ export default function Add(props){
                     <div><p className="add-title">You Want To Add?</p></div>
                     <select className="add-select" type="select" name="select" id="exampleSelectMulti" onChange={selected}>
                         <option>Type</option>
+                        <option>twEAT!!</option>
                         <option>Restaurant</option>
                         <option>Post</option>
                     </select>
@@ -301,6 +328,43 @@ export default function Add(props){
                         <Button className="add-submit-btn" onClick={createRestaurant}>Submit</Button>
                     </div>
                 </>): ""}
+                {state==='twEAT!!'? ( <>
+                    <FormGroup>
+                        <Label className="add-label">Restaurant</Label>
+                        <Input className="add-input" placeholder="Name" 
+                                onChange={(e) => setTweat_res(e.target.value)}
+                                value={tweat_res}
+                                style={{ marginBottom: 10 }}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label className="add-label">Reserved Time</Label>
+                        <Input className="add-input" placeholder="Name" 
+                                onChange={(e) => setTweat_time(e.target.value)}
+                                value={tweat_time}
+                                style={{ marginBottom: 10 }}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label className="add-label">Maximum Number of People</Label>
+                        <Input className="add-input" placeholder="Name" 
+                                onChange={(e) => setTweat_people(e.target.value)}
+                                value={tweat_people}
+                                style={{ marginBottom: 10 }}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label className="add-label">Article</Label>
+                        <Input className="add-input" placeholder="Name" 
+                                onChange={(e) => setTweat_body(e.target.value)}
+                                value={tweat_body}
+                                style={{ marginBottom: 10 }}
+                        />
+                    </FormGroup>
+                    <div className="add-btn-container">
+                        <Button className="add-submit-btn" onClick={/*createTweat*/console.log("createtweat")}>Submit</Button>
+                    </div>
+                    </>): ""}
             </div>
         </div>
     );
