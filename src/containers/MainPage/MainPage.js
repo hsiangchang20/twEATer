@@ -159,14 +159,7 @@ export default function MainPage(props) {
                                             alert("Fuck 吳瑋倫");
                                     }
                                 }
-<<<<<<< HEAD
                                 else console.log(data);
-=======
-                                else{
-                                    console.log('daodaodao')
-                                }
-                                //else console.log(data);
->>>>>>> 1dd765a914f35491b7015a5f79d9c47252b75623
                             }} />
                         </div>
                     )
