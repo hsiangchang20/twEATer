@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import './PostsRender.css'
 import avocado_pic from "../../../components/Images/avocado.png";
 
+import fruits from "../fruits/fruits";
+
 import {ONE_POST_QUERY, POST_SUBSCRIPTION, USER_QUERY, CREATE_COMMENT_MUTATION, COMMENT_SUBSCRIPTION} from '../../../graphql'
 import { useQuery, useLazyQuery, useSubscription, useMutation } from "@apollo/client";
 
@@ -21,6 +23,10 @@ export default function PostRender(props) {
     const [addComment] = useMutation(CREATE_COMMENT_MUTATION);
     const [body, setBody] = useState('');
     const [init, setInit] = useState(true)
+
+    
+	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
+	const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
 
     const submitComment = useCallback(()=>{
         if(body==='') return
@@ -86,7 +92,9 @@ export default function PostRender(props) {
     }, [subscribeToMore]);
 
     useEffect(()=>{
-        if(userdata) setUsername(userdata.users[0].name);
+        if(userdata){
+            setUsername(userdata.users[0].name);
+        }
     }, userdata);
 
     const Time = (t) => {
@@ -113,7 +121,7 @@ export default function PostRender(props) {
     const mycomment = (
         <div className="mycomment">
             <div className="mycomment-userdata">
-                <img src={avocado_pic} alt="IMG" className="userfruit"/>
+                <img src={(post.users !== undefined) ? fruitlist[post.users[0].fruit] : avocado_pic} alt="IMG" className="userfruit"/>
                 <div>
                     <h3>{username}</h3>
                 </div>
@@ -132,7 +140,7 @@ export default function PostRender(props) {
         <div className="wrap-post1">
             <div className="post-basic-data">
                 <div className="post-userdata">
-                    <img src={avocado_pic} alt="IMG" className="userfruit"/>
+                    <img src={(post.users !== undefined) ? fruitlist[post.users[0].fruit] : avocado_pic} alt="IMG" className="userfruit"/>
                     <div>
                         <h3>{ (post.users !== undefined) ? " " + post.users[0].name : " "}</h3>
                     </div>

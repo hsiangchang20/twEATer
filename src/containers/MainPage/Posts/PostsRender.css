@@ -123,6 +123,10 @@ body, html {
 	font-size: 20px;
 }
 
+.userfruit {
+	background: transparent;
+}
+
 
 /*description for comments*/
 .comment {
