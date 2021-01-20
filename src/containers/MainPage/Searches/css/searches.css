@@ -1083,49 +1083,6 @@ html {
 
   
   @media screen and (max-width: 767px) {
-    .s007 form .inner-form .basic-search .input-field .search-input {
-      padding: 10px 110px 10px 60px;
-      color: #666666;
-      line-height: 1.5;
-      display: block;
-      width: 100%;
-      background: #e6e6e6;
-
-    }
-
-    .focus-input100 {
-        display: block;
-        position: absolute;
-        border-radius: 25px;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        width: 100%;
-        height: 100%;
-        box-shadow: 0px 0px 0px 0px;
-        color: rgba(87,184,70, 0.8);
-      }
-      
-    .search-input:focus + .focus-input100 {
-        -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
-        animation: anim-shadow 0.5s ease-in-out forwards;
-    }
-
-      
-@-webkit-keyframes anim-shadow {
-    to {
-        box-shadow: 0px 0px 70px 25px;
-        opacity: 0;
-    }
-}
-    
-@keyframes anim-shadow {
-    to {
-        box-shadow: 0px 0px 70px 25px;
-        opacity: 0;
-    }
-}
-
 
 
     .s007 form .inner-form .basic-search .input-field .icon-wrap {
@@ -1143,3 +1100,75 @@ html {
     }
   }
   
+  
+.focus-input100 {
+  display: block;
+  position: absolute;
+  border-radius: 0px;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 0px 0px;
+  color: rgba(87,184,70, 0.8);
+  background: rgba(87,184,70, 0.8);
+}
+
+.search-input {
+  padding: 10px 110px 10px 60px;
+  color: #666666;
+  line-height: 1.5;
+  display: block;
+  width: 100%;
+}
+
+.search-input:focus + .focus-input100 {
+  -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+  animation: anim-shadow 0.5s ease-in-out forwards;
+}
+
+
+@-webkit-keyframes anim-shadow {
+to {
+  box-shadow: 0px 0px 70px 25px;
+  opacity: 0;
+}
+}
+
+@keyframes anim-shadow {
+to {
+  box-shadow: 0px 0px 70px 25px;
+  opacity: 0;
+}
+}
+
+.symbol-input100 {
+font-size: 15px;
+
+display: -webkit-box;
+display: -webkit-flex;
+display: -moz-box;
+display: -ms-flexbox;
+display: flex;
+align-items: center;
+position: absolute;
+border-radius: 25px;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 100%;
+padding-left: 35px;
+pointer-events: none;
+color: #666666;
+
+-webkit-transition: all 0.4s;
+-o-transition: all 0.4s;
+-moz-transition: all 0.4s;
+transition: all 0.4s;
+}
+
+.search-input:focus + .focus-input100 + .symbol-input100 {
+color: #57b846;
+padding-left: 28px;
+}
