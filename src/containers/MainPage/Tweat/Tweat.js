@@ -59,7 +59,7 @@ export default function Tweat(props){
     }, [subscribeToMore]);
 
     const tweats = tweat.map(tweat => (
-        <div className={tweat.follower.includes(userid) ? "wrap-tweat100 joined" : "wrap-tweat100"} key={tweat}>
+        <div className={tweat.follower.includes(userid)||tweat.users[0].name===userName ? "wrap-tweat100 joined" : "wrap-tweat100"} key={tweat}>
             <div className="tweats-overview">
                 <div className="tweats-userdata">
                     <img src={fruitlist[tweat.users[0].fruit]} alt="IMG" className="user-fruit"/> 
@@ -97,7 +97,7 @@ export default function Tweat(props){
                 </div>
                 <div className='tweats-likeOrResponse'>  
                     <div className="tweats-like">
-                        {(tweat.follower.length<tweat.limit)&&!(tweat.follower.includes(userid))?(<button onClick={()=>followTweat(tweat._id)} className="tweats-btn">
+                        {(tweat.follower.length<tweat.limit)&&!(tweat.follower.includes(userid))&&!(tweat.users[0].name===userName)?(<button onClick={()=>followTweat(tweat._id)} className="tweats-btn">
                             <p>Join</p>
                         </button>): ""}
                         {(tweat.follower.includes(userid)||tweat.users[0].name===userName)? (<button className="tweats-btn">

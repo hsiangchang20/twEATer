@@ -5,7 +5,7 @@ import './css/style.css'
 import './css/mobile-style.css'
 import './font-awesome-4.7.0/css/font-awesome.css'
 import post from "../../../components/Post/Post";
-import { CREATE_POST_MUTATION, CREATE_RESTAURANT_MUTATION, USER_QUERY, CREATE_MESSAGE_MUTATION } from '../../../graphql'
+import { CREATE_POST_MUTATION, CREATE_RESTAURANT_MUTATION, USER_QUERY, CREATE_MESSAGE_MUTATION, RESTAURANT_QUERY } from '../../../graphql'
 import { useMutation, useQuery } from "@apollo/client";
 
 export default function Add(props){
@@ -31,12 +31,38 @@ export default function Add(props){
     const [tweat_body, setTweat_body] = useState('');
     const [addPost] = useMutation(CREATE_POST_MUTATION);
     const [addRestaurant] = useMutation(CREATE_RESTAURANT_MUTATION);
-    const [addTweat] = useMutation(CREATE_MESSAGE_MUTATION)
+    const [addTweat] = useMutation(CREATE_MESSAGE_MUTATION);
+    const {data, error, refetch} = useQuery(RESTAURANT_QUERY, {variables: {name: "", type: "", time: "", cost: "", staple: "", location: "", Star: ""}});
+    const [init, setInit] = useState(true);
+    const [incomingRest, setIncomingRest] = useState([])
+
+    useEffect(()=>{
+        if(init && data) {
+            console.log(data.restaurant)
+            setIncomingRest(data.restaurant)
+            setInit(false)
+        }
+    }, data)
 
     const createTweat = useCallback(() => {
         if (!(tweat_res&&tweat_time&&tweat_people&&tweat_body)) {
             alert("Please fill in all the required information!")
             return
+        }
+        else {
+            let checked = false;
+            for(var i=0; i<incomingRest.length;i++){
+                if(tweat_res===incomingRest[i].name)
+                    checked=true;
+            }
+            if(!checked){
+                alert("No match restaurant");
+                setTweat_body('');
+                setTweat_people(0);
+                setTweat_res('');
+                setTweat_time('');
+                return;
+            }
         }
         addTweat({
             variables: {
