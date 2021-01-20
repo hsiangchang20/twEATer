@@ -16,6 +16,7 @@ export default function Roulette(props) {
     const { loading, error, data, refetch} = useQuery(RESTAURANT_QUERY, {variables: {name: "", type: "", time: "", cost: "", staple: "", location: "", Star: ""}});
     const [rest, setRest] = useState([])
     const [init, setInit] = useState(true);
+    const [animationMove, setAnimationMove] = useState({})
 
     useEffect(()=>{
         console.log(data);
@@ -64,16 +65,27 @@ export default function Roulette(props) {
     return (
         <div className="roulette-wrapper">
             <div className="btn-wrapper">
-                <button className="btn-roulette" onClick={spinAnimate}>I'M FEELING LUCKY</button>
+                <button className="btn-roulette" onClick={() => {
+                    spinAnimate();
+                    setAnimationMove({})
+                    setTimeout(() => {
+                        setAnimationMove({WebkitAnimation: "moving 2s", Animation: "moving 2s"});
+                    }, 2500);
+                    setTimeout(() => {
+                        setAnimationMove({borderBottom: "solid 1px #383737", WebkitAnimation: "moving 2s", Animation: "moving 2s"})
+                    }, 3000)
+                    setTimeout(() => {
+                        setAnimationMove({borderBottom: "solid 1px #383737"})
+                    }, 4000)
+                }}>I'm Feeling Lucky</button>
             </div>
             <div className="rotateImg" style={animation}>
                 <img src={rouletteImg} />
             </div>
-            <div className="result-wrapper">
+            <div id="result-wrapper" style={animationMove}>
                 <button className="result">
                     <NavLink to={"/restaurant/" + restaurant + "/" + userid} className="posts-readmore">
                         {restaurant ? (<p>{"< " + restaurant + " >"}</p>) : <p></p>}
-                        
                     </NavLink>
                 </button>
             </div>

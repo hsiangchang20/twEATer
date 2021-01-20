@@ -24,6 +24,12 @@ body, html {
 	padding: 20px 10px 10px 35px;
 }
 
+.photo {
+  border-radius: 25px;
+  max-height: 500px;
+  max-width: 500px;
+}
+
 .name {
 	width: 1000px;
 	height: auto;
@@ -41,15 +47,13 @@ body, html {
 
 .info {
     width: 1000px;
-	height:auto;
-    margin: 0px auto 0px;
+	  max-height: 200px;
+    margin: 0 auto;
 }
 
 
-
-
 .info p {
-	font-size: 30px;
+	font-size: 20px;
 	font-weight: 550;
 }
 
