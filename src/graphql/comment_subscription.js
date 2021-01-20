@@ -13,6 +13,9 @@ export const COMMENT_SUBSCRIPTION = gql`
             data {
                 Author
                 body
+                user{
+                    fruit
+                }
             }
         }
     }
