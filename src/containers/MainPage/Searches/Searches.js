@@ -48,6 +48,11 @@ export default function Searches() {
         setStar(event.target.value)
     }
 
+    const restaurantList = data.restaurant.map(restaurant => (
+         console.log('')   
+        )
+    )
+
 
     useEffect(()=>{
         console.log(data)
@@ -148,6 +153,22 @@ export default function Searches() {
                                     e.preventDefault();
                                     Search({ variables: { name: Restaurant,  type:type, time: time, cost: cost, staple: staple, location: location, Star: Star} });
                                 }}>Search</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="restaurant-list">
+                        <div className="restaurant">
+                            <div className="restaurant-label">
+                                1
+                            </div>
+                            <div className="restaurant-label">
+                                2
+                            </div>
+                            <div className="restaurant-label">
+                                3
+                            </div>
+                            <div className="restaurant-label">
+                                4
                             </div>
                         </div>
                     </div>

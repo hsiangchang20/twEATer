@@ -933,6 +933,7 @@ html {
   .s007 form .inner-form .advance-search {
     background: #fff;
     padding: 40px;
+    margin-bottom: 10px;
     border-radius: 25px;
     box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
   }
@@ -1171,4 +1172,21 @@ transition: all 0.4s;
 .search-input:focus + .focus-input100 + .symbol-input100 {
 color: #57b846;
 padding-left: 28px;
+}
+
+.s007 form .inner-form .restaurant-list {
+  background: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+.s007 form .inner-form .restaurant-list .restaurant {
+  background: rgba(87,184,70, 0.8);
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.s007 form .inner-form .restaurant-list .restaurant .restaurant-label {
+  font-size: 18px;
 }
