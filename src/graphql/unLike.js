@@ -1,11 +1,11 @@
 import { gql } from 'apollo-boost'
 
-export const LIKE_MUTATION = gql`
-  mutation Like(
+export const UNLIKE_MUTATION = gql`
+  mutation unLike(
     $PostID: String!
     $userId: String!
   ) {
-    Like(
+    unLike(
         PostID: $PostID
         userId: $userId
     ) {

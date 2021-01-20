@@ -24,7 +24,8 @@ type Mutation {
 
   createRestaurant(data: createRestaurantInput!): Restaurant!
   deleteRestaurant(name: String!): Restaurant!
-  Like(PostID: String!): [Post!]!
+  Like(PostID: String!, userId: String!): [Post!]!
+  unLike(PostID: String!, userId: String!): [Post!]!
   follow(id: ID!, follower: ID!, followerName: String!): [Message!]
 }
 
@@ -105,6 +106,7 @@ type User {
   password: String!
   fruit: Int!
   posts: [Post!]!
+  Like: [ID!]
 }
 
 type Post {
