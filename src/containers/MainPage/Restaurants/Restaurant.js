@@ -3,6 +3,7 @@ import "./restaurant.css";
 import {RESTAURANT_QUERY} from '../../../graphql'
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { NavLink } from "react-router-dom";
+import fruits from "../fruits/fruits";
 import avocado_pic from "../../../components/Images/avocado.png"
 
 export default function Restaurant(props) {
@@ -12,6 +13,10 @@ export default function Restaurant(props) {
     const [rest, {loading2, data2}] = useLazyQuery(RESTAURANT_QUERY)
     const [restaurant, setRestaurant] = useState('dao')
     const [photo, setPhoto] = useState('')
+
+	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
+    const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
+    
     useEffect(()=>{    
         console.log(data)    
         if (data && (data.restaurant[0])){
@@ -49,7 +54,7 @@ export default function Restaurant(props) {
         <div className="wrap-post100" key={post.time}>
             <div className="posts-overview">
                 <div className="posts-userdata">
-                    <img src={avocado_pic} alt="IMG" className="user-fruit"/> 
+                    <img src={fruitlist[post.users[0].fruit]} alt="IMG" className="user-fruit"/> 
                     <div>
                         <p>{post.users[0].name}</p>
                     </div>

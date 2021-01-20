@@ -1,0 +1,126 @@
+.wrap-tweat100 {
+    width: 1000px;
+    height: auto;
+    background: rgb(255, 255, 255);
+    border-radius: 50px;
+    overflow: auto;
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px 0px 0px 20px;
+  }
+
+  /*decoration for tweats.js*/
+  .tweats-overview {
+    width: 1000px;
+    height: auto;
+    padding: 0px 20px;
+  }
+
+  img {  
+    max-height: 100%;  
+    max-width: 100%; 
+    width: auto;
+    height: auto;
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
+  .tweats-userdata {
+    width: auto;
+  }
+
+  .tweats-userdata img{
+    margin: 6px;
+    width: 10%;
+    height: 10%;
+    float: left;
+  }
+
+  .tweats-userdata div{
+    width: auto;
+    height: 20px;
+    text-align: left;
+    padding: 10px;
+  }
+
+  .tweats-userdata p {
+    font-weight: 400;
+    font-size: 30px;
+    color: black;
+    margin: 0;
+  }
+
+  .tweats-restaurant p {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 3px;
+      color: #2F3640;
+      text-shadow: 3px 3px #FEDC6B;
+  }
+
+  .tweats-container ul {
+    margin: 0 auto;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+    line-height: normal;
+    text-align: center;
+  }
+
+  .tweats-body {
+      max-width: 500px;
+      display: inline-block;
+      margin: 0 100px 0 0;
+  }
+
+
+
+  .tweats-body p {
+    font-size: 30px;
+    font-weight: 550;
+    width: auto;
+  }
+
+  .tweats-time {
+    width: 100%;
+    text-align: right;
+  }
+
+  .tweats-time p {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .tweats-likeOrResponse{
+    width: auto;
+    height: 50px;
+    margin: 0px auto;
+  }
+
+  .tweats-likeOrResponse p {
+      font-size: 20px;
+  }
+
+
+  .tweats-like{
+    float: left;
+  }
+
+  .tweats-readmore{
+    text-align: right;
+    float: right;
+    font-size: 20px;
+    font-weight: 500px;
+  }
+

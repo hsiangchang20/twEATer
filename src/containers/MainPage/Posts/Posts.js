@@ -80,7 +80,10 @@ export default function Posts(props) {
                         <p>Like&nbsp;&nbsp;<FaThumbsUp/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>
                     </button>
                     <button>
-                        <p>Comment&nbsp;&nbsp;<FaCommentAlt/></p>
+                        <NavLink to={"/postrender/" + post._id + "/" + userid}>
+                            <p>Comment&nbsp;&nbsp;<FaCommentAlt/></p>
+                        </NavLink>
+                        
                     </button>
                 </div>
             </div>
