@@ -6,7 +6,7 @@ body, html {
 }
 
 .wrap-restaurant {
-	width: 1100px;
+	width: 1000px;
 	height: auto;
 	background: #fff;
 	border-radius: 50px;
@@ -21,7 +21,7 @@ body, html {
 	justify-content: space-between;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	padding: 10px 10px 10px 10px;
+	padding: 20px 10px 10px 35px;
 }
 
 .name {
@@ -52,4 +52,139 @@ body, html {
 	font-size: 30px;
 	font-weight: 550;
 }
+
+/*about posts*/
+.wrap-post100 {
+    width: auto;
+    height: 450px;
+    background: #fff;
+    border-radius: 50px;
+    overflow: auto;
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px 10px 0px 20px;
+  }
+
+  /*decoration for Posts.js*/
+  .posts-overview {
+    width: 600px;
+    height: auto;
+    padding: 0px 20px;
+  }
+
+  .posts-picture {
+    width: 360px;
+    height: 360px;
+    line-height: 320px;
+    text-align: center;
+    overflow: hidden;
+    margin: auto 10px auto auto;
+  }
+
+  .posts-picture img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+  }
+
+  img {  
+    max-height: 100%;  
+    max-width: 100%; 
+    width: auto;
+    height: auto;
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
+  .posts-userdata {
+    width: auto;
+  }
+
+  .posts-userdata img{
+    width: 13%;
+    height: 13%;
+    float: left;
+  }
+
+  .posts-userdata div{
+    width: auto;
+    height: 60px;
+    float: center;
+    text-align: left;
+    vertical-align: middle;
+    padding-top: 20px;
+    padding-bottom: 80px;
+  }
+
+  .posts-userdata p {
+    font-weight: 600;
+    font-size: 40px;
+    color: black;
+  }
+
+  .posts-restaurant p {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 3px;
+      color: #2F3640;
+      text-shadow: 3px 3px #FEDC6B;
+  }
+
+  .posts-body p {
+    font-size: 30px;
+    font-weight: 550;
+  }
+
+  .posts-time {
+    width: 100%;
+    text-align: right;
+  }
+
+  .posts-time p {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .posts-likeOrResponse{
+    width: auto;
+    height: 90px;
+    margin: 0px auto;
+  }
+
+  .posts-likeOrResponse p {
+      font-size: 20px;
+  }
+
+
+  .posts-like{
+    float: left;
+  }
+
+  .posts-response{
+    float: center;
+  }
+
+  .posts-readmore{
+    text-align: right;
+    float: right;
+    font-size: 20px;
+    font-weight: 600px;
+  }
+
+.view-posts {
+	font-size: 40px;
+}
+
 
