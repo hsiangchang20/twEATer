@@ -38,6 +38,7 @@ body, html {
 
 .post-picture img {
 	width: 100%;
+	border-radius: 50px;
 }
 
 .post-body {
@@ -56,6 +57,8 @@ body, html {
 	width: 900px;
 	height:auto;
 	margin: 0 auto 20px;
+	background: rgb(223, 223, 227);
+	border-radius: 50px;
 }
 
 .post-userdata {
@@ -129,9 +132,7 @@ body, html {
 
 
 /*description for comments*/
-.comment {
-	background-color: rgb(233, 227, 227);
-}
+
 
 .comment-userdata {
 	width: auto;
@@ -140,8 +141,9 @@ body, html {
 
 .comment-userdata img {
 	width: auto;
-	height: 100px;
+	height: 80px;
 	float: left;
+	margin: 10px 0 0 20px;
 }
 
 .comment-userdata div {
@@ -182,15 +184,16 @@ body, html {
 	font-weight: bold;
 }
 
+
 .comment .body .like {
 	font-size: 15px;
 	font-weight: bold;
 	color: rgb(48, 173, 173);
 }
 
-
 .mycomment {
-	background-color: rgb(233, 227, 227);
+	margin-top: 10px;
+	background-color: transparent;
 }
 
 .mycomment-userdata {
@@ -220,7 +223,6 @@ body, html {
 .mycomment .body {
 	padding: 0px 30px 20px 30px;
 	padding-bottom: 20px;
-	border-bottom: 1px solid #cac6c6;
 	text-align: justify;
 }
 
@@ -229,6 +231,11 @@ body, html {
 	font-size: 20px;
 	font-weight: bold;
 	opacity: 70%;
+	transition: all 0.4s;
+}
+
+.mycomment .body .word:focus {
+	background: #fff;
 }
 
 .mycomment .submit {
@@ -236,16 +243,19 @@ body, html {
 	background: transparent;
 	border-radius: 16px;
 	border: solid 2px #686a6d;
+	transition: all 0.4s;
+	
 }
 
 .mycomment .submit:hover {
-    background-color: rgb(13, 151, 243);
+    background-color: rgb(119, 243, 46);
 }
 
 .mycomment .submit p {
     margin: 0px auto;
 	font-size: 20px;
 	color:#2F3640;
+	transition: all 0.4s;
 }
 
 .mycomment .submit:hover p {

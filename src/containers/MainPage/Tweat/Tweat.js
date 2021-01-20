@@ -19,27 +19,36 @@ export default function tweat(props){
                     </div>
                 </div>
                 <div className="tweats-restaurant">
-                    <p>{"< " + "restaurant.name" + " >"}</p>
+                        <NavLink to={"/restaurant/" + 'restaurant' + "/" + 'userid'}>
+                            <p>{"< " + "restaurant" + " >"}</p>
+                        </NavLink>
                 </div>
-                <ul className="tweats-container">
-                    <li className="tweats-body left">
-                        <p>Reserved Time</p>
-                        <p>Attenders</p>
-                    </li>
-                    <li className="tweats-body right">
-                        <p>??minutes left</p>
-                        <p>?? Qouta left</p>
-                    </li>
-                </ul>
-                <div className="tweats-body word">
+                <table>
+                    <tbody>
+                        <tr className="tweats-container-header">
+                            <td>
+                                Reserved Time
+                            </td>
+                            <td>
+                                Attenders
+                            </td>
+                        </tr>
+                        <tr className="tweats-container">
+                            <td>
+                                ??minutes left
+                            </td>
+                            <td>
+                                ?? Qouta left
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div className="tweats-body">
                     <p>Tweat Body</p>
-                </div>
-                <div className="tweats-time">
-                    <p>{/*Time(tweat.time).toString().slice(4, 24)*/"tweat time"}</p>
                 </div>
                 <div className='tweats-likeOrResponse'>  
                     <div className="tweats-like">
-                        <button onClick={/*()=>Like(tweat._id)*/console.log("nothing")}>
+                        <button onClick={/*()=>Like(tweat._id)*/console.log("nothing")} className="tweats-btn">
                             <p>Join</p>
                         </button>
                     </div>
