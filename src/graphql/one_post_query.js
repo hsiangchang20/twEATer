@@ -16,6 +16,7 @@ export const ONE_POST_QUERY = gql`
         thumb
         users{
             name
+            fruit
         }
         comments{
             Author

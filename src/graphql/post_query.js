@@ -15,6 +15,7 @@ export const POST_QUERY = gql`
         authorID
         users{
             name
+            fruit
         }
     }
   }
