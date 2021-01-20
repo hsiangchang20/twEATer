@@ -23,6 +23,13 @@ export default function Restaurant(props) {
         }
     })
 
+    const Time = (t) => {
+        var time = new Date();
+        time.setTime(t);
+        //console.log(time);
+        return time
+    }
+
     const restaurant_view = (restaurant === 'dao') ? (<div className="name"><p>Restaurant does not exist</p></div>) : (
         <div className="wrap-restaurant">
             <div className="name">
@@ -54,7 +61,7 @@ export default function Restaurant(props) {
                     <p>{(post.body.length <= 18) ? post.body : post.body.slice(0, 17) + "  .  .  ."}</p>
                 </div>
                 <div className="posts-time">
-                    <p>{"Time(post.time).toString().slice(4, 24)"}</p>
+                    <p>{Time(post.time).toString().slice(4, 24)}</p>
                 </div>
                 <div className='posts-likeOrResponse'>  
                     <div className="posts-like">
