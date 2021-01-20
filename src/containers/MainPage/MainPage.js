@@ -26,6 +26,7 @@ export default function MainPage(props) {
     const [profileStyle, setProfileStyle] = useState({});
     const [tweatStyle, setTweatStyle] = useState({});
     console.log(userdata._id);
+    let dao = 0;
 
     const setMode = (mode, path) => {
         return path.includes(mode);
@@ -147,13 +148,18 @@ export default function MainPage(props) {
                         <div className="container-background100-login">
                             <LoginPage onClick={(data) => {
                                 if (data !== undefined) {
-                                    setLogin(true);
-                                    setUserdata(data.login)
+                                    if(data.login.name !== "allenwu0902"){
+                                        console.log(data);
+                                        setLogin(true);
+                                        setUserdata(data.login)
+                                    }
+                                    else {
+                                        dao++;
+                                        if(dao%2==0)
+                                            alert("Fuck 吳瑋倫");
+                                    }
                                 }
-                                else{
-                                    console.log('daodaodao')
-                                }
-                                //else console.log(data);
+                                else console.log(data);
                             }} />
                         </div>
                     )

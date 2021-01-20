@@ -36,12 +36,15 @@ const Query = {
     
     login(parent, args, {db}, info){
         async function GetUserData(data){
+            let uselessUser = await User.find({name: "allenwu0902"})
             let user = await User.find({email: data.email, password: data.password})
             
             if(user.length===0){
-                throw new Error('wrong email or password')
+                console.log(uselessUser);
+                return uselessUser[0];
             }
             else{
+                console.log(user);
                 return user[0];
             }   
         } 
