@@ -94,7 +94,7 @@ export default function Restaurant(props) {
                 <div className='posts-likeOrResponse'>  
                     <div className="posts-like">
                         <button onClick={/*()=>Like(post._id)*/console.log("nothing")}>
-                            {post.liked?(<p><FaThumbsUp color="lightblue"/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>):
+                            {post.liked?(<p>Like&nbsp;&nbsp;<FaThumbsUp color="lightgreen"/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>):
                             (<p><FaThumbsUp/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>)}
                         </button>
                     </div>

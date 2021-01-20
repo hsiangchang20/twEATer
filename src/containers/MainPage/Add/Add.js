@@ -167,6 +167,10 @@ export default function Add(props){
         setStar(event.target.value)
     }
 
+    const selectMaxPeople = (event) => {
+        setTweat_people(event.target.value)
+    }
+
     return (
         <div className="App">
             <link 
@@ -338,20 +342,30 @@ export default function Add(props){
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label className="add-label">Reserved Time</Label>
-                        <Input className="add-input" placeholder="Name" 
-                                onChange={(e) => setTweat_time(e.target.value)}
-                                value={tweat_time}
-                                style={{ marginBottom: 10 }}
+                        <Label for="exampleTime" className="add-label">Time</Label>
+                        <Input
+                        className="add-input"
+                        type="time"
+                        name="time"
+                        id="exampleTime"
+                        placeholder="time placeholder"
+                        value={tweat_time}
+                        onChange={(e) => setTweat_time(e.target.value)}
+                        style={{ marginBottom: 10 }}
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label className="add-label">Maximum Number of People</Label>
-                        <Input className="add-input" placeholder="Name" 
-                                onChange={(e) => setTweat_people(e.target.value)}
-                                value={tweat_people}
-                                style={{ marginBottom: 10 }}
-                        />
+                    <Label className="add-label">Maximum Number of People</Label>
+                        <Input className="add-select fa" type="select" placeholder="Maximum Number of People" onChange={selectMaxPeople} style={{ marginBottom: 10 }}>
+                            <option placeholder="" value="">&#xf1ae; Number</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                        </Input>
                     </FormGroup>
                     <FormGroup>
                         <Label className="add-label">Article</Label>

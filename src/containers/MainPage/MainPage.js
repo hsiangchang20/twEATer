@@ -150,6 +150,9 @@ export default function MainPage(props) {
                                     setLogin(true);
                                     setUserdata(data.login)
                                 }
+                                else{
+                                    console.log('daodaodao')
+                                }
                                 //else console.log(data);
                             }} />
                         </div>
