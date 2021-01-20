@@ -17,6 +17,7 @@ export default function Searches(props) {
     const [staple, setStaple] = useState('');
     const [location, setLocation] = useState('');
     const [Star, setStar] = useState('');
+    const [searched, setSearched] = useState(false);
 
     const selectType = (event) => {
         setType(event.target.value)
@@ -174,6 +175,7 @@ export default function Searches(props) {
                         <div className="row third">
                             <div className="input-field">
                                 <button className="btn-search" onClick={(e)=>{
+                                    setSearched(true)
                                     e.preventDefault();
                                     Search({ variables: { name: Restaurant,  type:type, time: time, cost: cost, staple: staple, location: location, Star: Star} });
                                 }}>Search</button>
@@ -181,7 +183,7 @@ export default function Searches(props) {
                         </div>
                     </div>
                 {restaurantList}
-                {restaurantData.length ? <></> : NoData}
+                {(restaurantData.length || !searched) ? <></> : NoData}
                 </div>
             </form>   
         </div>
