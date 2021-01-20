@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { NavLink, Switch, Route, Redirect } from "react-router-dom";
+import { NavLink, Switch, Route, Redirect, useLocation } from "react-router-dom";
 //import ScriptTag from 'react-script-tag'
 import './mainpage.css'
 import logo from "../../components/Images/logo-reverse.png"
@@ -15,6 +15,7 @@ import Add from "./Add/Add"
 
 export default function MainPage(props) {
 
+
     const [login, setLogin] = useState(false);
     const [userdata, setUserdata] = useState([]);
     const [postStyle, setPostStyle] = useState({background: '#f4ff53'});
@@ -23,6 +24,41 @@ export default function MainPage(props) {
     const [addStyle, setAddStyle] = useState({});
     const [profileStyle, setProfileStyle] = useState({});
     console.log(userdata._id);
+
+    const setMode = (mode, path) => {
+        return path.includes(mode);
+    }
+    
+    const location = useLocation();
+    console.log(location.pathname);
+    const path = location.pathname.toString();
+
+    useEffect (() => {
+        setMenuColorbyHeader(path)
+    }, [path])
+    
+    const setMenuColorbyHeader = (path) => {
+        setPostStyle({});
+        setSearchStyle({});
+        setRouletteStyle({});
+        setAddStyle({});
+        setProfileStyle({});
+        if (setMode("post", path) || setMode("restaurant", path)){
+            {setPostStyle({background: '#f4ff53'})}
+        }
+        else if (setMode("search", path)){
+            {setSearchStyle({background: '#f4ff53'})}
+        }
+        else if (setMode("roulette", path)){
+            {setRouletteStyle({background: '#f4ff53'})}
+        }
+        else if (setMode("add", path)){
+            {setAddStyle({background: '#f4ff53'})}
+        }
+        else if (setMode("profile", path)){
+            {setProfileStyle({background: '#f4ff53'})}
+        }
+    }
 
     function setMenuColor(page) {
         setPostStyle({});
@@ -35,7 +71,6 @@ export default function MainPage(props) {
         else if (page === 'roulette') {setRouletteStyle({background: '#f4ff53'})}
         else if (page === 'add') {setAddStyle({background: '#f4ff53'})}
         else if (page === 'profile') {setProfileStyle({background: '#f4ff53'})}
-        
     }
 
     return (
@@ -54,27 +89,27 @@ export default function MainPage(props) {
                                         <img src={logoTitle} />
                                     </li>
                                     <li className="main-button-li" style={postStyle}>
-                                        <button className="main-button" onClick={()=>{setMenuColor("post")}}>
+                                        <button className="main-button" /*onClick={()=>{setMenuColor("post")}}*/>
                                             <NavLink to={"/post/" + userdata._id} className="main-button-text">Post</NavLink>
                                         </button>
                                     </li>
                                     <li className="main-button-li" style={searchStyle}>
-                                        <button className="main-button" onClick={()=>{setMenuColor("search")}}>
+                                        <button className="main-button" /*onClick={()=>{setMenuColor("search")}}*/>
                                             <NavLink to={"/search/" + userdata._id} className="main-button-text">Search</NavLink>
                                         </button>
                                     </li>
                                     <li className="main-button-li" style={rouletteStyle}>
-                                        <button className="main-button" onClick={()=>{setMenuColor("roulette")}}>
+                                        <button className="main-button" /*onClick={()=>{setMenuColor("roulette")}}*/>
                                             <NavLink to={"/roulette/" + userdata._id} className="main-button-text">Roulette</NavLink>
                                         </button>
                                     </li>
                                     <li className="main-button-li" style={addStyle}>
-                                        <button className="main-button" onClick={()=>{setMenuColor("add")}}>
+                                        <button className="main-button" /*onClick={()=>{setMenuColor("add")}}*/>
                                             <NavLink to={"/add/" + userdata._id} className="main-button-text">Add</NavLink>
                                         </button>
                                     </li>
                                     <li className="main-button-li" style={profileStyle}>
-                                        <button className="main-button" onClick={()=>{setMenuColor("profile")}}>
+                                        <button className="main-button" /*onClick={()=>{setMenuColor("profile")}}*/>
                                             <NavLink to={"/profile/" + userdata._id} className="main-button-text">Profile</NavLink>
                                         </button>
                                     </li>
