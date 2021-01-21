@@ -153,6 +153,7 @@ export default function Add(props){
         setStar('');
         setStaple('');
         setLocation('');
+        refetch();
     })
 
     const imageUpload = async e => {
