@@ -34,11 +34,7 @@
     "websocket": "^1.0.32"
   },
   "scripts": {
-<<<<<<< HEAD
     "start": "node server.js",
-=======
-    "start": "react-scripts start",
->>>>>>> 826e7ebe1be6b07789d1178b120fbd5171c18c1a
     "predeloy": "yarn build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
