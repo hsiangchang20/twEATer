@@ -5,8 +5,8 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'build')));
 
 const bodyParser = require('body-parser')
-const apiRoute = require('./src/route/api');
-app.use('/api', apiRoute);
+//const apiRoute = require('./src/route/api');
+//app.use('/api', apiRoute);
 app.use(bodyParser.json());
 
 app.get('/ping', function (req, res) {
