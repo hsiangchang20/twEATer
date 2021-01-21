@@ -16,12 +16,12 @@ import 'antd/dist/antd.css'
 
 // Create an http link:
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/'
+  uri: 'http://140.112.235.35:4000/'
 })
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/`,
+  uri: `ws://140.112.235.35:4000/`,
   options: { reconnect: true }
 })
 
