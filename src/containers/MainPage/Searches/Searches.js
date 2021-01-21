@@ -71,7 +71,7 @@ export default function Searches(props) {
                 No Corresponding Restaurant Yet!
             </div>
             <div className="restaurant-label">
-                Please Add Posts to Help us Build the Society~~~
+                Please Add Posts to Help us Build the Community~~~
             </div>
         </div>
     )
