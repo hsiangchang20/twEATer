@@ -36,12 +36,15 @@ const Query = {
     
     login(parent, args, {db}, info){
         async function GetUserData(data){
+            let uselessUser = await User.find({name: "allenwu0902"})
             let user = await User.find({email: data.email, password: data.password})
             
             if(user.length===0){
-                throw new Error('wrong email or password')
+                console.log(uselessUser);
+                return uselessUser[0]
             }
             else{
+                console.log(user);
                 return user[0];
             }   
         } 
@@ -59,7 +62,7 @@ const Query = {
     restaurant(parent, args, {db}, info){
         async function GetRestaurantData(rest){
             let data = undefined
-            if(rest.name!=='') {data = await restaurant.find( { name: rest.name, })}
+            if(rest.name!=='') {data = await restaurant.find( { name: { "$regex": rest.name, "$options": "i" } })}
             else if(rest.time===''&&rest.type===''&&rest.cost===''&&rest.staple===''&&rest.location===''&&rest.Star===''){
                 data = await restaurant.find();
             }

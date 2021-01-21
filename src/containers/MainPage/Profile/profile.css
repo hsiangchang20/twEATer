@@ -100,7 +100,8 @@ html, body {
     padding-bottom: 140px;
   }
   header img {
-    width: 270px;
+    width: 300px;
+    height: 300px;
     display: inline-block !important;
 	  border-radius: 50%;
   }

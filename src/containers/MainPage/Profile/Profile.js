@@ -72,12 +72,8 @@ export default function Profile(props){
 	
 	const mutateUser = () => {
 		if (editing){
-			if (!newusername || !emailname) {
+			if (!newusername) {
 				alert("Please fill in all the required information!")
-			}
-	
-			else if (!emailname.includes('@')) {
-				alert("Your email is invalid!")
 			}
 	
 			else if (passwordname !== confirmPw) {

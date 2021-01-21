@@ -17,6 +17,7 @@ export default function Searches(props) {
     const [staple, setStaple] = useState('');
     const [location, setLocation] = useState('');
     const [Star, setStar] = useState('');
+    const [searched, setSearched] = useState(false);
 
     const selectType = (event) => {
         setType(event.target.value)
@@ -64,6 +65,17 @@ export default function Searches(props) {
         )
     );
 
+    const NoData = (
+        <div className="restaurant-container">
+            <div className="restaurant-label">
+                No Corresponding Restaurant Yet!
+            </div>
+            <div className="restaurant-label">
+                Please Add Posts to Help us Build the Society~~~
+            </div>
+        </div>
+    )
+
 
     useEffect(()=>{
         //console.log(data);
@@ -103,6 +115,7 @@ export default function Searches(props) {
                                         <option>American</option>
                                         <option>Japanese</option>
                                         <option>Italian</option>
+                                        <option>Other</option>
                                     </select>
                                 </div>
                             </div>
@@ -111,8 +124,8 @@ export default function Searches(props) {
                                     <select data-trigger="" className="choices__inner fa" onChange={selectTime}>
                                         <option placeholder="" value="">&#xf017; TIME</option>
                                         <option>Breakfast</option>
-                                        <option>Lunch</option>
-                                        <option>Dinner</option>
+                                        <option>Lunch/Dinner</option>
+                                        <option>Snack</option>
                                     </select>
                                 </div>
                             </div>
@@ -163,6 +176,7 @@ export default function Searches(props) {
                         <div className="row third">
                             <div className="input-field">
                                 <button className="btn-search" onClick={(e)=>{
+                                    setSearched(true)
                                     e.preventDefault();
                                     Search({ variables: { name: Restaurant,  type:type, time: time, cost: cost, staple: staple, location: location, Star: Star} });
                                 }}>Search</button>
@@ -170,9 +184,11 @@ export default function Searches(props) {
                         </div>
                     </div>
                 {restaurantList}
+                {(restaurantData.length || !searched) ? <></> : NoData}
                 </div>
             </form>   
         </div>
+        
     );
 }
 /*

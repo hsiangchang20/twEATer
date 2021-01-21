@@ -71,8 +71,9 @@ export default function PostRender(props) {
             let dao = commentdata.comment.data
             let add = {Author: dao.Author, body: dao.body, time: time.getTime(), user: dao.user}
             setComment([...comment, add])
+            console.log(commentdata)
         }
-    }, [commentdata, comment]);
+    }, [commentdata]);
 
     useEffect(()=>{
         subscribeToMore({

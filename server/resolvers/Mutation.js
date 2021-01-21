@@ -92,12 +92,12 @@ const Mutation = {
     },
     deleteMessage(parent, args, {db}, info){
         async function Delete(id){
-            let toDelete = await Message.find({author: id});
-            await Message.deleteMany();
+            let toDelete = await Message.find({_id: id});
+            await Message.deleteMany({_id: id});
             return toDelete[0];
         }  
-
-        return Delete(args.author);
+ 
+        return Delete(args.id);
     },
     createRestaurant(parent, args, {pubsub}, info){
         async function create(data){
