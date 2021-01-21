@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+## [109-1] Web Programming Final
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### (Group 33) NTU twEATer
 
-## Available Scripts
+**Deployed 連結:** 
+**Demo 影片連結:**
 
-In the project directory, you can run:
+這是一個美食交流平台，讓使用者分享餐廳、撰寫評論並建立美食資料庫，讓使用者創建和查詢餐廳的詳細資訊。
+除此之外，我們還提供了「好手氣」和「揪吃飯」的功能，讓有選擇障礙或找不到朋友的使用者也能擁有美好的用餐體驗！
 
-### `yarn start`
+使用/操作方式 (含伺服器端以及使用者端)
+使用者第一次使用時，在登入介面按"Create Account"來創建帳戶，之後便可以直接登入。主畫面有6個切換模式：
+1. Post: 瀏覽社群中各使用者撰寫的餐廳評價，可以對評價按讚或留言，也可以點入餐廳查看詳細資訊。
+2. Search: 透過名字/種類/營業時間/價格/地點等資訊，查詢符合條件的餐廳。
+3. Roulette: 好手氣! 隨機挑選餐廳並提供詳細資訊，是選擇障礙的救星！
+4. twEAT!: 瀏覽目前別人開揪的飯局，包含餐廳、人數、時間等資訊，在喜歡的飯局點選"Join"即可加入。
+5. Add: 有以下三種模式：
+   (1) 撰寫餐廳評價(必須附帶照片)
+   (2) 新增餐廳資訊 
+   (3) 開揪飯局！
+6. Profile: 瀏覽並更新個人資料與頭貼。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> Github link: https://github.com/hsiangchang20/twEATer
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+其他說明: 本網站提供無限制的撰寫貼文與回應的服務，為了保持網站內資訊簡潔，將在評分完後再釋出網站連結，歡迎大家來使用~
 
-### `yarn test`
+#### 使用與參考之框架/模組/原始碼: 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* 參考原始碼: Modern GraphQL Tutorial: https://github.com/ian13456/modern-graphql-tutorial
+* 參考框架: colorlib.com 的 Login Form Template: https://colorlib.com/wp/html5-and-css3-login-forms/
 
-### `yarn build`
+#### 專題製作心得:
+這次我們試著用所有學過的東西，將一個完整的服務建立起來，前端除了背景和字體外幾乎都是從頭開始寫，後端則完整使用上課教過的GraphQL各式功能建構社群軟體的資料處理，整個網路服務就像是美食版的twitter，成就感很高。
+整個project的開發中，最讓我們感到挫折的是各種不合常理的bug，總讓看似尋常的程式碼中整個崩潰，但隨著經驗的累積，我們漸漸能掌握網路服務程式的脈絡，也學習如何利用各種蛛絲馬跡和網路資源找到解方。
+同時，我們也了解到不倚賴模板、獨立刻出網路服務是多麼困難的事，將來如果還有機會寫網頁，一定要善加利用可取得的資源，才不會事倍功半。
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* 使用之第三方套件、框架、程式碼
+  Frontend(js, css): React, React-router, Bootstrap, Apollo, React-icons
+  Backend(js): GraphQL, Mongoose
+  Database: MongoDB
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### 每位組員之貢獻 (請詳述)
 
-### `yarn eject`
+* 詹侑昕：後端程式設計、資料庫操作、Schema制定、後端GraphQL Resolver設計與維護
+* 陳永縉：前後端資料傳輸、前端程式介面設計、前端資料整理
+* 張家翔：前端程式介面設計與排版、Google Map API開發
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+(Optional) 對於此課程的建議
+(Note) 無論自己在 FB 有無公告 deployed 連結，在期末報告一定要附上 deployed 連結，以利評分 (沒有附會被扣 10% 的分數)
