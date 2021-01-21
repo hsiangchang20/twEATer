@@ -2,8 +2,9 @@
 
 ### (Group 33) NTU twEATer
 
-**Deployed 連結:** 
-**Demo 影片連結:**
+**Deployed 連結: https://tweater.herokuapp.com/**
+
+**Demo 影片連結: https://www.youtube.com/watch?fbclid=IwAR2Ot46D7vMZxYggBj-QDutk0sRp5e4VHGfKZrV_MPV3SHPSzdXzBtkxLd0&v=yeOhAuze8gE&feature=youtu.be**
 
 這是一個美食交流平台，讓使用者分享餐廳、撰寫評論並建立美食資料庫，讓使用者創建和查詢餐廳的詳細資訊。
 除此之外，我們還提供了「好手氣」和「揪吃飯」的功能，讓有選擇障礙或找不到朋友的使用者也能擁有美好的用餐體驗！
