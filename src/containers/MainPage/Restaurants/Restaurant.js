@@ -109,6 +109,27 @@ export default function Restaurant(props) {
         return time
     }
 
+    const google_map = (
+        <div className="map">
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={position}
+                zoom={19}
+                onUnmount={onUnmount}
+            >
+                <Marker
+                    onClick={(props, marker, e) => {
+                        setSelectedPlace(props);
+                        setActiveMarker(marker);
+                        setShowingInfoWindow(true);
+                    }}
+                    key={restaurant.name}
+                    position={position}
+                />
+            </GoogleMap>
+        </div>
+        )
+
     const restaurant_view = (restaurant === 'dao') ? (<div className="name"><p>Restaurant does not exist</p></div>) : (
         <div className="wrap-restaurant">
             <div className="name">
@@ -121,6 +142,7 @@ export default function Restaurant(props) {
                 <p>Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; {restaurant.address}</p>
                 <p>Openhours&nbsp;&nbsp;:&nbsp;&nbsp; {restaurant.Openhours}</p>
             </div>
+            {isLoaded ? google_map : <>{console.log('no map')}</>}
         </div>
     )
 
@@ -169,26 +191,6 @@ export default function Restaurant(props) {
             {restaurant_view}
             {(restaurant.posts && restaurant.posts.length !== 0) ? (<p className="view-posts">&nbsp;&nbsp;&nbsp;Relating Posts:</p>) : <></>}
             {posts_list}
-            {isLoaded ? (
-            <div className="map">
-                <GoogleMap
-                    mapContainerStyle={containerStyle}
-                    center={position}
-                    zoom={19}
-                    onUnmount={onUnmount}
-                >
-                    <Marker
-                        onClick={(props, marker, e) => {
-                            setSelectedPlace(props);
-                            setActiveMarker(marker);
-                            setShowingInfoWindow(true);
-                        }}
-                        key={restaurant.name}
-                        position={position}
-                    />
-                </GoogleMap>
-            </div>
-            ) : <>{console.log('no map')}</>}
         </>
     );
 }
