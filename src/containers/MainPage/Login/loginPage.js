@@ -22,7 +22,7 @@ function LoginPage(props) {
     const [poppingDoublePressed, setPoppingDoublePressed] = useState('none');
     const [email, setEmail] = useState('');
     const [password, setPW] = useState('');
-    const [Login, {loading, data}] = useLazyQuery(LOGIN_QUERY);
+    const [Login, {data}] = useLazyQuery(LOGIN_QUERY);
     const [create, setCreate] = useState(false);
     const [username, setUsername] = useState('');
     const [emailname, setEmailname] = useState('');
@@ -69,13 +69,13 @@ function LoginPage(props) {
 
     useEffect( ()=> {
         if(data && click)
-            console.log(data.login.name);
+            // console.log(data.login.name);
         props.onClick(data);
         setClick(false)
     }, [data, click])
 
     useEffect( ()=> {
-        console.log(email, password);
+        // console.log(email, password);
     }, [email, password])
 
     const createUser = () => {
@@ -102,11 +102,11 @@ function LoginPage(props) {
             buildUser();
         }
         
-        console.log(username)
-        console.log(emailname)
-        console.log(passwordname)
+        // console.log(username)
+        // console.log(emailname)
+        // console.log(passwordname)
         //console.log(confirmPw)
-        console.log(fruit)
+        // console.log(fruit)
     }
 
     const buildUser = useCallback(()=>{
@@ -153,7 +153,7 @@ function LoginPage(props) {
                         Login
                     </span>
 
-                    <div className="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <div className="wrap-input100 validate-input">
                         <input  className="input100" 
                                 type="text" 
                                 name="email" 
@@ -167,7 +167,7 @@ function LoginPage(props) {
                         </span>
                     </div>
 
-                    <div className="wrap-input100 validate-input" dataValidation = "Password is required">
+                    <div className="wrap-input100 validate-input">
                         <input  className="input100" 
                                 type="password" 
                                 name="pass" 

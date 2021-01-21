@@ -71,7 +71,7 @@ mongodb.once('open', () => {
     }
   })
 
-  server.start({ port: process.env.PORT | 4000 }, () => {
+  server.start({ port: 4000 }, () => {
     console.log(`The server is up on port ${process.env.PORT | 4000}!`)
   })
 })

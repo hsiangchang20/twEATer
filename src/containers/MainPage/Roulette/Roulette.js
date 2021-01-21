@@ -19,7 +19,7 @@ export default function Roulette(props) {
     const [animationMove, setAnimationMove] = useState({})
 
     useEffect(()=>{
-        console.log(data);
+        // console.log(data);
         if(data)
             setRest(data.restaurant.map(res=>(res.name))); 
     }, [data])

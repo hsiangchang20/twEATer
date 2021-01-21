@@ -21,14 +21,14 @@ export default function Tweat(props){
         //console.log(posttime)
         const post_hour = posttime.slice(0,2)
         const post_minute = posttime.slice(3, 5)
-        console.log(post_hour, post_minute)
+        // console.log(post_hour, post_minute)
         const now = Date()
         const hour = now.slice(16, 18)
         const minute = now.slice(19, 21)
-        console.log(hour)
-        console.log(minute)
+        // console.log(hour)
+        // console.log(minute)
         if (parseInt(post_hour, 10) < parseInt(hour, 10)){
-            console.log(TweatID)
+            // console.log(TweatID)
             Delete(TweatID);
             return true
         }
@@ -44,7 +44,7 @@ export default function Tweat(props){
     }, [data])
 
     useEffect(()=>{
-        console.log(userData);
+        // console.log(userData);
         if(userData) setUserName(userData.users[0].name)
     }, [userData])
 
@@ -57,7 +57,7 @@ export default function Tweat(props){
     }, [init, refetch]);
 
     const followTweat = useCallback((TweatID)=>{
-        console.log(TweatID, userid, userName)
+        // console.log(TweatID, userid, userName)
         follow({
             variables: {
                 id: TweatID,
