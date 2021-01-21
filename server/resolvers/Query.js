@@ -53,7 +53,7 @@ const Query = {
 
     message(parent, args, {db}, info){
         async function GetMessage(n){
-            let data = await Message.find();
+            let data = await Message.find().sort({$natural:-1});
             return data;
         } 
         return GetMessage(args.author); 

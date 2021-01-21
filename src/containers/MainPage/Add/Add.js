@@ -8,6 +8,8 @@ import post from "../../../components/Post/Post";
 import { CREATE_POST_MUTATION, CREATE_RESTAURANT_MUTATION, USER_QUERY, CREATE_MESSAGE_MUTATION, RESTAURANT_QUERY } from '../../../graphql'
 import { useMutation, useQuery } from "@apollo/client";
 import stringSimilarity from "string-similarity";
+import Autocomplete from "@material-ui/lab/Autocomplete"
+import TextField from '@material-ui/core/TextField';
 
 export default function Add(props){
     const { userid } = props.match.params;
@@ -40,28 +42,47 @@ export default function Add(props){
     useEffect(()=>{
         if(init && data) {
             console.log(data.restaurant)
-            setIncomingRest(data.restaurant)
+            let R = []
+            for(var i=0; i<data.restaurant.length;i++){
+                R.push(data.restaurant[i].name);
+            }
+            setIncomingRest(R)
             setInit(false)
         }
-    }, data)
+    }, [data])
+
+    useEffect(()=>{
+        console.log(tweat_res);
+    }, [tweat_res])
+
+    useEffect(()=>{
+        if(init) {
+            console.log('init')
+            refetch();
+        }
+    }, [init])
+
+    const ComboBox = (dao)=>(
+        <Autocomplete
+        id="combo-box-demo"
+        options={incomingRest}
+        getOptionLabel={(option) => option}
+        style={{ width: 300 }}
+        renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+        onChange = {newValue=>dao(newValue.target.innerHTML)}
+        />
+    )
 
     const createTweat = useCallback(() => {
         if (!(tweat_res&&tweat_time&&tweat_people&&tweat_body)) {
+            console.log(tweat_res, tweat_time, tweat_people, tweat_body)
             alert("Please fill in all the required information!")
             return
         }
         else {
-            let checked = false;
-            for(var i=0; i<incomingRest.length;i++){
-                if(tweat_res===incomingRest[i].name)
-                    checked=true;
-            }
+            let checked = incomingRest.includes(tweat_res);
             if(!checked){
-                let R = []
-                for(var i=0; i<incomingRest.length;i++){
-                    R.push(incomingRest[i].name);
-                }
-                const target = stringSimilarity.findBestMatch(tweat_res, R).bestMatch.target;
+                const target = stringSimilarity.findBestMatch(tweat_res, incomingRest).bestMatch.target;
                 alert("No matched restaurants, do you mean "+target+"?");
                 setTweat_body('');
                 setTweat_people(0);
@@ -91,20 +112,13 @@ export default function Add(props){
             return
         }
         else {
-            let checked = false;
-            for(var i=0; i<incomingRest.length;i++){
-                if(restaurant===incomingRest[i].name)
-                    checked=true;
-            }
+            let checked = incomingRest.includes(tweat_res);
             if(!checked){
-                let R = []
-                for(var i=0; i<incomingRest.length;i++){
-                    R.push(incomingRest[i].name);
-                }
-                const target = stringSimilarity.findBestMatch(restaurant, R).bestMatch.target;
-                alert("No match restaurant, did you mean "+target+"?");
-                setLoading(false);
-                setRestaurant('');
+                const target = stringSimilarity.findBestMatch(tweat_res, incomingRest).bestMatch.target;
+                alert("No matched restaurants, do you mean "+target+"?");
+                setTweat_body('');
+                setTweat_people(0);
+                setTweat_time('');
                 return;
             }
         }
@@ -148,14 +162,13 @@ export default function Add(props){
         setRestaurant('');
         setOpenhours('');
         setTele('');
-        setTele('')
         setLoading(false);
-        setState('');
         setTime('');
         setCost('');
         setStar('');
         setStaple('');
         setLocation('');
+        setInit(true);
         alert('Restaurant added successfully!')
     })
 
@@ -262,11 +275,12 @@ export default function Add(props){
                 {state==='Post'? ( <>
                     <FormGroup>
                         <Label className="add-label">Restaurant</Label>
-                        <Input className="add-input" placeholder="Restaurant" 
+                        {/* <Input className="add-input" placeholder="Restaurant" 
                                 onChange={(e) => setRestaurant(e.target.value)}
                                 value={restaurant}
                                 style={{ marginBottom: 10 }}
-                        />
+                        /> */}
+                        {ComboBox(setRestaurant)}
                     </FormGroup>
                     <FormGroup>
                         <Label className="add-label">Article</Label>
@@ -391,11 +405,12 @@ export default function Add(props){
                 {state==='twEAT!!'? ( <>
                     <FormGroup>
                         <Label className="add-label">Restaurant</Label>
-                        <Input className="add-input" placeholder="Name" 
+                        {/* <Input className="add-input" placeholder="Name" 
                                 onChange={(e) => setTweat_res(e.target.value)}
                                 value={tweat_res}
                                 style={{ marginBottom: 10 }}
-                        />
+                        /> */}
+                        {ComboBox(setTweat_res)}
                     </FormGroup>
                     <FormGroup>
                         <Label for="exampleTime" className="add-label">Time</Label>
