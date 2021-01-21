@@ -45,7 +45,7 @@ export default function Searches(props) {
 
 
     const restaurantList = restaurantData.map(restaurant => (
-        <div className="restaurant-container">
+        <div className="restaurant-container" key={restaurant.name}>
             <div className="restaurant-title">
                 {restaurant.name}
             </div>

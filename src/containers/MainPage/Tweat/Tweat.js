@@ -29,7 +29,7 @@ export default function Tweat(props){
         if (parseInt(post_hour, 10) < parseInt(hour, 10)){
             return true
         }
-        if (parseInt(post_minute, 10) < parseInt(minute, 10)){
+        if ((parseInt(post_minute, 10) < parseInt(minute, 10)) && (parseInt(post_hour, 10) === parseInt(hour, 10))){
             return true
         }
 
@@ -78,7 +78,7 @@ export default function Tweat(props){
         });
     }, [subscribeToMore]);
 
-    const tweats = tweat.map(tweat => (
+    const tweats = tweat.map(tweat => TimeOver(tweat.date) ? (<></>) : (
         <div className={tweat.follower.includes(userid)||tweat.users[0].name===userName ? "wrap-tweat100 joined" : "wrap-tweat100"} key={tweat}>
             <div className="tweats-overview">
                 <div className="tweats-userdata">
