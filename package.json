@@ -37,6 +37,7 @@
     "dev": "nodemon --exec babel-node server/index.js",
     "predeloy": "yarn build",
     "deploy": "gh-pages -d build",
+    "heroku-postbuild": "react-scripts build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
