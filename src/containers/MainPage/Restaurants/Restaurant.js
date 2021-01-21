@@ -62,10 +62,12 @@ export default function Restaurant(props) {
               setPosition({lat: lat, lng: lng});
             },
             error => {
-              // console.error(error);
+              console.error(error);
+              console.log(restaurant.address)
             }
           );
-    }, [userData, data])
+        console.log('hi')
+    }, [restaurant])
 
 /////////////////////////////
     
@@ -184,14 +186,6 @@ export default function Restaurant(props) {
                         key={restaurant.name}
                         position={position}
                     />
-                    {selectedPlace? (
-                    <InfoWindow
-                        position={position}
-                        clickable={true}
-                        onCloseClick={() => setSelectedPlace({})}
-                        >
-                        <p>{restaurant.name}</p>
-                    </InfoWindow>):(<></>)}
                 </GoogleMap>
             </div>
             ) : <>{console.log('no map')}</>}
@@ -205,4 +199,11 @@ export default function Restaurant(props) {
                             setActiveMarker(marker);
                             setShowingInfoWindow(true);
                         }}
+                        <InfoWindow
+                        position={position}
+                        clickable={true}
+                        onCloseClick={() => setSelectedPlace({})}
+                        >
+                        <p>{restaurant.name}</p>
+                    </InfoWindow>):(<></>)}
 */
