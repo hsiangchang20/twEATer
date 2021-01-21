@@ -53,7 +53,8 @@ export default function Add(props){
 
     useEffect(()=>{
         console.log(tweat_res);
-    }, [tweat_res])
+        console.log(restaurant)
+    }, [tweat_res, restaurant])
 
     useEffect(()=>{
         if(init) {
@@ -114,9 +115,9 @@ export default function Add(props){
             return
         }
         else {
-            let checked = incomingRest.includes(tweat_res);
+            let checked = incomingRest.includes(restaurant);
             if(!checked){
-                const target = stringSimilarity.findBestMatch(tweat_res, incomingRest).bestMatch.target;
+                const target = stringSimilarity.findBestMatch(restaurant, incomingRest).bestMatch.target;
                 alert("No matched restaurants, do you mean "+target+"?");
                 setTweat_body('');
                 setTweat_people(0);
