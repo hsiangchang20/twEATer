@@ -5,7 +5,8 @@ import { useQuery, useLazyQuery } from "@apollo/client";
 import { NavLink } from "react-router-dom";
 import fruits from "../fruits/fruits";
 import { FaThumbsUp, FaCommentAlt } from "react-icons/fa"
-import avocado_pic from "../../../components/Images/avocado.png"
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow} from '@react-google-maps/api';
+import Geocode from "react-geocode";
 
 export default function Restaurant(props) {
     //const restaurantIDs = ["1", "2", "3", "4", "5", "6", "7"];
@@ -19,9 +20,59 @@ export default function Restaurant(props) {
 
 	const {watermelon, apple, avocado, cherry, kiwi, lemon, orange, pineapple, strawberry, peach} = fruits
     const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
+
+//////////////////////////
+    const [showingInfoWindow, setShowingInfoWindow] = useState(false);  // Hides or shows the InfoWindo
+    const [activeMarker, setActiveMarker] = useState({});          // Shows the active marker upon click
+    const [selectedPlace, setSelectedPlace] = useState({});
+    const [position, setPosition] = useState({lat: 1, lng: 1});
+
+    const containerStyle = {
+        width: '600px',
+        height: '600px'
+      };
+    const center = {
+        lat: 25.01918,
+        lng: 121.53191
+      };
+
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: "AIzaSyAYkLoO3spHeJHdVi763GLCRAq-KMgbDmo"
+    })
+
+    const [map, setMap] = useState(null)
+    const onLoad = React.useCallback(function callback(map) {
+        const bounds = new window.google.maps.LatLngBounds();
+        map.fitBounds(bounds);
+        setMap(map)
+      }, [])
+
+    const onUnmount = React.useCallback(function callback(map) {
+        setMap(null)
+    }, [])
+
+    useEffect(() => {
+        Geocode.setApiKey("AIzaSyAYkLoO3spHeJHdVi763GLCRAq-KMgbDmo");
+        Geocode.setLanguage("zh-TW");
+        Geocode.fromAddress(restaurant.address).then(
+            response => {
+              const { lat, lng } = response.results[0].geometry.location;
+              console.log(lat, lng);
+              setPosition({lat: lat, lng: lng});
+            },
+            error => {
+              console.error(error);
+              console.log(restaurant.address)
+            }
+          );
+        console.log('hi')
+    }, [restaurant])
+
+/////////////////////////////
     
     useEffect(()=>{    
-        console.log(data)    
+        // console.log(data)    
         if (data && (data.restaurant[0])){
             setRestaurant(data.restaurant[0]);
             if (data.restaurant[0].posts[0]){
@@ -118,6 +169,41 @@ export default function Restaurant(props) {
             {restaurant_view}
             {(restaurant.posts && restaurant.posts.length !== 0) ? (<p className="view-posts">&nbsp;&nbsp;&nbsp;Relating Posts:</p>) : <></>}
             {posts_list}
+            {isLoaded ? (
+            <div className="map">
+                <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={position}
+                    zoom={19}
+                    onUnmount={onUnmount}
+                >
+                    <Marker
+                        onClick={(props, marker, e) => {
+                            setSelectedPlace(props);
+                            setActiveMarker(marker);
+                            setShowingInfoWindow(true);
+                        }}
+                        key={restaurant.name}
+                        position={position}
+                    />
+                </GoogleMap>
+            </div>
+            ) : <>{console.log('no map')}</>}
         </>
     );
 }
+
+
+/*                         onClick={(props, marker, e) => {
+                            setSelectedPlace(props);
+                            setActiveMarker(marker);
+                            setShowingInfoWindow(true);
+                        }}
+                        <InfoWindow
+                        position={position}
+                        clickable={true}
+                        onCloseClick={() => setSelectedPlace({})}
+                        >
+                        <p>{restaurant.name}</p>
+                    </InfoWindow>):(<></>)}
+*/

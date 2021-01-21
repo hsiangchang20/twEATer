@@ -62,7 +62,7 @@ export default function Add(props){
                     R.push(incomingRest[i].name);
                 }
                 const target = stringSimilarity.findBestMatch(tweat_res, R).bestMatch.target;
-                alert("No match restaurant, did you mean "+target+"?");
+                alert("No matched restaurants, do you mean "+target+"?");
                 setTweat_body('');
                 setTweat_people(0);
                 setTweat_time('');
@@ -81,6 +81,8 @@ export default function Add(props){
         setTweat_body('');
         setTweat_people(0);
         setTweat_time('');
+        setTweat_res('')
+        alert('twEAT added successfully!')
     })
 
     const createPost = useCallback(()=>{
@@ -119,6 +121,7 @@ export default function Add(props){
         setLoading(false);
         setBody('');
         setRestaurant('');
+        alert('Post added successfully!')
     })
 
     const createRestaurant = useCallback(()=>{
@@ -153,7 +156,7 @@ export default function Add(props){
         setStar('');
         setStaple('');
         setLocation('');
-        refetch();
+        alert('Restaurant added successfully!')
     })
 
     const imageUpload = async e => {
