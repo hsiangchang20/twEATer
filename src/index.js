@@ -14,7 +14,7 @@ import * as serviceWorker from './serviceWorker'
 
 import 'antd/dist/antd.css'
 
-/*
+
 // Create an http link:
 const httpLink = new HttpLink({
   uri: 'http://35.221.202.156:443/'
@@ -40,7 +40,7 @@ const link = split(
   wsLink,
   httpLink
 )
-*/
+
 
 const client = new ApolloClient({
   uri:'/graphql',
