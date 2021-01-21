@@ -2,7 +2,7 @@
 
 ### (Group 33) NTU twEATer
 
-**Deployed 連結: https://ntutweater.herokuapp.com/**
+**Deployed 連結: http://35.221.202.156/**
 
 **Demo 影片連結: https://www.youtube.com/watch?fbclid=IwAR2Ot46D7vMZxYggBj-QDutk0sRp5e4VHGfKZrV_MPV3SHPSzdXzBtkxLd0&v=yeOhAuze8gE&feature=youtu.be**
 
