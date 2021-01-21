@@ -93,7 +93,7 @@ export default function Tweat(props){
                     </tbody>
                 </table>
                 <div className="tweats-body">
-                    <p>{tweat.body}</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;{tweat.body}</p>
                 </div>
                 <div className='tweats-likeOrResponse'>  
                     <div className="tweats-like">
