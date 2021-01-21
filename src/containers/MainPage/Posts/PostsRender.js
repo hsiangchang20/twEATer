@@ -50,14 +50,14 @@ export default function PostRender(props) {
             var time = new Date()
             time.setTime(data.posts[0].time)
             setPost_time(time)
-            console.log(data.posts[0].comments)
+            // console.log(data.posts[0].comments)
             setComment(data.posts[0].comments)
         }
     }, [loading, data])
 
     useEffect(()=>{
         if(init){
-            console.log('init')
+            // console.log('init')
             refetch();
             refetchUser();
             setInit(false);
@@ -65,13 +65,13 @@ export default function PostRender(props) {
     }, [init, refetch, refetchUser])
 
     useEffect(()=>{
-        if(commentdata) console.log(commentdata.comment.data);
+        // if(commentdata) console.log(commentdata.comment.data);
         if(commentdata) {
             var time = new Date()
             let dao = commentdata.comment.data
             let add = {Author: dao.Author, body: dao.body, time: time.getTime(), user: dao.user}
             setComment([...comment, add])
-            console.log(commentdata)
+            // console.log(commentdata)
         }
     }, [commentdata]);
 
@@ -91,7 +91,7 @@ export default function PostRender(props) {
 
     useEffect(()=>{
         if(userdata&&!init){
-            console.log(userdata);
+            // console.log(userdata);
             setLiked(userdata.users[0].Like.includes(postid))
             setUsername(userdata.users[0].name);
             setUserfruit(userdata.users[0].fruit);

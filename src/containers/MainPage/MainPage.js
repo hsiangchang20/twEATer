@@ -25,7 +25,7 @@ export default function MainPage(props) {
     const [addStyle, setAddStyle] = useState({});
     const [profileStyle, setProfileStyle] = useState({});
     const [tweatStyle, setTweatStyle] = useState({});
-    console.log(userdata._id);
+    // console.log(userdata._id);
     let dao = 0;
 
     const setMode = (mode, path) => {
@@ -33,7 +33,7 @@ export default function MainPage(props) {
     }
     
     const location = useLocation();
-    console.log(location.pathname);
+    // console.log(location.pathname);
     const path = location.pathname.toString();
 
     useEffect (() => {
@@ -149,7 +149,7 @@ export default function MainPage(props) {
                             <LoginPage onClick={(data) => {
                                 if (data !== undefined) {
                                     if(data.login.name !== "allenwu0902"){
-                                        console.log(data);
+                                        // console.log(data);
                                         setLogin(true);
                                         setUserdata(data.login)
                                     }
@@ -159,7 +159,7 @@ export default function MainPage(props) {
                                             alert("Fuck 吳瑋倫");
                                     }
                                 }
-                                else console.log(data);
+                                // else console.log(data);
                             }} />
                         </div>
                     )

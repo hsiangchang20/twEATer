@@ -18,7 +18,7 @@
   }
 
   .joined {
-    background: #5cecff;
+    background: #ffd2d2;
   }
 
   .joined button {
@@ -70,7 +70,7 @@
     font-weight: 400;
     font-size: 30px;
     color: black;
-    margin-top: 20px;
+    margin-top: 5px;
     margin-bottom: 15px;
   }
 
