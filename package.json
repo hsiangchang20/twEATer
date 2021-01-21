@@ -34,7 +34,7 @@
     "websocket": "^1.0.32"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node server/index.js",
+    "dev": "nodemon --exec babel-node server/index.js",
     "predeloy": "yarn build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
