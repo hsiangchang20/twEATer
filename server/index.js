@@ -7,12 +7,11 @@ import Post from './resolvers/Post'
 import Restaurant from './resolvers/Restaurant'
 import Message from './resolvers/Message'
 import Comment from './resolvers/Comment'
-
-// const express = require('express');
-// const path = require('path');
-// const port = process.env.PORT || 80;
-// const app = express();
-// app.use(express.static(path.join(__dirname, 'build')));
+const express = require('express')
+const path = require('path')
+const port = process.env.PORT || 80;
+const app = express();
+app.use(express.static('/home/b08901062/twEATer/build'));
 
 // const bodyParser = require('body-parser')
 // const apiRoute = require('../src/route/api');
@@ -23,9 +22,9 @@ import Comment from './resolvers/Comment'
 //   return res.send('pong');
 // });
 
-// app.get('/*', function (req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+app.get('/*', function (req, res) {
+  res.sendFile('/home/b08901062/twEATer/build/index.html');
+});
 
 // app.listen(port);
 // console.log("Server Ready!")
@@ -71,7 +70,7 @@ mongodb.once('open', () => {
     }
   })
 
-  server.start({ port: process.env.PORT | 4000 }, () => {
-    console.log(`The server is up on port ${process.env.PORT | 4000}!`)
+  server.start({ port: process.env.PORT | 443 }, () => {
+    console.log(`The server is up on port ${process.env.PORT | 4000 }!`)
   })
 })
