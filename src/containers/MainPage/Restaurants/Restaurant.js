@@ -22,14 +22,13 @@ export default function Restaurant(props) {
     const fruitlist = [null, watermelon, cherry, strawberry, apple, lemon, peach, kiwi, orange, pineapple, avocado]
 
 //////////////////////////
-    const [showingInfoWindow, setShowingInfoWindow] = useState(false);  // Hides or shows the InfoWindo
     const [activeMarker, setActiveMarker] = useState({});          // Shows the active marker upon click
     const [selectedPlace, setSelectedPlace] = useState({});
     const [position, setPosition] = useState({lat: 1, lng: 1});
 
     const containerStyle = {
-        width: '600px',
-        height: '600px'
+        width: '800px',
+        height: '400px'
       };
     const center = {
         lat: 25.01918,
@@ -58,15 +57,15 @@ export default function Restaurant(props) {
         Geocode.fromAddress(restaurant.address).then(
             response => {
               const { lat, lng } = response.results[0].geometry.location;
-              console.log(lat, lng);
+              // console.log(lat, lng);
               setPosition({lat: lat, lng: lng});
             },
             error => {
-              console.error(error);
-              console.log(restaurant.address)
+              // console.error(error);
+              // console.log(restaurant.address)
             }
           );
-        console.log('hi')
+        // console.log('hi')
     }, [restaurant])
 
 /////////////////////////////
@@ -97,7 +96,7 @@ export default function Restaurant(props) {
                     POST.push(dao)
                 }
             }
-            console.log(POST)
+            // console.log(POST)
             setPosts(POST);
         }
     }, [userData, data])
@@ -121,7 +120,6 @@ export default function Restaurant(props) {
                     onClick={(props, marker, e) => {
                         setSelectedPlace(props);
                         setActiveMarker(marker);
-                        setShowingInfoWindow(true);
                     }}
                     key={restaurant.name}
                     position={position}
@@ -142,7 +140,7 @@ export default function Restaurant(props) {
                 <p>Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; {restaurant.address}</p>
                 <p>Openhours&nbsp;&nbsp;:&nbsp;&nbsp; {restaurant.Openhours}</p>
             </div>
-            {isLoaded ? google_map : <>{console.log('no map')}</>}
+            {isLoaded ? google_map : <>{/* console.log('no map')*/}</>}
         </div>
     )
 
@@ -166,7 +164,7 @@ export default function Restaurant(props) {
                 </div>
                 <div className='posts-likeOrResponse'>  
                     <div className="posts-like">
-                        <button onClick={/*()=>Like(post._id)*/console.log("nothing")}>
+                        <button >
                             {post.liked?(<p>Like&nbsp;&nbsp;<FaThumbsUp color="lightgreen"/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>):
                             (<p><FaThumbsUp/>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</p>)}
                         </button>

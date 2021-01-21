@@ -41,7 +41,7 @@ export default function Add(props){
 
     useEffect(()=>{
         if(init && data) {
-            console.log(data.restaurant)
+            // console.log(data.restaurant)
             let R = []
             for(var i=0; i<data.restaurant.length;i++){
                 R.push(data.restaurant[i].name);
@@ -52,12 +52,12 @@ export default function Add(props){
     }, [data])
 
     useEffect(()=>{
-        console.log(tweat_res);
+        // console.log(tweat_res);
     }, [tweat_res])
 
     useEffect(()=>{
         if(init) {
-            console.log('init')
+            // console.log('init')
             refetch();
         }
     }, [init])
@@ -79,7 +79,7 @@ export default function Add(props){
 
     const createTweat = useCallback(() => {
         if (!(tweat_res&&tweat_time&&tweat_people&&tweat_body)) {
-            console.log(tweat_res, tweat_time, tweat_people, tweat_body)
+            // console.log(tweat_res, tweat_time, tweat_people, tweat_body)
             alert("Please fill in all the required information!")
             return
         }
@@ -142,7 +142,7 @@ export default function Add(props){
 
     const createRestaurant = useCallback(()=>{
         if(!(restaurant&&openhours&&type&&address&&tele)) {
-            console.log('missing');
+            // console.log('missing');
             alert("Please fill in all the required information!")
             return
         }
@@ -197,19 +197,19 @@ export default function Add(props){
         const data = await response.json();
         if (data.success) {
             const name = files[index].name;
-            console.log(`$file (${name}) upload success!`);
-            console.log(data);
+            // console.log(`$file (${name}) upload success!`);
+            // console.log(data);
             setImage(data.data.link);
         } 
         else {
-            console.log(`${index}번째 이미지 업로드 실패...`);
+            // console.log(`${index}번째 이미지 업로드 실패...`);
         }
         if (index === files.length - 1) return setLoading({ loading: false });
         await this.imageUploadToImgur(files, index + 1);
     };
 
     const selected = (event) => {
-        console.log(event.target.value)
+        // console.log(event.target.value)
         setState(event.target.value);
     }
 

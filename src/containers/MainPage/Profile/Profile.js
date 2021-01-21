@@ -96,11 +96,11 @@ export default function Profile(props){
 			}
 			
 			
-			console.log(newusername)
-			console.log(emailname)
-			console.log(passwordname)
-			//console.log(confirmPw)
-			console.log(newfruit)
+			// console.log(newusername)
+			// console.log(emailname)
+			// console.log(passwordname)
+			// console.log(confirmPw)
+			// console.log(newfruit)
 		}
 		else {
 			setEditing(!editing)
@@ -123,7 +123,7 @@ export default function Profile(props){
 			setName(data.users[0].name);
 			setFruit(data.users[0].fruit);
 		}
-		console.log(data)
+		// console.log(data)
 	}, [data])
 	/*
 	const old_profile_edit = (

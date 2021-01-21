@@ -80,7 +80,7 @@ export default function Searches(props) {
     useEffect(()=>{
         //console.log(data);
         if (data!==undefined) {setRestaurantData(data.restaurant)}
-        console.log(restaurantData)
+        // console.log(restaurantData)
     }, [loading, data, restaurantData])
 
     return (

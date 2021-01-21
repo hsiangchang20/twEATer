@@ -36,7 +36,7 @@ export default function Posts(props) {
                     POST.push(dao)
                 }
             }
-            console.log(POST)
+            // console.log(POST)
             setPosts(POST);
         }
     }, [userData, data])
