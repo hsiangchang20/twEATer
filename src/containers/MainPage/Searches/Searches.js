@@ -115,6 +115,7 @@ export default function Searches(props) {
                                         <option>American</option>
                                         <option>Japanese</option>
                                         <option>Italian</option>
+                                        <option>Other</option>
                                     </select>
                                 </div>
                             </div>
@@ -123,8 +124,8 @@ export default function Searches(props) {
                                     <select data-trigger="" className="choices__inner fa" onChange={selectTime}>
                                         <option placeholder="" value="">&#xf017; TIME</option>
                                         <option>Breakfast</option>
-                                        <option>Lunch</option>
-                                        <option>Dinner</option>
+                                        <option>Lunch/Dinner</option>
+                                        <option>Snack</option>
                                     </select>
                                 </div>
                             </div>

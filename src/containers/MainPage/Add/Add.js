@@ -65,7 +65,6 @@ export default function Add(props){
                 alert("No match restaurant, did you mean "+target+"?");
                 setTweat_body('');
                 setTweat_people(0);
-                setTweat_res('');
                 setTweat_time('');
                 return;
             }
@@ -81,7 +80,6 @@ export default function Add(props){
         });
         setTweat_body('');
         setTweat_people(0);
-        setTweat_res('');
         setTweat_time('');
     })
 
@@ -121,7 +119,6 @@ export default function Add(props){
         setLoading(false);
         setBody('');
         setRestaurant('');
-        setState('');
     })
 
     const createRestaurant = useCallback(()=>{
@@ -298,6 +295,7 @@ export default function Add(props){
                             <option>American</option>
                             <option>Japanese</option>
                             <option>Italian</option>
+                            <option>Other</option>
                         </Input>
                     </FormGroup>
                     </Col>
@@ -306,8 +304,8 @@ export default function Add(props){
                         <Input className="add-select fa" type="select" placeholder="Time" onChange={selectTime} style={{ marginBottom: 10 }}>
                             <option placeholder="" value="">&#xf017; TIME</option>
                             <option>Breakfast</option>
-                            <option>Lunch</option>
-                            <option>Dinner</option>
+                            <option>Lunch/Dinner</option>
+                            <option>Snack</option>
                         </Input>
                     </FormGroup>
                     </Col>
@@ -358,7 +356,7 @@ export default function Add(props){
                     <FormGroup>
                         <Label className="add-label">Openhours</Label>
                         <Input  className="add-input"
-                                placeholder="Type" 
+                                placeholder="Openhours" 
                                 onChange={(e) => setOpenhours(e.target.value)}
                                 value={openhours}
                                 style={{ marginBottom: 10 }}
@@ -367,7 +365,7 @@ export default function Add(props){
                     <FormGroup>
                         <Label className="add-label">Address</Label>
                         <Input  className="add-input"
-                                placeholder="Type" 
+                                placeholder="Address" 
                                 onChange={(e) => setAddress(e.target.value)}
                                 value={address}
                                 style={{ marginBottom: 10 }}
@@ -376,7 +374,7 @@ export default function Add(props){
                     <FormGroup>
                         <Label className="add-label">Telephone</Label>
                         <Input  className="add-input"
-                                placeholder="Type" 
+                                placeholder="Telephone" 
                                 onChange={(e) => setTele(e.target.value)}
                                 value={tele}
                                 style={{ marginBottom: 10 }}
