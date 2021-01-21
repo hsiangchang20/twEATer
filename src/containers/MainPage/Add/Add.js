@@ -7,6 +7,7 @@ import './font-awesome-4.7.0/css/font-awesome.css'
 import post from "../../../components/Post/Post";
 import { CREATE_POST_MUTATION, CREATE_RESTAURANT_MUTATION, USER_QUERY, CREATE_MESSAGE_MUTATION, RESTAURANT_QUERY } from '../../../graphql'
 import { useMutation, useQuery } from "@apollo/client";
+import stringSimilarity from "string-similarity";
 
 export default function Add(props){
     const { userid } = props.match.params;
@@ -56,7 +57,12 @@ export default function Add(props){
                     checked=true;
             }
             if(!checked){
-                alert("No match restaurant");
+                let R = []
+                for(var i=0; i<incomingRest.length;i++){
+                    R.push(incomingRest[i].name);
+                }
+                const target = stringSimilarity.findBestMatch(tweat_res, R).bestMatch.target;
+                alert("No match restaurant, did you mean "+target+"?");
                 setTweat_body('');
                 setTweat_people(0);
                 setTweat_res('');
@@ -83,6 +89,24 @@ export default function Add(props){
         if (!(images&&restaurant&&body)) {
             alert("Please fill in all the required information!")
             return
+        }
+        else {
+            let checked = false;
+            for(var i=0; i<incomingRest.length;i++){
+                if(restaurant===incomingRest[i].name)
+                    checked=true;
+            }
+            if(!checked){
+                let R = []
+                for(var i=0; i<incomingRest.length;i++){
+                    R.push(incomingRest[i].name);
+                }
+                const target = stringSimilarity.findBestMatch(restaurant, R).bestMatch.target;
+                alert("No match restaurant, did you mean "+target+"?");
+                setLoading(false);
+                setRestaurant('');
+                return;
+            }
         }
         addPost({
             variables: {

@@ -17,7 +17,7 @@ type Mutation {
   deleteComment(id: ID!): Comment!
   updateComment(id: ID!, data: UpdateCommentInput!): Comment!
   sendMessage(data: CreateMessageInput!): Message! 
-  deleteMessage(author: ID!): Message!
+  deleteMessage(id: ID!): Message
   createRestaurant(data: createRestaurantInput!): Restaurant!
   deleteRestaurant(name: String!): Restaurant!
   Like(PostID: String!, userId: String!): [Post!]!
