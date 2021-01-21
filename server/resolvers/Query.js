@@ -78,6 +78,6 @@ const Query = {
         }
         return GetRestaurantData(args)
     }
-}
+} 
  
 module.exports = Query
