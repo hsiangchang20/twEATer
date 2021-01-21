@@ -65,11 +65,15 @@ export default function Add(props){
     const ComboBox = (dao)=>(
         <Autocomplete
         id="combo-box-demo"
+        freeSolo
         options={incomingRest}
         getOptionLabel={(option) => option}
         style={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
-        onChange = {newValue=>dao(newValue.target.innerHTML)}
+        renderInput={(params) => <TextField {...params} label="Choose one or Type one" variant="outlined" />}
+        onInputChange = {(inputValue)=>{
+            if(inputValue.target.value!==0) dao(inputValue.target.value)
+            else dao(inputValue.target.innerHTML)
+        }}
         />
     )
 
@@ -84,9 +88,7 @@ export default function Add(props){
             if(!checked){
                 const target = stringSimilarity.findBestMatch(tweat_res, incomingRest).bestMatch.target;
                 alert("No matched restaurants, do you mean "+target+"?");
-                setTweat_body('');
-                setTweat_people(0);
-                setTweat_time('');
+                setTweat_res('');
                 return;
             }
         }
