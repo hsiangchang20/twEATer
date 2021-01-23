@@ -67,9 +67,17 @@ const Query = {
                 data = await restaurant.find();
             }
             else {
-                data = await restaurant.find({  time: { "$regex": rest.time, "$options": "i" },
+                console.log(rest)
+                if(rest.cost==="") 
+                    data = await restaurant.find({  time: { "$regex": rest.time, "$options": "i" },
+                                                    type: { "$regex": rest.type, "$options": "i" },
+                                                    staple: { "$regex": rest.staple, "$options": "i" },
+                                                    location: { "$regex": rest.location, "$options": "i" },
+                                                    Star: { "$regex": rest.Star, "$options": "i" }});
+                if(rest.cost!=="") 
+                    data = await restaurant.find({  time: { "$regex": rest.time, "$options": "i" },
                                                 type: { "$regex": rest.type, "$options": "i" },
-                                                cost: { "$regex": rest.cost, "$options": "i" },
+                                                cost: rest.cost,
                                                 staple: { "$regex": rest.staple, "$options": "i" },
                                                 location: { "$regex": rest.location, "$options": "i" },
                                                 Star: { "$regex": rest.Star, "$options": "i" }});

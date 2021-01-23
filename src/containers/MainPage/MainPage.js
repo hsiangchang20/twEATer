@@ -25,7 +25,6 @@ export default function MainPage(props) {
     const [addStyle, setAddStyle] = useState({});
     const [profileStyle, setProfileStyle] = useState({});
     const [tweatStyle, setTweatStyle] = useState({});
-    // console.log(userdata._id);
     let dao = 0;
 
     const setMode = (mode, path) => {
@@ -149,17 +148,15 @@ export default function MainPage(props) {
                             <LoginPage onClick={(data) => {
                                 if (data !== undefined) {
                                     if(data.login.name !== "allenwu0902"){
-                                        // console.log(data);
                                         setLogin(true);
                                         setUserdata(data.login)
                                     }
                                     else {
                                         dao++;
-                                        if(dao%2==0)
-                                            alert("Fuck 吳瑋倫");
+                                        if(dao%2===0)
+                                            alert("Wrong Email or Password!");
                                     }
                                 }
-                                // else console.log(data);
                             }} />
                         </div>
                     )
@@ -167,45 +164,4 @@ export default function MainPage(props) {
             </div>
         </div>
     )
-    /*
-    <ScriptTag src="./vendor/jquery/jquery-3.2.1.min.js"></ScriptTag>
-    <ScriptTag src="./vendor/bootstrap/js/popper.js"></ScriptTag>
-    <ScriptTag src="./vendor/bootstrap/js/bootstrap.min.js"></ScriptTag>
-    <ScriptTag src="./vendor/select2/select2.min.js"></ScriptTag>
-    <ScriptTag src="./vendor/tilt/tilt.jquery.min.js"></ScriptTag>
-    <ScriptTag src="./js/main.js"></ScriptTag>
-    */
-    /*
-    return (
-        login ?
-            (<div>
-                <button>
-                    <NavLink to="/post">Post</NavLink>
-                </button>
-                <button>
-                    <NavLink to="/search">Search</NavLink>
-                </button>
-                <button>
-                    <NavLink to="/roulette">Roulette</NavLink>
-                </button>
-                <button>
-                    <NavLink to="/add">Add</NavLink>
-                </button>
-                <button>
-                    <NavLink to="/user">User</NavLink>
-                </button>
-                <hr />
-                <Switch>
-                    <Route exact path="/post" component={Posts} />
-                    <Route path="/post/:id?" component={PostsRender} />
-                    <Route exact path="/search" component={Searches} />
-                    <Route path="/restaurant/:id?" component={Restaurant} />
-                    <Redirect from="/home" to="/" />
-                </Switch>
-            </div>
-            ) : (
-                <LoginPage onClick={() => setLogin(true)} />
-            )
-    );
-    */
 }

@@ -68,8 +68,8 @@ function LoginPage(props) {
     }
 
     useEffect( ()=> {
-        if(data && click)
-            // console.log(data.login.name);
+        // if(data && click)
+        //     console.log(data.login.name);
         props.onClick(data);
         setClick(false)
     }, [data, click])
