@@ -9,7 +9,7 @@ import Message from './resolvers/Message'
 import Comment from './resolvers/Comment'
 // const express = require('express')
 // const path = require('path')
-// const port = process.env.PORT || 80;
+ const port = process.env.PORT || 80;
 // const app = express();
 // app.use(express.static('/home/b08901062/twEATer/build'));
 

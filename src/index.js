@@ -17,12 +17,12 @@ import 'antd/dist/antd.css'
 
 // Create an http link:
 const httpLink = new HttpLink({
-  uri: 'http://35.221.202.156:443/'
+  uri: 'http://localhost:4000'
 })
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: `ws://35.221.202.156:443/`,
+  uri: `ws://localhost:4000`,
   options: { reconnect: true }
 })
 
@@ -43,7 +43,7 @@ const link = split(
 
 
 const client = new ApolloClient({
-  uri:'/graphql',
+  link,
   cache: new InMemoryCache().restore({})
 })
 
