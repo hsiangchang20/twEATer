@@ -2,7 +2,9 @@
 
 ### (Group 33) NTU twEATer
 
-**Deployed 連結: https://tweater.herokuapp.com/**
+**Deployed 連結: http://35.221.202.156/**
+
+**!!!這是我們新的DEPLOYED連結，和Google Form 表單上的網址不一樣，請教授及助教以此網頁為評分標準!!!**
 
 **Demo 影片連結: https://www.youtube.com/watch?fbclid=IwAR2Ot46D7vMZxYggBj-QDutk0sRp5e4VHGfKZrV_MPV3SHPSzdXzBtkxLd0&v=yeOhAuze8gE&feature=youtu.be**
 
@@ -20,6 +22,7 @@
    (2) 新增餐廳資訊 
    (3) 開揪飯局！
 6. Profile: 瀏覽並更新個人資料與頭貼。
+伺服器端以GraphQL和MongoDB寫成，可在GraphQL playground進行開發。
 
 > Github link: https://github.com/hsiangchang20/twEATer
 
@@ -36,17 +39,14 @@
 同時，我們也了解到不倚賴模板、獨立刻出網路服務是多麼困難的事，將來如果還有機會寫網頁，一定要善加利用可取得的資源，才不會事倍功半。
 
 * 使用之第三方套件、框架、程式碼
-  Frontend(js, css): React, React-router, Bootstrap, Apollo, React-icons
+  Frontend(js, css): React, React-router, Bootstrap, Apollo, React-icons, google maps javascript api, React-geocode, imgur api, material-ui
   Backend(js): GraphQL, Mongoose
   Database: MongoDB
 
 ---
 
-#### 每位組員之貢獻 (請詳述)
+#### 每位組員之貢獻
 
 * 詹侑昕：後端程式設計、資料庫操作、Schema制定、後端GraphQL Resolver設計與維護
 * 陳永縉：前後端資料傳輸、前端程式介面設計、前端資料整理
 * 張家翔：前端程式介面設計與排版、Google Map API開發
-
-(Optional) 對於此課程的建議
-(Note) 無論自己在 FB 有無公告 deployed 連結，在期末報告一定要附上 deployed 連結，以利評分 (沒有附會被扣 10% 的分數)

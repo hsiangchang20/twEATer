@@ -14,14 +14,15 @@ import * as serviceWorker from './serviceWorker'
 
 import 'antd/dist/antd.css'
 
+
 // Create an http link:
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/'
+  uri: 'http://35.221.202.156:443/'
 })
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/`,
+  uri: `ws://35.221.202.156:443/`,
   options: { reconnect: true }
 })
 
@@ -40,10 +41,12 @@ const link = split(
   httpLink
 )
 
+
 const client = new ApolloClient({
-  link,
+  uri:'/graphql',
   cache: new InMemoryCache().restore({})
 })
+
 
 const wrappedApp = (
   <ApolloProvider client={client}>
