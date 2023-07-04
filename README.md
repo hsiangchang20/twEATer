@@ -2,10 +2,6 @@
 
 ### (Group 33) NTU twEATer
 
-**Deployed 連結: http://35.221.202.156/**
-
-**!!!這是我們新的DEPLOYED連結，和Google Form 表單上的網址不一樣，請教授及助教以此網頁為評分標準!!!**
-
 **Demo 影片連結: https://www.youtube.com/watch?fbclid=IwAR2Ot46D7vMZxYggBj-QDutk0sRp5e4VHGfKZrV_MPV3SHPSzdXzBtkxLd0&v=yeOhAuze8gE&feature=youtu.be**
 
 這是一個美食交流平台，讓使用者分享餐廳、撰寫評論並建立美食資料庫，讓使用者創建和查詢餐廳的詳細資訊。
